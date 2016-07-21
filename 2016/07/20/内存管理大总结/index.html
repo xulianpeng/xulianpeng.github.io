@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="Lianpeng’s Sky">
 <meta property="og:description" content="hljs.initHighlightingOnLoad();
  $(document).ready(function(){      $(“h1,h2,h3,h4,h5,h6”).each(function(i,item){        var tag = $(item).get(0).localName;        $(item).attr(“id”,”wow”+i);">
-<meta property="og:updated_time" content="2016-07-21T07:42:52.000Z">
+<meta property="og:updated_time" content="2016-07-21T07:49:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="内存管理大总结">
 <meta name="twitter:description" content="hljs.initHighlightingOnLoad();
@@ -303,8 +303,9 @@
 </li>
 <li><p>在实际的项目中,我们在函数内使用一个临时的对象,通常是不需要修改它的引用计数的,只需要在函数返回前将该对象销毁即可.</p>
 </li>
-<li>引用计数真正排上用场是,对象之间传递和共享数据.遵从引用计数这个规则的话,对象的生命周期的管理就完全可以交给引用计数了.</li>
+<li>引用计数真正排上用场是,对象之间传递和共享数据.遵从引用计数这个规则的话,对象的生命周期的管理就完全可以交给引用计数了.more</li>
 </ul>
+<a id="more"></a>
 <h2 id="2-内存管理-引用计数"><a href="#2-内存管理-引用计数" class="headerlink" title="2.内存管理/引用计数"></a>2.内存管理/引用计数</h2><h3 id="2-1-1-内存管理的思考方式"><a href="#2-1-1-内存管理的思考方式" class="headerlink" title="2.1.1 内存管理的思考方式"></a>2.1.1 内存管理的思考方式</h3><p>举例 对办公室照明设备所做的动作和对OC对象所做的动作</p>
 <table>
 <thead>
@@ -337,7 +338,6 @@
 </tr>
 </tbody>
 </table>
-<!-- 阅读全部 -->
 <p>小结:</p>
 <ul>
 <li>自己生成的对象,自己持有</li>
@@ -406,15 +406,10 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/path/to/wechat-reward-image" alt="xulianpeng WeChat Pay"/>
+          <img id="wechat_qr" src="/images/to/wechat-reward-image" alt="xulianpeng WeChat Pay"/>
           <p>微信打赏</p>
         </div>
       
-      
-        <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/path/to/alipay-reward-image" alt="xulianpeng Alipay"/>
-          <p>支付宝打赏</p>
-        </div>
       
     </div>
   </div>
