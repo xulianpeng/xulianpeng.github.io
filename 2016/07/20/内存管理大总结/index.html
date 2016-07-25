@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="Lianpeng’s Sky">
 <meta property="og:description" content="hljs.initHighlightingOnLoad();
  $(document).ready(function(){      $(“h1,h2,h3,h4,h5,h6”).each(function(i,item){        var tag = $(item).get(0).localName;        $(item).attr(“id”,”wow”+i);">
-<meta property="og:updated_time" content="2016-07-21T07:49:03.000Z">
+<meta property="og:updated_time" content="2016-07-25T03:31:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="内存管理大总结">
 <meta name="twitter:description" content="hljs.initHighlightingOnLoad();
@@ -317,14 +317,12 @@
 <p><script type="text/javascript"><br> $(document).ready(function(){<br>      $(“h1,h2,h3,h4,h5,h6”).each(function(i,item){<br>        var tag = $(item).get(0).localName;<br>        $(item).attr(“id”,”wow”+i);<br>        $(“#category”).append(‘<a class="new'+tag+'" href="#wow'+i+'">‘+$(this).text()+’</a></br>‘);<br>        $(“.newh1”).css(“margin-left”,0);<br>        $(“.newh2”).css(“margin-left”,20);<br>        $(“.newh3”).css(“margin-left”,40);<br>        $(“.newh4”).css(“margin-left”,60);<br>        $(“.newh5”).css(“margin-left”,80);<br>        $(“.newh6”).css(“margin-left”,100);<br>      });<br> });<br></script></p>
 <div id="category"></div>
 
-<h1 id="内存管理大总结"><a href="#内存管理大总结" class="headerlink" title="内存管理大总结"></a>内存管理大总结</h1><h2 id="1-自动引用计数的概念"><a href="#1-自动引用计数的概念" class="headerlink" title="1.自动引用计数的概念"></a>1.自动引用计数的概念</h2><ul>
-<li><p>在OC中采用引用<strong>计数机制</strong>来管理对象的生命周期.</p>
-</li>
-<li><p>在实际的项目中,我们在函数内使用一个临时的对象,通常是不需要修改它的引用计数的,只需要在函数返回前将该对象销毁即可.</p>
-</li>
+<h1 id="内存管理大总结"><a href="#内存管理大总结" class="headerlink" title="内存管理大总结"></a>内存管理大总结</h1><h2 id="1-自动引用计数的概念"><a href="#1-自动引用计数的概念" class="headerlink" title="1.自动引用计数的概念"></a>1.自动引用计数的概念</h2><a id="more"></a>
+<ul>
+<li>在OC中采用引用<strong>计数机制</strong>来管理对象的生命周期.</li>
+<li>在实际的项目中,我们在函数内使用一个临时的对象,通常是不需要修改它的引用计数的,只需要在函数返回前将该对象销毁即可.</li>
 <li>引用计数真正排上用场是,对象之间传递和共享数据.遵从引用计数这个规则的话,对象的生命周期的管理就完全可以交给引用计数了.more</li>
 </ul>
-<a id="more"></a>
 <h2 id="2-内存管理-引用计数"><a href="#2-内存管理-引用计数" class="headerlink" title="2.内存管理/引用计数"></a>2.内存管理/引用计数</h2><h3 id="2-1-1-内存管理的思考方式"><a href="#2-1-1-内存管理的思考方式" class="headerlink" title="2.1.1 内存管理的思考方式"></a>2.1.1 内存管理的思考方式</h3><p>举例 对办公室照明设备所做的动作和对OC对象所做的动作</p>
 <table>
 <thead>
@@ -518,17 +516,24 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
 
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
