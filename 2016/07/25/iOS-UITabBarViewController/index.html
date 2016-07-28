@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/07/25/iOS-UITabBarViewController/index.html">
 <meta property="og:site_name" content="Lianpeng’s Sky">
 <meta property="og:description" content="一、UITabBarController的初印象">
-<meta property="og:updated_time" content="2016-07-26T03:06:28.000Z">
+<meta property="og:updated_time" content="2016-07-27T06:15:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS-UITabBarViewController">
 <meta name="twitter:description" content="一、UITabBarController的初印象">
@@ -337,6 +337,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">-(void) viewDidLoad &#123;​</div><div class="line"></div><div class="line">    MapViewController *v1 = [MapViewControllernew];</div><div class="line"></div><div class="line">    v1.tabBarItem.image = [UIImageimageNamed:@&quot;icon_map&quot;];</div><div class="line"></div><div class="line">    v1.tabBarItem.title = @&quot;地图&quot;;</div><div class="line"></div><div class="line">    v1.view.backgroundColor = [UIColororangeColor];</div><div class="line"></div><div class="line">    CycleViewController *v2 = [CycleViewControllernew];</div><div class="line"></div><div class="line">    v2.tabBarItem.image = [UIImageimageNamed:@&quot;icon_cycle&quot;];</div><div class="line"></div><div class="line">    v2.tabBarItem.title = @&quot;运动&quot;;</div><div class="line"></div><div class="line">    v2.view.backgroundColor = [UIColorgreenColor];</div><div class="line"></div><div class="line">    OtherViewController *v3 = [OtherViewControllernew];</div><div class="line"></div><div class="line">    v3.tabBarItem.image = [UIImageimageNamed:@&quot;icon_other&quot;];</div><div class="line"></div><div class="line">    v3.tabBarItem.title = @&quot;活动&quot;;</div><div class="line"></div><div class="line">    v3.view.backgroundColor = [UIColoryellowColor];</div><div class="line"></div><div class="line">    MineViewController *v4 = [MineViewControllernew];</div><div class="line"></div><div class="line">    v4.tabBarItem.image = [UIImageimageNamed:@&quot;icon_user&quot;];</div><div class="line"></div><div class="line">    v4.tabBarItem.title = @&quot;我的&quot;;</div><div class="line"></div><div class="line">    v4.view.backgroundColor = [UIColorredColor];</div><div class="line"></div><div class="line">UINavigationController *n1 = [[UINavigationControlleralloc] initWithRootViewController:v1];</div><div class="line"></div><div class="line">​UINavigationController *n2 = [[UINavigationControlleralloc] initWithRootViewController:v2];</div><div class="line"></div><div class="line">UINavigationController *n3 = [[UINavigationControlleralloc] initWithRootViewController:v3];</div><div class="line"></div><div class="line">UINavigationController *n4 = [[UINavigationControlleralloc] initWithRootViewController:v4];</div><div class="line"></div><div class="line">NSArray *array = @[n1,n2,n3,n4];</div><div class="line"></div><div class="line">self.viewControllers = array;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>这样就把四个带有导航控制器的tabBarController创建好了，只需在Appdelegate里面把该UITbarBarcontroller控制器​设置为跟视图控制器。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">self.window.rootViewController = [[UITbarBarcontroller alloc]​  init];</div></pre></td></tr></table></figure>
+<p><strong>切记,不可在appdeldegate函数里面给<code>UITbarBarcontroller</code>设置导航视图控制器,会影响到之后页面的导航栏的设置.</strong></p>
 <h1 id="三、重要说明​"><a href="#三、重要说明​" class="headerlink" title="三、重要说明​"></a>三、重要说明​</h1><p>1、UITabBar ​</p>
 <p>下方的工具条称为UITabBar ，如果UITabBarController有N个子控制器,那么UITabBar内部就会有N 个UITabBarButton作为子控件与之对应(不过最下边最多显示5个，多了就是隐藏在最后一栏里面，可以点开查看)。</p>
 <p><strong>注意：UITabBarButton在UITabBar中得位置是均分的，UITabBar的高度为49。</strong></p>
@@ -355,6 +356,7 @@
 </li>
 <li><p><strong>否则系统将会根据viewController的title自动创建一个，该tabBarItem只显示文字，没有图像,但是图像的位置会预留出来</strong>。</p>
 </li>
+<li><strong>切记标签视图控制器所管理的视图控制器的title,不要直接采用<code>self.title=</code>这个方法设置,而是采用navigationBar的属性设置<code>self.navigationItem.title=</code>,这样就不会影响到tabBarItem的title的展示.</strong></li>
 <li>当我们自己创建UITabBarItem的时候，我们可以显示的指定显示的图像和对应的文字描述。</li>
 <li>当然还可以通过setFinishedSelectedImage:withFinishedUnselectedImage:方法给选中状态和飞选中状态指定不同的图片。​</li>
 </ul>
@@ -450,6 +452,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2016/07/28/iOS-UINavigationController官方文档分析大总结/" rel="prev" title="iOS-UINavigationController官方文档分析大总结">
+                iOS-UINavigationController官方文档分析大总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -516,7 +522,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -533,7 +539,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

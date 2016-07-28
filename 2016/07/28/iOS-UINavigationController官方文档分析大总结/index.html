@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="UINavigationController,UINavigationBar,UITabBar,UIToolBar,右滑返回," />
 
 
 
@@ -84,15 +84,27 @@
 
 
 
-<meta name="description" content="I am on the way to faraway">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Lianpeng’s Sky">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="一、概述
+类继承关系如下:UINavigationController&amp;lt;- UIViewcontroller &amp;lt;- UIResponder &amp;lt;- NSObject.
+它是一个容器类视图控制器,以栈的形式管理一组视图控制器，位于栈底的视图是其rootViewController,管理视图控制器个数理论上不受限制(实际受内存限制)，push和pop方法来弹入弹出控制器，最多只能显示一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS-UINavigationController官方文档分析大总结">
+<meta property="og:url" content="http://yoursite.com/2016/07/28/iOS-UINavigationController官方文档分析大总结/index.html">
 <meta property="og:site_name" content="Lianpeng’s Sky">
-<meta property="og:description" content="I am on the way to faraway">
+<meta property="og:description" content="一、概述
+类继承关系如下:UINavigationController&amp;lt;- UIViewcontroller &amp;lt;- UIResponder &amp;lt;- NSObject.
+它是一个容器类视图控制器,以栈的形式管理一组视图控制器，位于栈底的视图是其rootViewController,管理视图控制器个数理论上不受限制(实际受内存限制)，push和pop方法来弹入弹出控制器，最多只能显示一">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/639412-90f8246e8b0dff0a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/639412-94d6c2a0b3206ae7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/639412-be69037734bc54ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/639412-d7b36a5f41b0d039.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2016-07-28T10:35:13.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lianpeng’s Sky">
-<meta name="twitter:description" content="I am on the way to faraway">
+<meta name="twitter:title" content="iOS-UINavigationController官方文档分析大总结">
+<meta name="twitter:description" content="一、概述
+类继承关系如下:UINavigationController&amp;lt;- UIViewcontroller &amp;lt;- UIResponder &amp;lt;- NSObject.
+它是一个容器类视图控制器,以栈的形式管理一组视图控制器，位于栈底的视图是其rootViewController,管理视图控制器个数理论上不受限制(实际受内存限制)，push和pop方法来弹入弹出控制器，最多只能显示一">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/639412-90f8246e8b0dff0a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -113,9 +125,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/07/28/iOS-UINavigationController官方文档分析大总结/"/>
 
-  <title> Lianpeng’s Sky </title>
+  <title> iOS-UINavigationController官方文档分析大总结 | Lianpeng’s Sky </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -136,9 +148,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -235,9 +245,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -257,10 +267,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/07/28/iOS-UINavigationController官方文档分析大总结/" itemprop="url">
-                  iOS-UINavigationController官方文档分析大总结
-                </a>
+                iOS-UINavigationController官方文档分析大总结
               
             
           </h1>
@@ -328,9 +335,7 @@
       
 
       
-        
-          
-            <h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><ul>
+        <h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><ul>
 <li>类继承关系如下:<strong>UINavigationController<br>&lt;- UIViewcontroller &lt;- UIResponder &lt;- NSObject</strong>.</li>
 <li>它是一个容器类视图控制器,以栈的形式管理一组视图控制器，位于栈底的视图是其<code>rootViewController</code>,管理视图控制器个数理论上不受限制(实际受内存限制)，push和pop方法来弹入弹出控制器，最多只能显示一个视图控制器，那就是处于栈顶的视图控制器.</li>
 <li>如果不给它添加视图控制器也不会报错，界面上也有视图，因为UINavigationController继承自UIViewController，也有自己的view，只不过默认情况下.view.backgroundColor为nil，即透明的。</li>
@@ -476,605 +481,75 @@
 </a></p>
 <p>关于详细使用方法可参考:<a href="http://www.jianshu.com/p/f0d3df54baa6" target="_blank" rel="external">UINavigationBar 使用总结:</a>写的很详细.</p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.jpg" alt="xulianpeng WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
     </div>
+  </div>
 
-    <div>
+
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/25/iOS-UITabBarViewController/" itemprop="url">
-                  iOS-UITabBarViewController
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-25T11:21:49+08:00" content="2016-07-25">
-              2016-07-25
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/UI/" itemprop="url" rel="index">
-                    <span itemprop="name">UI</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/07/25/iOS-UITabBarViewController/" class="leancloud_visitors" data-flag-title="iOS-UITabBarViewController">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
+            <a href="/tags/UINavigationController-UINavigationBar-UITabBar-UIToolBar-右滑返回/" rel="tag">#UINavigationController,UINavigationBar,UITabBar,UIToolBar,右滑返回</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <h1 id="一、UITabBarController的初印象"><a href="#一、UITabBarController的初印象" class="headerlink" title="一、UITabBarController的初印象"></a>一、UITabBarController的初印象</h1>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/25/iOS-UITabBarViewController/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/25/iOS-UITabBarViewController/" rel="next" title="iOS-UITabBarViewController">
+                <i class="fa fa-chevron-left"></i> iOS-UITabBarViewController
+              </a>
+            
           </div>
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/21/小白尝试GitHub-Hexo搭建博客的征程/" itemprop="url">
-                  小白尝试GitHub+Hexo搭建博客的征程
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-21T09:50:30+08:00" content="2016-07-21">
-              2016-07-21
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/07/21/小白尝试GitHub-Hexo搭建博客的征程/" class="leancloud_visitors" data-flag-title="小白尝试GitHub+Hexo搭建博客的征程">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <h1 id="首先-说一下笔者搭建博客的原因"><a href="#首先-说一下笔者搭建博客的原因" class="headerlink" title="首先,说一下笔者搭建博客的原因:"></a>首先,说一下笔者搭建博客的原因:</h1>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/21/小白尝试GitHub-Hexo搭建博客的征程/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/20/shell-brief-introduction/" itemprop="url">
-                  shell brief introduction
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-20T23:54:05+08:00" content="2016-07-20">
-              2016-07-20
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/07/20/shell-brief-introduction/" class="leancloud_visitors" data-flag-title="shell brief introduction">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <link rel="stylesheet" href="http://yandex.st/highlightjs/6.2/styles/googlecode.min.css">
-
-<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-<script src="http://yandex.st/highlightjs/6.2/highlight.min.js"></script>
-
-<p><script>hljs.initHighlightingOnLoad();</script></p>
-<p><script type="text/javascript"><br> $(document).ready(function(){<br>      $(“h1,h2,h3,h4,h5,h6”).each(function(i,item){<br>        var tag = $(item).get(0).localName;<br>        $(item).attr(“id”,”wow”+i);<br>        $(“#category”).append(‘<a class="new'+tag+'" href="#wow'+i+'">‘+$(this).text()+’</a></br>‘);<br>        $(“.newh1”).css(“margin-left”,0);<br>        $(“.newh2”).css(“margin-left”,20);<br>        $(“.newh3”).css(“margin-left”,40);<br>        $(“.newh4”).css(“margin-left”,60);<br>        $(“.newh5”).css(“margin-left”,80);<br>        $(“.newh6”).css(“margin-left”,100);<br>      });<br> });<br></script></p>
-<p><div id="category"></div></p>
-<h1 id="一-Shell简介"><a href="#一-Shell简介" class="headerlink" title="一 Shell简介"></a>一 Shell简介</h1>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/20/shell-brief-introduction/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/20/ssh-brief-introduction/" itemprop="url">
-                  ssh brief introduction
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-20T23:49:34+08:00" content="2016-07-20">
-              2016-07-20
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/07/20/ssh-brief-introduction/" class="leancloud_visitors" data-flag-title="ssh brief introduction">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <link rel="stylesheet" href="http://yandex.st/highlightjs/6.2/styles/googlecode.min.css">
-
-<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-<script src="http://yandex.st/highlightjs/6.2/highlight.min.js"></script>
-
-<p><script>hljs.initHighlightingOnLoad();</script></p>
-<p><script type="text/javascript"><br> $(document).ready(function(){<br>      $(“h1,h2,h3,h4,h5,h6”).each(function(i,item){<br>        var tag = $(item).get(0).localName;<br>        $(item).attr(“id”,”wow”+i);<br>        $(“#category”).append(‘<a class="new'+tag+'" href="#wow'+i+'">‘+$(this).text()+’</a></br>‘);<br>        $(“.newh1”).css(“margin-left”,0);<br>        $(“.newh2”).css(“margin-left”,20);<br>        $(“.newh3”).css(“margin-left”,40);<br>        $(“.newh4”).css(“margin-left”,60);<br>        $(“.newh5”).css(“margin-left”,80);<br>        $(“.newh6”).css(“margin-left”,100);<br>      });<br> });<br></script></p>
-<p><div id="category"></div></p>
-<h1 id="SSH概述"><a href="#SSH概述" class="headerlink" title="SSH概述"></a>SSH概述</h1>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/20/ssh-brief-introduction/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/20/内存管理大总结/" itemprop="url">
-                  内存管理大总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-20T23:43:58+08:00" content="2016-07-20">
-              2016-07-20
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/07/20/内存管理大总结/" class="leancloud_visitors" data-flag-title="内存管理大总结">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <link rel="stylesheet" href="http://yandex.st/highlightjs/6.2/styles/googlecode.min.css">
-
-<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-<script src="http://yandex.st/highlightjs/6.2/highlight.min.js"></script>
-
-<p><script>hljs.initHighlightingOnLoad();</script></p>
-<p><script type="text/javascript"><br> $(document).ready(function(){<br>      $(“h1,h2,h3,h4,h5,h6”).each(function(i,item){<br>        var tag = $(item).get(0).localName;<br>        $(item).attr(“id”,”wow”+i);<br>        $(“#category”).append(‘<a class="new'+tag+'" href="#wow'+i+'">‘+$(this).text()+’</a></br>‘);<br>        $(“.newh1”).css(“margin-left”,0);<br>        $(“.newh2”).css(“margin-left”,20);<br>        $(“.newh3”).css(“margin-left”,40);<br>        $(“.newh4”).css(“margin-left”,60);<br>        $(“.newh5”).css(“margin-left”,80);<br>        $(“.newh6”).css(“margin-left”,100);<br>      });<br> });<br></script></p>
-<div id="category"></div>
-
-<h1 id="内存管理大总结"><a href="#内存管理大总结" class="headerlink" title="内存管理大总结"></a>内存管理大总结</h1><h2 id="1-自动引用计数的概念"><a href="#1-自动引用计数的概念" class="headerlink" title="1.自动引用计数的概念"></a>1.自动引用计数的概念</h2>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/20/内存管理大总结/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -1082,6 +557,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -1101,8 +580,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -1172,6 +660,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、概述"><span class="nav-number">1.</span> <span class="nav-text">一、概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、常用函数"><span class="nav-number">2.</span> <span class="nav-text">二、常用函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五-UINavigationControllerDelegate"><span class="nav-number">3.</span> <span class="nav-text">五  UINavigationControllerDelegate</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -1275,6 +774,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
