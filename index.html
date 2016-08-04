@@ -278,6 +278,25 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/OC/" itemprop="url" rel="index">
+                    <span itemprop="name">OC</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -311,7 +330,78 @@
       
         
           
-            
+            <p>#类目 (category)</p>
+<ul>
+<li><p>对现有的类添加扩展，如：系统中的类，在类目中添加的方法会被子类继承，而且运行时跟其他的方法没有区别。</p>
+</li>
+<li><p>作为子类的替代方式，不需要定义和使用一个子类，可以通过类目直接向已有的类目里添加方法。</p>
+</li>
+</ul>
+<p>对类中的方法进行归类，利用categopry把一个庞大的类划分为小块来分别进行开发，从而更好地对类中的方法进行更新和维护。</p>
+<p>通过类目添加的方法会成为原始类 的一部分</p>
+<p>注意：</p>
+<blockquote>
+<p>当然也有使用Category是需要注意的问题：</p>
+<ul>
+<li>1 Category可以访问原始类的实例变量，但不能添加实例变量，如果想添加变量，那就通过继承创建子类来实现,或者利用runtime实现。 </li>
+<li>2 Category可以重载原始类的方法，这样会覆盖掉原始类的方法。如果确实要重载，那就通过继承创建子类来实现。 </li>
+<li>3 和普通接口有所区别的是，在Category的实现文件中的实例方法只要你不去调用它你可以不用实现所有声明的所有方法。</li>
+<li>4 命名方式： 类名+扩展方法,如“UIAlertView+AFNetworking”。类目的接口声明与类的定义十分相似，但类目不继承父类，只需要带有一个括号，表明该类目的主要用 途。</li>
+</ul>
+</blockquote>
+<p>Category 与SubClass 区别</p>
+<table>
+<thead>
+<tr>
+<th>分类</th>
+<th>Category</th>
+<th>subclass</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>功能</td>
+<td>只能为类添加方法</td>
+<td>既能为类添加方法，又能添加属性</td>
+</tr>
+<tr>
+<td>特点</td>
+<td>新添加的方法会成为原始类的一部分，能被子类继承</td>
+<td>新添加的方法只有子类才有，父类不具有,子类才能调用</td>
+</tr>
+</tbody>
+</table>
+<p>代码：</p>
+<p>类目.h文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line">//类目  在类目中不能添加实例变量</div><div class="line">@interface NSString (CSayHi)</div><div class="line">-(void)sayHi;//类目的方法</div><div class="line">@end</div><div class="line">类目.m文件</div><div class="line"></div><div class="line">#import &quot;NSString+CSayHi.h&quot;</div><div class="line">@implementation NSString (CSayHi)</div><div class="line">-(void)sayHi&#123;//类目方法的实现</div><div class="line">NSLog(@&quot;这是类目提供的方法，字符内容是%@&quot;,self);</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#import &lt;UIKit/UIKit.h&gt;</div><div class="line">#import &quot;NSString+CSayHi.h&quot;</div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line">    NSString *str=@&quot;hello&quot;;//定义一个字符串对象并赋值</div><div class="line">    [str sayHi];//调用类目方法</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="延展-Extension"><a href="#延展-Extension" class="headerlink" title="延展 (Extension)"></a>延展 (Extension)</h1><ul>
+<li>延展是特殊形式的类目</li>
+<li>延展中定义的方法在类本身中实现</li>
+<li>延展定义的是自己的类，必须有源代码的类</li>
+<li>延展写在.m文件上</li>
+<li>延展不提供名称表示方法必须实现，提供名称可以不实现</li>
+</ul>
+<p>###作用</p>
+<p><strong>定义类的私有方法，管理类的私有方法</strong></p>
+<p>###使用<br>形式和类目相同，不用新创建文件，只是把类目的interface地方的文件放在了你需要扩展的类的.m文件里边。</p>
+<p>代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">#import &quot;Student.h&quot;</div><div class="line">@interface Student (extension)//为Student类创建一个私有的方法text</div><div class="line">-(void)text;</div><div class="line">@end</div><div class="line"></div><div class="line">@implementation Student</div><div class="line">-(void)hello;</div><div class="line">&#123;</div><div class="line">[self  text];</div><div class="line">&#125;</div><div class="line">-(void)text</div><div class="line">&#123;</div><div class="line">NSLog(@&quot;你好&quot;);</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>外界 [student hello]的时候就会打印出“你好”。但是在外界不能调用text方法，[student text]是不对的。只能在.m文件里边通过self来调用私有方法text。隐藏了内部的实现。</p>
+<h1 id="协议-protocol"><a href="#协议-protocol" class="headerlink" title="协议 (protocol)"></a>协议 (protocol)</h1><ul>
+<li>说白了就是代理</li>
+<li>协议声明了可以被其他的类实现的方法。协议本身并不会去实现。协议就是一套标准，接受协议的对象负责实现</li>
+<li><p>协议不是类，只是一个其他对象可以实现的接口。</p>
+</li>
+<li><p>oc的协议由@protocol声明的一组方法列表,要求其他的类去实现，相当于@interface部分的声明</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@protocol xxxDelegate</div><div class="line">//必须实现的协议方法</div><div class="line">@required</div><div class="line">//可选实现</div><div class="line">@optional</div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>相关代码自己百度.</p>
+<p>###代理与协议的区别:</p>
+<p>代理是一种概念,协议是一种技术,代理是用协议来实现的,代理是2个对象之间通讯的一种方式。 代理主要做反向传值的。实现系统的一些回调方法,比如 scrollview 滑动事件,选择照片,asi网络下载完成等.</p>
+
           
         
       
@@ -1188,7 +1278,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1197,7 +1287,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
