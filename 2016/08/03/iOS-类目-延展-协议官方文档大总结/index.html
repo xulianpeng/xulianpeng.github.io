@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/08/03/iOS-类目-延展-协议官方文档大总结/index.html">
 <meta property="og:site_name" content="Lianpeng’s Sky">
 <meta property="og:description" content="类目 (category)">
-<meta property="og:updated_time" content="2016-08-04T06:59:55.000Z">
+<meta property="og:updated_time" content="2016-08-04T07:26:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS-类目 延展 协议官方文档大总结">
 <meta name="twitter:description" content="类目 (category)">
@@ -373,7 +373,6 @@
 <h1 id="延展-Extension"><a href="#延展-Extension" class="headerlink" title="延展 (Extension)"></a>延展 (Extension)</h1><ul>
 <li>延展是特殊形式的类目</li>
 <li>延展中定义的方法在类本身中实现</li>
-<li>延展定义的是自己的类，必须有源代码的类</li>
 <li>延展写在.m文件上</li>
 <li>延展不提供名称表示方法必须实现，提供名称可以不实现</li>
 </ul>
@@ -383,18 +382,19 @@
 <p>代码如下:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">#import &quot;Student.h&quot;</div><div class="line">@interface Student (extension)//为Student类创建一个私有的方法text</div><div class="line">-(void)text;</div><div class="line">@end</div><div class="line"></div><div class="line">@implementation Student</div><div class="line">-(void)hello;</div><div class="line">&#123;</div><div class="line">[self  text];</div><div class="line">&#125;</div><div class="line">-(void)text</div><div class="line">&#123;</div><div class="line">NSLog(@&quot;你好&quot;);</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
 <p>外界 [student hello]的时候就会打印出“你好”。但是在外界不能调用text方法，[student text]是不对的。只能在.m文件里边通过self来调用私有方法text。隐藏了内部的实现。</p>
-<h1 id="协议-protocol"><a href="#协议-protocol" class="headerlink" title="协议 (protocol)"></a>协议 (protocol)</h1><ul>
-<li>说白了就是代理</li>
-<li>协议声明了可以被其他的类实现的方法。协议本身并不会去实现。协议就是一套标准，接受协议的对象负责实现</li>
-<li><p>协议不是类，只是一个其他对象可以实现的接口。</p>
-</li>
-<li><p>oc的协议由@protocol声明的一组方法列表,要求其他的类去实现，相当于@interface部分的声明</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@protocol xxxDelegate</div><div class="line">//必须实现的协议方法</div><div class="line">@required</div><div class="line">//可选实现</div><div class="line">@optional</div><div class="line">@end</div></pre></td></tr></table></figure>
+<h1 id="协议-protocol"><a href="#协议-protocol" class="headerlink" title="协议 (protocol)"></a>协议 (protocol)</h1><p><strong>概念:</strong>协议（protocol）是Objective-c中一个非常重要的语言特性. 一个协议其实就是一系列有关联的方法的集合。协议中的方法并不是由协议本身去实现，相反而是由遵循这个协议的其他类来实现。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//oc的协议由@protocol声明的一组方法列表,要求其他的类去实现，</div><div class="line">//相当于@interface部分的声明</div><div class="line"></div><div class="line">@protocol xxxDelegate</div><div class="line">//必须实现的协议方法</div><div class="line">@required</div><div class="line">//可选实现</div><div class="line">@optional</div><div class="line">@end</div></pre></td></tr></table></figure>
 <p>相关代码自己百度.</p>
-<p>###代理与协议的区别:</p>
-<p>代理是一种概念,协议是一种技术,代理是用协议来实现的,代理是2个对象之间通讯的一种方式。 代理主要做反向传值的。实现系统的一些回调方法,比如 scrollview 滑动事件,选择照片,asi网络下载完成等.</p>
+<p>#<strong>为什么要使用协议:</strong></p>
+<p><strong>苹果的官方文档指出三个原因：</strong></p>
+<ul>
+<li>To declare methods that others are expected to implement</li>
+<li>To declare the <strong>interface</strong> to an object while concealing its class</li>
+<li>To capture similarities among classes that are not hierarchically related</li>
+</ul>
+<p><strong>其实还有第4个很重要的原因，那就是减少继承类的复杂性。</strong><br><em>一个经典的例子就是iOS UI框架里面的UITableViewController类。假如没有“协议”功能，用户就必须选择用继承和重载接口的方法来实现复杂的UI控制以及其他事件的处理——这就对基类的设计提出了更大的挑战了。对于像这样一个table view，一个很好的实现方法就是采用协议，由协议里的接口来控制不同的数据源以及各种复杂的用户操作。UIKit中设计了两个很好的协议UITableViewDelegate,UITableViewDataSource来实现UITableViewController的控制。任何遵循这两个协议的类都可以实现对UITableView的控制。</em></p>
+<p>#代理与协议的区别:</p>
+<p>代理是一种设计模式概念,协议是一种技术,代理是用协议来实现的.代理是2个对象之间通讯的一种方式。 代理主要做反向传值的。实现系统的一些回调方法.<br>至于代理的详细信息,不是本篇的重点,足可以另开一篇文章详谈了.<br>今天就到这.</p>
 
       
     </div>
@@ -520,7 +520,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -537,7 +537,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
