@@ -329,59 +329,12 @@
 
       
         
-          
-            <h1 id="概述"><a href="#概述" class="headerlink" title="概述:"></a>概述:</h1><ul>
-<li>类继承关系<br>NSObject-&gt;UIResponder-&gt;UIView-&gt;UIControl-&gt;(UIButton<br>UIDatePicker/UIPageControl/UIRefreshControl/UISegmentedControl/UISlider/UIStepper/UISwitch/UITextField)<br>)</li>
-</ul>
-<p><img src="http://upload-images.jianshu.io/upload_images/639412-6edc26d7ac254515.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="UIView及其子类的继承关系图.png"></p>
-<ul>
-<li>该类常用来对用户的交互做出视觉可看到的行为或意图,常见的有UIButton,UISlider,UITextField等.</li>
-<li>采用Taget-Action的机制来进行人机交互.</li>
-<li>不必直接创建UIControl,其已被子类化各种控件,你直接使用对应的子类即可.</li>
-<li>当然你也可以扩展或者修改其子类的行为.</li>
-<li>UIControl的state决定其外观和交互能力.其state被UIControlState决定.你可以改变state根据APP的需要.</li>
-</ul>
-<h1 id="Taget-Action机制浅析"><a href="#Taget-Action机制浅析" class="headerlink" title="Taget-Action机制浅析"></a>Taget-Action机制浅析</h1><p>代码示例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">addTarget:action:forControlEvents:</div></pre></td></tr></table></figure>
-<ul>
-<li>简化了代码(跟踪触摸事件的代码).</li>
-<li>必须指定The UIControlEvents type去触发the method.比如 <code>UIButton</code> -&gt;<code>UIControlEventTouchDown or UIControlEventTouchUpInside</code>,<code>UISlider</code>-&gt;<code>UIControlEventValueChanged</code></li>
-<li>当control的event发生时,control会马上唤醒关联的action methods,action methods被当前的UIApplication Object派发,UIApplication Object会按照响应者链,寻找到合适的对象去处理the message.</li>
-</ul>
-<h1 id="子类化说明"><a href="#子类化说明" class="headerlink" title="子类化说明"></a>子类化说明</h1><p>子类化已存在的controls 和 修改他们的 behavior 使用下面方法:</p>
-<ul>
-<li>Override the <code>sendAction:to:forEvent: method</code> of an existing subclass to observe or modify the dispatching of action methods to the control’s associated targets. You might use this method to modify the dispatch behavior based on the specified object, selector, or event.</li>
-<li>Override the <code>beginTrackingWithTouch:withEvent:</code>, <code>continueTrackingWithTouch:withEvent:</code>, <code>endTrackingWithTouch:withEvent:</code>, and <code>cancelTrackingWithEvent:</code> methods to track touch events occurring in the control. You can use the tracking information to perform additional actions. Always use these methods to track touch events instead of the methods defined by the UIResponder class.</li>
-</ul>
-<h1 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h1><p> state   enabled  selected  highlighted  contentVerticalAlignment contentHorzontalAlignment</p>
-<h1 id="Accessing-the-Control’s-Targets-and-Actions"><a href="#Accessing-the-Control’s-Targets-and-Actions" class="headerlink" title="Accessing the Control’s Targets and Actions"></a>Accessing the Control’s Targets and Actions</h1><ul>
-<li><code>addTarget:action:forControlEvents:</code><br>Associates a target object and action method with the control.</li>
-<li><code>removeTarget:action:forControlEvents:</code><br>Stops the delivery of events to the specified target object.</li>
-<li><code>actionsForTarget:forControlEvent:</code><br>Returns the actions performed on a target object when the specified event occurs.</li>
-<li><code>allControlEvents</code><br>Returns the events for which the control has associated actions.<br>Beta</li>
-<li><code>allTargets</code><br>Returns all target objects associated with the control.</li>
-</ul>
-<h1 id="Triggering-Actions-触发事件"><a href="#Triggering-Actions-触发事件" class="headerlink" title="Triggering Actions(触发事件)"></a>Triggering Actions(触发事件)</h1><ul>
-<li><code>sendAction:to:forEvent:</code><br>Calls the specified action method.</li>
-<li><code>sendActionsForControlEvents:</code><br>Calls the action methods associated with the specified events.</li>
-</ul>
-<h1 id="Tracking-Touches-and-Redrawing-Controls-跟踪触摸事件和重画Controls"><a href="#Tracking-Touches-and-Redrawing-Controls-跟踪触摸事件和重画Controls" class="headerlink" title="Tracking Touches and Redrawing Controls(跟踪触摸事件和重画Controls)"></a>Tracking Touches and Redrawing Controls(跟踪触摸事件和重画Controls)</h1><ul>
-<li><code>beginTrackingWithTouch:withEvent:</code><br>Called when a touch event enters the control’s bounds.</li>
-<li><code>continueTrackingWithTouch:withEvent:</code><br>Called when a touch event associated with the control is updated.</li>
-<li><code>endTrackingWithTouch:withEvent:</code><br>Called when a touch event associated with the control ends.</li>
-<li><code>cancelTrackingWithEvent:</code><br>Tells the control to cancel tracking related to the given event.</li>
-<li><code>tracking</code><br>A Boolean value indicating whether the control is currently tracking touch events.</li>
-<li><code>touchInside</code><br>A Boolean value indicating whether a tracked touch event is currently inside the control’s bounds.</li>
-</ul>
-<h1 id="Constants-常量"><a href="#Constants-常量" class="headerlink" title="Constants(常量)"></a>Constants(常量)</h1><ul>
-<li><code>UIControlEvents</code><br>Constants describing the types of events possible for controls.</li>
-<li><code>UIControlState</code><br>Constants describing the state of a control.</li>
-<li><code>UIControlContentVerticalAlignment</code><br>Constants for specifying the vertical alignment of content (text and images) in a control.</li>
-<li><code>UIControlContentHorizontalAlignment</code><br>The horizontal alignment of content (text and images) within a control.</li>
-</ul>
-<p>参考:<a href="http://southpeak.github.io/blog/2015/12/13/cocoa-uikit-uicontrol/" target="_blank" rel="external">UIKit: UIControl,这一篇博客写的更浅显易懂</a></p>
-
-          
+          <h1 id="概述"><a href="#概述" class="headerlink" title="概述:"></a>概述:</h1>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/09/iOS-UIControl官方API大总结/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
