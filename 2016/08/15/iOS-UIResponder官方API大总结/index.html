@@ -1,0 +1,914 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="UIResponder," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="本篇包括2部分:前篇是UIResponder的官方API的记录,后篇是对官方API的理解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS-UIResponder官方API大总结">
+<meta property="og:url" content="http://yoursite.com/2016/08/15/iOS-UIResponder官方API大总结/index.html">
+<meta property="og:site_name" content="Lianpeng’s Sky">
+<meta property="og:description" content="本篇包括2部分:前篇是UIResponder的官方API的记录,后篇是对官方API的理解">
+<meta property="og:image" content="https://developer.apple.com/library/ios/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/Art/hit_testing_2x.png">
+<meta property="og:image" content="https://developer.apple.com/library/ios/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/Art/iOS_responder_chain_2x.png">
+<meta property="og:image" content="http://images.cnblogs.com/cnblogs_com/kuku/b.jpg">
+<meta property="og:updated_time" content="2016-08-15T02:55:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS-UIResponder官方API大总结">
+<meta name="twitter:description" content="本篇包括2部分:前篇是UIResponder的官方API的记录,后篇是对官方API的理解">
+<meta name="twitter:image" content="https://developer.apple.com/library/ios/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/Art/hit_testing_2x.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/08/15/iOS-UIResponder官方API大总结/"/>
+
+  <title> iOS-UIResponder官方API大总结 | Lianpeng’s Sky </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Lianpeng’s Sky</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">乐观 美好 奋斗</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS-UIResponder官方API大总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-15T10:53:02+08:00" content="2016-08-15">
+              2016-08-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/OC/" itemprop="url" rel="index">
+                    <span itemprop="name">OC</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/08/15/iOS-UIResponder官方API大总结/" class="leancloud_visitors" data-flag-title="iOS-UIResponder官方API大总结">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p> 本篇包括2部分:前篇是<strong>UIResponder</strong>的官方API的记录,后篇是对官方API的理解<br><a id="more"></a></p>
+<h1 id="UIResponder概念"><a href="#UIResponder概念" class="headerlink" title="UIResponder概念"></a>UIResponder概念</h1><p>与<strong>root类NSObject</strong>相比,其多出的特性是,可以响应和处理事件.<br>iOS 的事件分为<strong>Touch(触摸)事件</strong>,<strong>Motion(移动)事件</strong> 以及 <strong>Remote Control(远程控制)事件</strong>。每个事件对应不同的触发操作。</p>
+<ul>
+<li>触摸事件: 顾名思义，就是用户用手指触摸屏幕引发的事件。</li>
+<li>移动事件: 移动事件对应真实的物理操作事件，比如用户甩动手机，进行的”摇一摇”操作。</li>
+<li>远程控制事件: 这种事件对应一些系统操作，比如我们在使用系统播放器播放视频的时候，视频的开始与暂停这类操作。</li>
+</ul>
+<h1 id="Managing-the-Responder-Chain"><a href="#Managing-the-Responder-Chain" class="headerlink" title="Managing the Responder Chain"></a>Managing the Responder Chain</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- nextResponder</div><div class="line">- isFirstResponder</div><div class="line">- canBecomeFirstResponder</div><div class="line">- becomeFirstResponder</div><div class="line">- canResignFirstResponder</div><div class="line">- resignFirstResponder</div></pre></td></tr></table></figure>
+<h1 id="Managing-Input-Views"><a href="#Managing-Input-Views" class="headerlink" title="Managing Input Views"></a>Managing Input Views</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">inputView   //Property</div><div class="line">inputViewController  //Property</div><div class="line">inputAccessoryView  //Property</div><div class="line">inputAccessoryViewController  //Property</div><div class="line">- reloadInputViews</div></pre></td></tr></table></figure>
+<h1 id="Responding-to-Touch-Events"><a href="#Responding-to-Touch-Events" class="headerlink" title="Responding to Touch Events"></a>Responding to Touch Events</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- touchesBegan:withEvent:</div><div class="line">- touchesMoved:withEvent:</div><div class="line">- touchesEnded:withEvent:</div><div class="line">- touchesCancelled:withEvent:</div><div class="line">- touchesEstimatedPropertiesUpdated:</div></pre></td></tr></table></figure>
+<h1 id="Responding-to-Motion-Events"><a href="#Responding-to-Motion-Events" class="headerlink" title="Responding to Motion Events"></a>Responding to Motion Events</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- motionBegan:withEvent:</div><div class="line">- motionEnded:withEvent:</div><div class="line">- motionCancelled:withEvent:</div></pre></td></tr></table></figure>
+<h1 id="Responding-to-Press-Events"><a href="#Responding-to-Press-Events" class="headerlink" title="Responding to Press Events"></a>Responding to Press Events</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">- pressesBegan:withEvent:</div><div class="line">- pressesCancelled:withEvent:</div><div class="line">- pressesChanged:withEvent:</div><div class="line">- pressesEnded:withEvent:</div></pre></td></tr></table></figure>
+<h1 id="Responding-to-Remote-Control-Events"><a href="#Responding-to-Remote-Control-Events" class="headerlink" title="Responding to Remote-Control Events"></a>Responding to Remote-Control Events</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- remoteControlReceivedWithEvent:</div></pre></td></tr></table></figure>
+<h1 id="Getting-the-Undo-Manager"><a href="#Getting-the-Undo-Manager" class="headerlink" title="Getting the Undo Manager"></a>Getting the Undo Manager</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">undoManager  //Property</div></pre></td></tr></table></figure>
+<h1 id="Validating-Commands"><a href="#Validating-Commands" class="headerlink" title="Validating Commands"></a>Validating Commands</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- canPerformAction:withSender:</div><div class="line">- targetForAction:withSender:</div></pre></td></tr></table></figure>
+<h1 id="Accessing-the-Available-Key-Commands"><a href="#Accessing-the-Available-Key-Commands" class="headerlink" title="Accessing the Available Key Commands"></a>Accessing the Available Key Commands</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">keyCommands  //Property</div></pre></td></tr></table></figure>
+<h1 id="Managing-the-Text-Input-Mode"><a href="#Managing-the-Text-Input-Mode" class="headerlink" title="Managing the Text Input Mode"></a>Managing the Text Input Mode</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">textInputMode  //Property</div><div class="line">textInputContextIdentifier //Property</div><div class="line">+ clearTextInputContextIdentifier:</div><div class="line">inputAssistantItem  // Property</div></pre></td></tr></table></figure>
+<h1 id="Supporting-User-Activities"><a href="#Supporting-User-Activities" class="headerlink" title="Supporting User Activities"></a>Supporting User Activities</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">userActivity //Property</div><div class="line">- restoreUserActivityState:</div><div class="line">- updateUserActivityState:</div><div class="line"></div><div class="line">`</div></pre></td></tr></table></figure>
+<h1 id="第二部分"><a href="#第二部分" class="headerlink" title="第二部分"></a>第二部分</h1><h1 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h1><p>App与用户进行交互，基本上是依赖于各种各样的事件。例如，用户点击界面上的按钮，我们需要触发一个按钮点击事件，并进行相应的处理，以给用户一个响应。比如UIView能够处理事件，其本身就是一个事件响应者，可以处理点击等事件，而这些事件就是在UIResponder类中定义的。</p>
+<p>一个<strong>UIResponder</strong>类为那些需要响应并处理事件的对象定义了一组接口。这些事件主要分为三类：<strong>触摸事件(touch events）</strong>，<strong>运动事件(motion events)</strong>和<strong>远程控制事件</strong>。<strong>UIResponder</strong>类为每类事件都定义了一组接口，这个我们将在下面详细描述。</p>
+<p>在UIKit中，UIApplication、UIView、UIViewController这几个类都是直接继承自UIResponder类。另外SpriteKit中的SKNode也是继承自UIResponder类。因此UIKit中的视图、控件、视图控制器，以及我们自定义的视图及视图控制器都有响应事件的能力。</p>
+<h1 id="二-响应链"><a href="#二-响应链" class="headerlink" title="二 响应链"></a>二 响应链</h1><p>本文将详细介绍一个UIResponder类提供的基本功能。不过在此之前，我们先来了解一下事件响应链机制。</p>
+<h2 id="响应链"><a href="#响应链" class="headerlink" title="响应链"></a>响应链</h2><p><strong>大多数事件的分发都是依赖响应链的。响应链是由一系列链接在一起的响应者组成的。一般情况下，一条响应链开始于第一响应者，结束于application对象。如果一个响应者不能处理事件，则会将事件沿着响应链传到下一响应者。</strong></p>
+<blockquote>
+<p>那这里就会有三个问题：</p>
+<ul>
+<li>响应链是何时构建的</li>
+<li>系统是如何确定第一响应者的</li>
+<li>确定第一响应者后，系统又是按照什么样的顺序来传递事件的</li>
+</ul>
+</blockquote>
+<h3 id="构建响应链"><a href="#构建响应链" class="headerlink" title="构建响应链"></a>构建响应链</h3><p>我们都知道在一个App中，所有视图是按一定的结构组织起来的，即树状层次结构。除了根视图外，每个视图都有一个父视图；而每个视图都可以有0个或多个子视图。而在这个树状结构构建的同时，也构建了一条条的事件响应链。</p>
+<h3 id="确定第一响应者"><a href="#确定第一响应者" class="headerlink" title="确定第一响应者"></a>确定第一响应者</h3><p>当用户触发某一事件(触摸事件或运动事件)后，<strong>UIKit</strong>会创建一个<strong>事件对象(UIEvent)</strong>，该对象包含一些处理事件所需要的信息。然后事件对象被放到一个事件队列中。这些事件按照先进先出的顺序来处理。当处理事件时，程序的<strong>UIApplication</strong>对象会从队列头部取出一个事件对象，将其分发出去。通常首先是将事件分发给程序的<strong>主window</strong>对象，对于触摸事件来讲，window对象会首先尝试将事件分发给触摸事件发生的那个视图上。这一视图通常被称为<strong>hit-test视图</strong>，而查找这一视图的过程就叫做<strong>hit-testing</strong>。</p>
+<p>系统使用hit-testing来找到触摸下的视图，它检测一个触摸事件是否发生在相应视图对象的边界之内(即视图的frame属性，这也是为什么子视图如果在父视图的frame之外时，是无法响应事件的)。如果在，则会递归检测其所有的子视图。包含触摸点的视图层次架构中最底层的视图就是hit-test视图。在检测出hit-test视图后，系统就将事件发送给这个视图来进行处理。</p>
+<p>我们通过一个示例来演示hit-testing的过程。图1是一个视图层次结构，</p>
+<p><img src="https://developer.apple.com/library/ios/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/Art/hit_testing_2x.png" alt="图1"></p>
+<p>假设用户点击了视图E，系统按照以下顺序来查找hit-test视图：</p>
+<ul>
+<li>点击事件发生在视图A的边界内，所以检测子视图B和C；</li>
+<li>点击事件不在视图B的边界内，但在视图C的边界范围内，所以检测子图片D和E；</li>
+<li>点击事件不在视图D的边界内，但在视图E的边界范围内；</li>
+<li>视图E是包含触摸点的视图层次架构中最底层的视图(倒树结构)，所以它就是hit-test视图。</li>
+</ul>
+<p><strong>hit-test视图可以最先去处理触摸事件，如果hit-test视图不能处理事件，则事件会沿着响应链往上传递，直到找到能处理它的视图。</strong></p>
+<h3 id="事件传递"><a href="#事件传递" class="headerlink" title="事件传递"></a>事件传递</h3><p>最有机会处理事件的对象是<strong>hit-test视图或第一响应者</strong>。如果这两者都不能处理事件，<strong>UIKit</strong>就会将事件传递到响应链中的下一个响应者。每一个响应者确定其是否要处理事件或者是通过nextResponder方法将其传递给下一个响应者。这一过程一直持续到找到能处理事件的响应者对象或者最终没有找到响应者。</p>
+<p>图2演示了这样一个事件传递的流程，</p>
+<p><img src="https://developer.apple.com/library/ios/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/Art/iOS_responder_chain_2x.png" alt="图2"></p>
+<p>当系统检测到一个事件时，将其传递给初始对象，这个对象通常是一个视图。然后，会按以下路径来处理事件(我们以左图为例)：</p>
+<ul>
+<li>初始视图(initial view)尝试处理事件。如果它不能处理事件，则将事件传递给其父视图。<br>初始视图的父视图(superview)尝试处理事件。如果这个父视图还不能处理事件，则继续将视图传递给上层视图。</li>
+<li>上层视图(topmost view)会尝试处理事件。如果这个上层视图还是不能处理事件，则将事件传递给视图所在的视图控制器。</li>
+<li>视图控制器会尝试处理事件。如果这个视图控制器不能处理事件，则将事件传递给窗口(window)对象。</li>
+<li>窗口(window)对象尝试处理事件。如果不能处理，则将事件传递给单例app对象。</li>
+<li>如果app对象不能处理事件，则丢弃这个事件。</li>
+</ul>
+<p><strong>从上面可以看到，视图、视图控制器、窗口对象和app对象都能处理事件。另外需要注意的是，手势也会影响到事件的传递。</strong></p>
+<p>以上便是响应链的一些基本知识。有了这些知识，我们便可以来看看UIResponder提供给我们的一些方法了。</p>
+<h1 id="三-管理响应链"><a href="#三-管理响应链" class="headerlink" title="三 管理响应链"></a>三 管理响应链</h1><p>UIResponder提供了几个方法来管理响应链，包括让响应对象成为第一响应者、放弃第一响应者、检测是否是第一响应者以及传递事件到下一响应者的方法，我们分别来介绍一下。</p>
+<p>上面提到在响应链中负责传递事件的方法是nextResponder，其声明如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (UIResponder *)nextResponder</div></pre></td></tr></table></figure>
+<ul>
+<li>UIResponder类并不自动保存或设置下一个响应者，该方法的默认实现是返回nil。</li>
+<li>子类的实现必须重写这个方法来设置下一响应者。</li>
+<li>UIView的实现是返回<strong>管理它的UIViewController对象</strong>(<strong>如果它有</strong>)或者<strong>其父视图</strong>。</li>
+<li>而UIViewController的实现是返回它的视图的父视图；</li>
+<li>UIWindow的实现是返回app对象；</li>
+<li>而UIApplication的实现是返回nil。</li>
+</ul>
+<blockquote>
+<p>所以，响应链是在构建视图层次结构时生成的。</p>
+</blockquote>
+<p>一个响应对象可以成为第一响应者，也可以放弃第一响应者。为此，UIResponder提供了一系列方法，我们分别来介绍一下。</p>
+<p>如果想判定一个响应对象是否是第一响应者，则可以使用以下方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (BOOL)isFirstResponder</div></pre></td></tr></table></figure>
+<p>如果我们希望将一个响应对象作为第一响应者，则可以使用以下方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (BOOL)becomeFirstResponder</div></pre></td></tr></table></figure>
+<p>如果对象成为第一响应者，则返回YES；否则返回NO。默认实现是返回YES。子类可以重写这个方法来更新状态，或者来执行一些其它的行为。</p>
+<p>一个响应对象只有在当前响应者能放弃第一响应者状态(canResignFirstResponder)且自身能成为第一响应者(canBecomeFirstResponder)时才会成为第一响应者。</p>
+<p>这个方法相信大家用得比较多，特别是在希望UITextField获取焦点时。另外需要注意的是只有当视图是视图层次结构的一部分时才调用这个方法。如果视图的window属性不为空时，视图才在一个视图层次结构中；如果该属性为nil，则视图不在任何层次结构中。</p>
+<p>上面提到一个响应对象成为第一响应者的一个前提是它可以成为第一响应者，我们可以使用下面这个方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (BOOL)canBecomeFirstResponder</div></pre></td></tr></table></figure>
+<blockquote>
+<p>需要注意的是我们不能向一个不在视图层次结构中的视图发送这个消息，其结果是未定义的。</p>
+</blockquote>
+<p>与上面两个方法相对应的是响应者放弃第一响应者的方法，其定义如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- (BOOL)resignFirstResponder</div><div class="line">- (BOOL)canResignFirstResponder</div></pre></td></tr></table></figure>
+<p>resignFirstResponder默认也是返回YES。需要注意的是，如果子类要重写这个方法，则在我们的代码中必须调用super的实现。</p>
+<p>canResignFirstResponder默认也是返回YES。不过有些情况下可能需要返回NO，如一个输入框在输入过程中可能需要让这个方法返回NO，以确保在编辑过程中能始终保证是第一响应者。</p>
+<h1 id="四-管理输入视图"><a href="#四-管理输入视图" class="headerlink" title="四 管理输入视图"></a>四 管理输入视图</h1><p>所谓的输入视图，是指当对象为第一响应者时，显示另外一个视图用来处理当前对象的信息输入，如UITextView和UITextField两个对象，在其成为第一响应者是，会显示一个系统键盘，用来输入信息。这个系统键盘就是输入视图。输入视图有两种，一个是inputView，另一个是inputAccessoryView。这两者如图3所示：</p>
+<p><img src="http://images.cnblogs.com/cnblogs_com/kuku/b.jpg" alt="图3"></p>
+<p>与inputView相关的属性有如下两个，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@property(nonatomic, readonly, retain) UIView *inputView</div><div class="line">@property(nonatomic, readonly, retain) UIInputViewController *inputViewController</div></pre></td></tr></table></figure>
+<p>这两个属性提供一个视图(或视图控制器)用于替代为UITextField和UITextView弹出的系统键盘。我们可以在子类中将这两个属性重新定义为读写属性来设置这个属性。如果我们需要自己写一个键盘的，如为输入框定义一个用于输入身份证的键盘(只包含0-9和X)，则可以使用这两个属性来获取这个键盘。</p>
+<p>与inputView类似，inputAccessoryView也有两个相关的属性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@property(nonatomic, readonly, retain) UIView *inputAccessoryView</div><div class="line">@property(nonatomic, readonly, retain) UIInputViewController *inputAccessoryViewController</div></pre></td></tr></table></figure>
+<p>设置方法与前面相同，都是在子类中重新定义为可读写属性，以设置这个属性。</p>
+<p>另外，UIResponder还提供了以下方法，在对象是第一响应者时更新输入和访问视图，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)reloadInputViews</div></pre></td></tr></table></figure>
+<p>调用这个方法时，视图会立即被替换，即不会有动画之类的过渡。如果当前对象不是第一响应者，则该方法是无效的。</p>
+<h1 id="五-响应触摸事件"><a href="#五-响应触摸事件" class="headerlink" title="五 响应触摸事件"></a>五 响应触摸事件</h1><p>UIResponder提供了如下四个大家都非常熟悉的方法来响应触摸事件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// 当一个或多个手指触摸到一个视图或窗口</div><div class="line">- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event</div><div class="line">// 当与事件相关的一个或多个手指在视图或窗口上移动时</div><div class="line">- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event</div><div class="line">// 当一个或多个手指从视图或窗口上抬起时</div><div class="line">- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event</div><div class="line">// 当一个系统事件取消一个触摸事件时</div><div class="line">- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event</div></pre></td></tr></table></figure>
+<p>这四个方法默认都是什么都不做。不过，UIKit中UIResponder的子类，尤其是UIView，这几个方法的实现都会把消息传递到响应链上。因此，为了不阻断响应链，我们的子类在重写时需要调用父类的相应方法；而不要将消息直接发送给下一响应者。</p>
+<p>默认情况下，多点触摸是被禁用的。为了接受多点触摸事件，我们需要设置响应视图的<strong>multipleTouchEnabled</strong>属性为YES。</p>
+<h1 id="六-响应移动事件"><a href="#六-响应移动事件" class="headerlink" title="六 响应移动事件"></a>六 响应移动事件</h1><p>与触摸事件类似，UIResponder也提供了几个方法来响应移动事件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 移动事件开始</div><div class="line">- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event</div><div class="line">// 移动事件结束</div><div class="line">- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event</div><div class="line">// 取消移动事件</div><div class="line">- (void)motionCancelled:(UIEventSubtype)motion withEvent:(UIEvent *)event</div></pre></td></tr></table></figure>
+<p>与触摸事件不同的是，运动事件只有开始与结束操作；它不会报告类似于晃动这样的事件。这几个方法的默认操作也是什么都不做。不过，UIKit中UIResponder的子类，尤其是UIView，这几个方法的实现都会把消息传递到响应链上。</p>
+<h1 id="七-响应远程控制事件"><a href="#七-响应远程控制事件" class="headerlink" title="七 响应远程控制事件"></a>七 响应远程控制事件</h1><p>远程控制事件来源于一些外部的配件，如耳机等。用户可以通过耳机来控制视频或音频的播放。接收响应者对象需要检查事件的子类型来确定命令(如播放，子类型为<strong>UIEventSubtypeRemoteControlPlay</strong>)，然后进行相应处理。</p>
+<p>为了响应远程控制事件，UIResponder提供了以下方法，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)remoteControlReceivedWithEvent:(UIEvent *)event</div></pre></td></tr></table></figure>
+<p>我们可以在子类中实现该方法，来处理远程控制事件。不过，为了允许分发远程控制事件，我们必须调用UIApplication的<strong>beginReceivingRemoteControlEvents</strong>方法；而如果要关闭远程控制事件的分发，则调用<strong>endReceivingRemoteControlEvents</strong>方法。</p>
+<h1 id="八-获取Undo管理器"><a href="#八-获取Undo管理器" class="headerlink" title="八 获取Undo管理器"></a>八 获取Undo管理器</h1><p>默认情况下，程序的每一个window都有一个undo管理器，它是一个用于管理undo和redo操作的共享对象。然而，响应链上的任何对象的类都可以有自定义undo管理器。例如，UITextField的实例的自定义管理器在文件输入框放弃第一响应者状态时会被清理掉。当需要一个undo管理器时，请求会沿着响应链传递，然后UIWindow对象会返回一个可用的实例。</p>
+<p>UIResponder提供了一个只读方法来获取响应链中共享的undo管理器，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@property(nonatomic, readonly) NSUndoManager *undoManager</div><div class="line">我们可以在自己的视图控制器中添加undo管理器来执行其对应的视图的undo和redo操作。</div></pre></td></tr></table></figure>
+<h1 id="九-验证命令"><a href="#九-验证命令" class="headerlink" title="九 验证命令"></a>九 验证命令</h1><p>在我们的应用中，经常会处理各种菜单命令，如文本输入框的”复制”、”粘贴”等。UIResponder为此提供了两个方法来支持此类操作。首先使用以下方法可以启动或禁用指定的命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (BOOL)canPerformAction:(SEL)action withSender:(id)sender</div></pre></td></tr></table></figure>
+<p>该方法默认返回YES，我们的类可以通过某种途径处理这个命令，包括类本身或者其下一个响应者。子类可以重写这个方法来开启菜单命令。例如，如果我们希望菜单支持”Copy“而不支持”Paser“，则在我们的子类中实现该方法。需要注意的是，即使在子类中禁用某个命令，在响应链上的其它响应者也可能会处理这些命令。</p>
+<p>另外，我们可以使用以下方法来获取可以响应某一行为的接收者：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (id)targetForAction:(SEL)action withSender:(id)sender</div></pre></td></tr></table></figure>
+<p>在对象需要调用一个action操作时调用该方法。默认的实现是调用<strong>canPerformAction:withSender</strong>:方法来确定对象是否可以调用<strong>action</strong>操作。如果可以，则返回对象本身，否则将请求传递到响应链上。如果我们想要重写目标的选择方式，则应该重写这个方法。下面这段代码演示了一个文本输入域禁用拷贝/粘贴操作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">- (id)targetForAction:(SEL)action withSender:(id)sender</div><div class="line">&#123;</div><div class="line">    UIMenuController *menuController = [UIMenuController sharedMenuController];</div><div class="line">    if (action == @selector(selectAll:) || action == @selector(paste:) ||action == @selector(copy:) || action == @selector(cut:)) &#123;</div><div class="line">        if (menuController) &#123;</div><div class="line">            [UIMenuController sharedMenuController].menuVisible = NO;</div><div class="line">        &#125;</div><div class="line">        return nil;</div><div class="line">    &#125;</div><div class="line">    return [super targetForAction:action withSender:sender];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="十-访问快捷键命令"><a href="#十-访问快捷键命令" class="headerlink" title="十 访问快捷键命令"></a>十 访问快捷键命令</h1><p>我们的应用可以支持外部设备，包括外部键盘。在使用外部键盘时，使用快捷键可以大大提高我们的输入效率。因此从iOS7后，UIResponder类新增了一个只读属性keyCommands，来定义一个响应者支持的快捷键，其声明如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property(nonatomic, readonly) NSArray *keyCommands</div></pre></td></tr></table></figure>
+<p>一个支持硬件键盘命令的响应者对象可以重新定义这个方法并使用它来返回一个其所支持快捷键对象(UIKeyCommand)的数组。每一个快捷键命令表示识别的键盘序列及响应者的操作方法。</p>
+<p>我们用这个方法返回的快捷键命令数组被用于整个响应链。当与快捷键命令对象匹配的快捷键被按下时，UIKit会沿着响应链查找实现了响应行为方法的对象。它调用找到的第一个对象的方法并停止事件的处理。</p>
+<h1 id="十一-管理文本输入模式"><a href="#十一-管理文本输入模式" class="headerlink" title="十一 管理文本输入模式"></a>十一 管理文本输入模式</h1><p>文本输入模式标识当响应者激活时的语言及显示的键盘。UIResponder为此定义了一个属性来返回响应者对象的文本输入模式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property(nonatomic, readonly, retain) UITextInputMode *textInputMode</div></pre></td></tr></table></figure>
+<p>对于响应者而言，系统通常显示一个基于用户语言设置的键盘。我们可以重新定义这个属性，并让它返回一个不同的文本输入模式，以让我们的响应者使用一个特定的键盘。用户在响应者被激活时仍然可以改变键盘，在切换到另一个响应者时，可以再恢复到指定的键盘。</p>
+<p>如果我们想让UIKit来跟踪这个响应者的文本输入模式，我们可以通过<strong>textInputContextIdentifier</strong>属性来设置一个标识，该属性的声明如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property(nonatomic, readonly, retain) NSString *textInputContextIdentifier</div></pre></td></tr></table></figure>
+<p>该标识指明响应者应保留文本输入模式的信息。在跟踪模式下，任何对文本输入模式的修改都会记录下来，当响应者激活时再用于恢复处理。</p>
+<p>为了从程序的user default中清理输入模式信息，UIResponder定义了一个类方法，其声明如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+ (void)clearTextInputContextIdentifier:(NSString *)identifier</div></pre></td></tr></table></figure>
+<p>调用这个方法可以从程序的user default中移除与指定标识相关的所有文本输入模式。移除这些信息会让响应者重新使用默认的文本输入模式。</p>
+<h1 id="十二-支持User-Activities"><a href="#十二-支持User-Activities" class="headerlink" title="十二 支持User Activities"></a>十二 支持User Activities</h1><p>从iOS 8起，苹果为我们提供了一个非常棒的功能，即Handoff。使用这一功能，我们可以在一部iOS设备的某个应用上开始做一件事，然后在另一台iOS设备上继续做这件事。Handoff的基本思想是用户在一个应用里所做的任何操作都可以看作是一个Activity，一个Activity可以和一个特定iCloud用户的多台设备关联起来。在编写一个支持Handoff的应用时，会有以下三个交互事件：</p>
+<ul>
+<li>为将在另一台设备上继续做的事创建一个新的User Activity；</li>
+<li>当需要时，用新的数据更新已有的User Activity；</li>
+<li>把一个User Activity传递到另一台设备上。</li>
+</ul>
+<p>为了支持这些交互事件，在iOS 8后，UIResponder类新增了几个方法，我们在此不讨论这几个方法的实际使用，想了解更多的话，可以参考iOS 8 Handoff 开发指南。我们在此只是简单描述一下这几个方法。</p>
+<p>在UIResponder中，已经为我们提供了一个userActivity属性，它是一个NSUserActivity对象。因此我们在UIResponder的子类中不需要再去声明一个userActivity属性，直接使用它就行。其声明如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property(nonatomic, retain) NSUserActivity *userActivity</div></pre></td></tr></table></figure>
+<p>由UIKit管理的User Activities会在适当的时间自动保存。一般情况下，我们可以重写UIResponder类的updateUserActivityState:方法来延迟添加表示User Activity的状态数据。当我们不再需要一个User Activity时，我们可以设置userActivity属性为nil。任何由UIKit管理的NSUserActivity对象，如果它没有相关的响应者，则会自动失效。</p>
+<p>另外，多个响应者可以共享一个NSUserActivity实例。</p>
+<p>上面提到的updateUserActivityState:是用于更新给定的User Activity的状态。其定义如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)updateUserActivityState:(NSUserActivity *)activity</div></pre></td></tr></table></figure>
+<p>子类可以重写这个方法来按照我们的需要更新给定的User Activity。我们需要使用NSUserActivity对象的addUserInfoEntriesFromDictionary:方法来添加表示用户Activity的状态。</p>
+<p>在我们修改了User Activity的状态后，如果想将其恢复到某个状态，则可以使用以下方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)restoreUserActivityState:(NSUserActivity *)activity</div></pre></td></tr></table></figure>
+<p>子类可以重写这个方法来使用给定User Activity的恢复响应者的状态。系统会在接收到数据时，将数据传递给<strong>application:continueUserActivity:restorationHandler</strong>:以做处理。我们重写时应该使用存储在user activity的userInfo字典中的状态数据来恢复对象。当然，我们也可以直接调用这个方法。</p>
+<p>参考:南峰子的技术博客</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.jpg" alt="xulianpeng WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/UIResponder/" rel="tag">#UIResponder</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/10/iOS-NSObject官方API大总结/" rel="next" title="iOS-NSObject官方API大总结">
+                <i class="fa fa-chevron-left"></i> iOS-NSObject官方API大总结
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="xulianpeng" />
+          <p class="site-author-name" itemprop="name">xulianpeng</p>
+          <p class="site-description motion-element" itemprop="description">I am on the way to faraway</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xulianpeng" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/5f7143127114" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#UIResponder概念"><span class="nav-number">1.</span> <span class="nav-text">UIResponder概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Managing-the-Responder-Chain"><span class="nav-number">2.</span> <span class="nav-text">Managing the Responder Chain</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Managing-Input-Views"><span class="nav-number">3.</span> <span class="nav-text">Managing Input Views</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Responding-to-Touch-Events"><span class="nav-number">4.</span> <span class="nav-text">Responding to Touch Events</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Responding-to-Motion-Events"><span class="nav-number">5.</span> <span class="nav-text">Responding to Motion Events</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Responding-to-Press-Events"><span class="nav-number">6.</span> <span class="nav-text">Responding to Press Events</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Responding-to-Remote-Control-Events"><span class="nav-number">7.</span> <span class="nav-text">Responding to Remote-Control Events</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Getting-the-Undo-Manager"><span class="nav-number">8.</span> <span class="nav-text">Getting the Undo Manager</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Validating-Commands"><span class="nav-number">9.</span> <span class="nav-text">Validating Commands</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Accessing-the-Available-Key-Commands"><span class="nav-number">10.</span> <span class="nav-text">Accessing the Available Key Commands</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Managing-the-Text-Input-Mode"><span class="nav-number">11.</span> <span class="nav-text">Managing the Text Input Mode</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Supporting-User-Activities"><span class="nav-number">12.</span> <span class="nav-text">Supporting User Activities</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二部分"><span class="nav-number">13.</span> <span class="nav-text">第二部分</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一-概述"><span class="nav-number">14.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二-响应链"><span class="nav-number">15.</span> <span class="nav-text">二 响应链</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#响应链"><span class="nav-number">15.1.</span> <span class="nav-text">响应链</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构建响应链"><span class="nav-number">15.1.1.</span> <span class="nav-text">构建响应链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#确定第一响应者"><span class="nav-number">15.1.2.</span> <span class="nav-text">确定第一响应者</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件传递"><span class="nav-number">15.1.3.</span> <span class="nav-text">事件传递</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三-管理响应链"><span class="nav-number">16.</span> <span class="nav-text">三 管理响应链</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四-管理输入视图"><span class="nav-number">17.</span> <span class="nav-text">四 管理输入视图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五-响应触摸事件"><span class="nav-number">18.</span> <span class="nav-text">五 响应触摸事件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#六-响应移动事件"><span class="nav-number">19.</span> <span class="nav-text">六 响应移动事件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#七-响应远程控制事件"><span class="nav-number">20.</span> <span class="nav-text">七 响应远程控制事件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#八-获取Undo管理器"><span class="nav-number">21.</span> <span class="nav-text">八 获取Undo管理器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#九-验证命令"><span class="nav-number">22.</span> <span class="nav-text">九 验证命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十-访问快捷键命令"><span class="nav-number">23.</span> <span class="nav-text">十 访问快捷键命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十一-管理文本输入模式"><span class="nav-number">24.</span> <span class="nav-text">十一 管理文本输入模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十二-支持User-Activities"><span class="nav-number">25.</span> <span class="nav-text">十二 支持User Activities</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xulianpeng</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("kxIjFcyoMk4rdO3nb3fJvCeq-gzGzoHsz", "eXlDfzJ1LVFxLb2qpYCfUA1l");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
