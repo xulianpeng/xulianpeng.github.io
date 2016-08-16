@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="类目 延展 协议," />
+  <meta name="keywords" content="UIView," />
 
 
 
@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="类目 (category)">
+<meta name="description" content="一 概念">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS-类目 延展 协议官方文档大总结">
-<meta property="og:url" content="http://yoursite.com/2016/08/03/iOS-类目-延展-协议官方文档大总结/index.html">
+<meta property="og:title" content="iOS-UIView官方API列举">
+<meta property="og:url" content="http://yoursite.com/2016/08/16/iOS-UIView官方API列举/index.html">
 <meta property="og:site_name" content="Lianpeng’s Sky">
-<meta property="og:description" content="类目 (category)">
-<meta property="og:updated_time" content="2016-08-04T07:26:16.000Z">
+<meta property="og:description" content="一 概念">
+<meta property="og:updated_time" content="2016-08-16T02:57:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS-类目 延展 协议官方文档大总结">
-<meta name="twitter:description" content="类目 (category)">
+<meta name="twitter:title" content="iOS-UIView官方API列举">
+<meta name="twitter:description" content="一 概念">
 
 
 
@@ -114,9 +114,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/08/03/iOS-类目-延展-协议官方文档大总结/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/08/16/iOS-UIView官方API列举/"/>
 
-  <title> iOS-类目 延展 协议官方文档大总结 | Lianpeng’s Sky </title>
+  <title> iOS-UIView官方API列举 | Lianpeng’s Sky </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -256,7 +256,7 @@
             
             
               
-                iOS-类目 延展 协议官方文档大总结
+                iOS-UIView官方API列举
               
             
           </h1>
@@ -268,8 +268,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-03T14:23:39+08:00" content="2016-08-03">
-              2016-08-03
+            <time itemprop="dateCreated" datetime="2016-08-16T10:56:52+08:00" content="2016-08-16">
+              2016-08-16
             </time>
           </span>
 
@@ -282,8 +282,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/OC/" itemprop="url" rel="index">
-                    <span itemprop="name">OC</span>
+                  <a href="/categories/UI/" itemprop="url" rel="index">
+                    <span itemprop="name">UI</span>
                   </a>
                 </span>
 
@@ -302,7 +302,7 @@
 
           
           
-             <span id="/2016/08/03/iOS-类目-延展-协议官方文档大总结/" class="leancloud_visitors" data-flag-title="iOS-类目 延展 协议官方文档大总结">
+             <span id="/2016/08/16/iOS-UIView官方API列举/" class="leancloud_visitors" data-flag-title="iOS-UIView官方API列举">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -324,77 +324,27 @@
       
 
       
-        <h1 id="类目-category"><a href="#类目-category" class="headerlink" title="类目 (category)"></a>类目 (category)</h1><a id="more"></a>
+        <h1 id="一-概念"><a href="#一-概念" class="headerlink" title="一 概念"></a>一 概念</h1><a id="more"></a>
+<p>UIView类定义了一块矩形区域,其具有三大功能:</p>
 <ul>
-<li><p>对现有的类添加扩展，如：系统中的类，在类目中添加的方法会被子类继承，而且运行时跟其他的方法没有区别。</p>
-</li>
-<li><p>作为子类的替代方式，不需要定义和使用一个子类，可以通过类目直接向已有的类目里添加方法。</p>
-</li>
+<li>画图和动画</li>
+<li>布局和管理子视图</li>
+<li>事件处理</li>
 </ul>
-<p>对类中的方法进行归类，利用categopry把一个庞大的类划分为小块来分别进行开发，从而更好地对类中的方法进行更新和维护。</p>
-<p>通过类目添加的方法会成为原始类 的一部分</p>
-<p>注意：</p>
-<blockquote>
-<p>当然也有使用Category是需要注意的问题：</p>
-<ul>
-<li>1 Category可以访问原始类的实例变量，但不能添加实例变量，如果想添加变量，那就通过继承创建子类来实现,或者利用runtime实现。 </li>
-<li>2 Category可以重载原始类的方法，这样会覆盖掉原始类的方法。如果确实要重载，那就通过继承创建子类来实现。 </li>
-<li>3 和普通接口有所区别的是，在Category的实现文件中的实例方法只要你不去调用它你可以不用实现所有声明的所有方法。</li>
-<li>4 命名方式： 类名+扩展方法,如“UIAlertView+AFNetworking”。类目的接口声明与类的定义十分相似，但类目不继承父类，只需要带有一个括号，表明该类目的主要用 途。</li>
-</ul>
-</blockquote>
-<p>Category 与SubClass 区别</p>
-<table>
-<thead>
-<tr>
-<th>分类</th>
-<th>Category</th>
-<th>subclass</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>功能</td>
-<td>只能为类添加方法</td>
-<td>既能为类添加方法，又能添加属性</td>
-</tr>
-<tr>
-<td>特点</td>
-<td>新添加的方法会成为原始类的一部分，能被子类继承</td>
-<td>新添加的方法只有子类才有，父类不具有,子类才能调用</td>
-</tr>
-</tbody>
-</table>
-<p>代码：</p>
-<p>类目.h文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line">//类目  在类目中不能添加实例变量</div><div class="line">@interface NSString (CSayHi)</div><div class="line">-(void)sayHi;//类目的方法</div><div class="line">@end</div><div class="line">类目.m文件</div><div class="line"></div><div class="line">#import &quot;NSString+CSayHi.h&quot;</div><div class="line">@implementation NSString (CSayHi)</div><div class="line">-(void)sayHi&#123;//类目方法的实现</div><div class="line">NSLog(@&quot;这是类目提供的方法，字符内容是%@&quot;,self);</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
-<p>使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#import &lt;UIKit/UIKit.h&gt;</div><div class="line">#import &quot;NSString+CSayHi.h&quot;</div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line">    NSString *str=@&quot;hello&quot;;//定义一个字符串对象并赋值</div><div class="line">    [str sayHi];//调用类目方法</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="延展-Extension"><a href="#延展-Extension" class="headerlink" title="延展 (Extension)"></a>延展 (Extension)</h1><ul>
-<li>延展是特殊形式的类目</li>
-<li>延展中定义的方法在类本身中实现</li>
-<li>延展写在.m文件上</li>
-<li>延展不提供名称表示方法必须实现，提供名称可以不实现</li>
-</ul>
-<p>###作用</p>
-<p><strong>定义类的私有方法，管理类的私有方法</strong></p>
-<p>###使用<br>形式和类目相同，不用新创建文件，只是把类目的interface地方的文件放在了你需要扩展的类的.m文件里边。</p>
-<p>代码如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">#import &quot;Student.h&quot;</div><div class="line">@interface Student (extension)//为Student类创建一个私有的方法text</div><div class="line">-(void)text;</div><div class="line">@end</div><div class="line"></div><div class="line">@implementation Student</div><div class="line">-(void)hello;</div><div class="line">&#123;</div><div class="line">[self  text];</div><div class="line">&#125;</div><div class="line">-(void)text</div><div class="line">&#123;</div><div class="line">NSLog(@&quot;你好&quot;);</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
-<p>外界 [student hello]的时候就会打印出“你好”。但是在外界不能调用text方法，[student text]是不对的。只能在.m文件里边通过self来调用私有方法text。隐藏了内部的实现。</p>
-<h1 id="协议-protocol"><a href="#协议-protocol" class="headerlink" title="协议 (protocol)"></a>协议 (protocol)</h1><p><strong>概念:</strong>协议（protocol）是Objective-c中一个非常重要的语言特性. 一个协议其实就是一系列有关联的方法的集合。协议中的方法并不是由协议本身去实现，相反而是由遵循这个协议的其他类来实现。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//oc的协议由@protocol声明的一组方法列表,要求其他的类去实现，</div><div class="line">//相当于@interface部分的声明</div><div class="line"></div><div class="line">@protocol xxxDelegate</div><div class="line">//必须实现的协议方法</div><div class="line">@required</div><div class="line">//可选实现</div><div class="line">@optional</div><div class="line">@end</div></pre></td></tr></table></figure>
-<p>相关代码自己百度.</p>
-<p>#<strong>为什么要使用协议:</strong></p>
-<p><strong>苹果的官方文档指出三个原因：</strong></p>
-<ul>
-<li>To declare methods that others are expected to implement</li>
-<li>To declare the <strong>interface</strong> to an object while concealing its class</li>
-<li>To capture similarities among classes that are not hierarchically related</li>
-</ul>
-<p><strong>其实还有第4个很重要的原因，那就是减少继承类的复杂性。</strong><br><em>一个经典的例子就是iOS UI框架里面的UITableViewController类。假如没有“协议”功能，用户就必须选择用继承和重载接口的方法来实现复杂的UI控制以及其他事件的处理——这就对基类的设计提出了更大的挑战了。对于像这样一个table view，一个很好的实现方法就是采用协议，由协议里的接口来控制不同的数据源以及各种复杂的用户操作。UIKit中设计了两个很好的协议UITableViewDelegate,UITableViewDataSource来实现UITableViewController的控制。任何遵循这两个协议的类都可以实现对UITableView的控制。</em></p>
-<p>#代理与协议的区别:</p>
-<p>代理是一种设计模式概念,协议是一种技术,代理是用协议来实现的.代理是2个对象之间通讯的一种方式。 代理主要做反向传值的。实现系统的一些回调方法.<br>至于代理的详细信息,不是本篇的重点,足可以另开一篇文章详谈了.<br>今天就到这.</p>
+<h1 id="二-初始化-及其相关属性"><a href="#二-初始化-及其相关属性" class="headerlink" title="二 初始化,及其相关属性"></a>二 初始化,及其相关属性</h1><h2 id="2-1-初始化"><a href="#2-1-初始化" class="headerlink" title="2.1 初始化"></a>2.1 初始化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">initWithFrame:</div><div class="line">initWithCoder://这个方法基本不会用到,除非你是使用IB来生成的视图,博主还未考证</div></pre></td></tr></table></figure>
+<h2 id="2-2-配置有关外观的属性"><a href="#2-2-配置有关外观的属性" class="headerlink" title="2.2 配置有关外观的属性"></a>2.2 配置有关外观的属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">backgroundColor</div><div class="line">hidden</div><div class="line">alpha</div><div class="line">opaque</div><div class="line">tintColor</div><div class="line">tintAdjustmentMode</div><div class="line">clipsToBounds</div><div class="line">clearsContextBeforeDrawing</div><div class="line">maskView</div><div class="line">layerClass</div><div class="line">layer</div></pre></td></tr></table></figure>
+<h2 id="2-3-配置事件相关的属性"><a href="#2-3-配置事件相关的属性" class="headerlink" title="2.3 配置事件相关的属性"></a>2.3 配置事件相关的属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">userInteractionEnabled</div><div class="line">multipleTouchEnabled</div><div class="line">exclusiveTouch //只响应触摸事件</div></pre></td></tr></table></figure>
+<h2 id="2-4-配置bounds和frame相关的属性"><a href="#2-4-配置bounds和frame相关的属性" class="headerlink" title="2.4 配置bounds和frame相关的属性"></a>2.4 配置bounds和frame相关的属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">frame</div><div class="line">bounds </div><div class="line"></div><div class="line">上述两者的区别是:前者是以其superView为参考坐标,来描述其本身的位置和size,后者是以自己本身为参考坐标,来描述其本身的位置和size.</div><div class="line"></div><div class="line">center</div><div class="line">transform :旋转相关的属性</div></pre></td></tr></table></figure>
+<h2 id="三-管理视图的视图层级"><a href="#三-管理视图的视图层级" class="headerlink" title="三 管理视图的视图层级"></a>三 管理视图的视图层级</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">superview</div><div class="line">subviews</div><div class="line">window</div><div class="line">*********************华丽的分割线********************</div><div class="line">- addSubview:</div><div class="line">- bringSubviewToFront:</div><div class="line">- sendSubviewToBack:</div><div class="line">- removeFromSuperview</div><div class="line">- insertSubview:atIndex:</div><div class="line">- insertSubview:aboveSubview:</div><div class="line">- insertSubview:belowSubview:</div><div class="line">- exchangeSubviewAtIndex:withSubviewAtIndex:</div><div class="line">- isDescendantOfView: //Returns a Boolean value indicating whether the receiver is a subview of a given view or identical to that view.</div></pre></td></tr></table></figure>
+<h1 id="四-管理手势"><a href="#四-管理手势" class="headerlink" title="四 管理手势"></a>四 管理手势</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">- addGestureRecognizer:</div><div class="line">- removeGestureRecognizer:</div><div class="line">gestureRecognizers</div><div class="line">- gestureRecognizerShouldBegin:</div></pre></td></tr></table></figure>
+<h1 id="五-动画相关"><a href="#五-动画相关" class="headerlink" title="五 动画相关"></a>五 动画相关</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">+ animateWithDuration:delay:options:animations:completion:</div><div class="line">+ animateWithDuration:animations:completion:</div><div class="line">+ animateWithDuration:animations:</div><div class="line">+ transitionWithView:duration:options:animations:completion:</div><div class="line">+ transitionFromView:toView:duration:options:completion:</div><div class="line">+ animateKeyframesWithDuration:delay:options:animations:completion:</div><div class="line">+ addKeyframeWithRelativeStartTime:relativeDuration:animations:</div><div class="line">+ performSystemAnimation:onViews:options:animations:completion:</div><div class="line">+ animateWithDuration:delay:usingSpringWithDamping:initialSpringVelocity:options:animations:completion:</div><div class="line">+ performWithoutAnimation:</div></pre></td></tr></table></figure>
+<h1 id="六-截图相关的办法-7-0"><a href="#六-截图相关的办法-7-0" class="headerlink" title="六 截图相关的办法(7.0)"></a>六 截图相关的办法(7.0)</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">- (UIView *)snapshotViewAfterScreenUpdates:(BOOL)afterUpdates NS_AVAILABLE_IOS(7_0);</div><div class="line">- (UIView *)resizableSnapshotViewFromRect:(CGRect)rect afterScreenUpdates:(BOOL)afterUpdates withCapInsets:(UIEdgeInsets)capInsets NS_AVAILABLE_IOS(7_0);  // Resizable snapshots will default to stretching the center</div><div class="line">// Use this method to render a snapshot of the view hierarchy into the current context. Returns NO if the snapshot is missing image data, YES if the snapshot is complete. Calling this method from layoutSubviews while the current transaction is committing will capture what is currently displayed regardless if afterUpdates is YES.</div><div class="line">- (BOOL)drawViewHierarchyInRect:(CGRect)rect afterScreenUpdates:(BOOL)afterUpdates NS_AVAILABLE_IOS(7_0);</div></pre></td></tr></table></figure>
+<h1 id="七-确认View在运行时"><a href="#七-确认View在运行时" class="headerlink" title="七 确认View在运行时"></a>七 确认View在运行时</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tag </div><div class="line">-(UIView *)viewWithTag:</div></pre></td></tr></table></figure>
+<h1 id="八-hit-Testing-in-a-View"><a href="#八-hit-Testing-in-a-View" class="headerlink" title="八 hit Testing in a View"></a>八 hit Testing in a View</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- hitTest: withEvent:</div><div class="line">- pointInside: withEevent:</div></pre></td></tr></table></figure>
+<h1 id="九-放弃第一响应者"><a href="#九-放弃第一响应者" class="headerlink" title="九 放弃第一响应者"></a>九 放弃第一响应者</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- endEditing</div></pre></td></tr></table></figure>
+<h1 id="十-获得视图相关的变化"><a href="#十-获得视图相关的变化" class="headerlink" title="十 获得视图相关的变化"></a>十 获得视图相关的变化</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- didAddSubview:</div><div class="line">- willRemoveSubview:</div><div class="line">- willMoveToSuperview:</div><div class="line">- didMoveToSuperview</div><div class="line">- willMoveToWindow:</div><div class="line">- didMoveToWindow</div></pre></td></tr></table></figure>
+<h1 id="十一-观察焦点"><a href="#十一-观察焦点" class="headerlink" title="十一 观察焦点"></a>十一 观察焦点</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">canBecomeFocused</div><div class="line">inheritedAnimationDuration</div><div class="line">focused</div></pre></td></tr></table></figure>
+<p>#十二 跟约束相关的方法和属性<br>由于这个基本用不到 所以不做解释了</p>
 
       
     </div>
@@ -433,7 +383,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/类目-延展-协议/" rel="tag">#类目 延展 协议</a>
+            <a href="/tags/UIView/" rel="tag">#UIView</a>
           
         </div>
       
@@ -442,17 +392,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/28/iOS-UINavigationController官方文档分析大总结/" rel="next" title="iOS-UINavigationController官方文档分析大总结">
-                <i class="fa fa-chevron-left"></i> iOS-UINavigationController官方文档分析大总结
+              <a href="/2016/08/15/iOS-UIResponder官方API大总结/" rel="next" title="iOS-UIResponder官方API大总结">
+                <i class="fa fa-chevron-left"></i> iOS-UIResponder官方API大总结
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/08/04/iOSUITextView官方文档大总结/" rel="prev" title="iOSUITextView官方文档大总结">
-                iOSUITextView官方文档大总结 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -586,7 +532,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#类目-category"><span class="nav-number">1.</span> <span class="nav-text">类目 (category)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#延展-Extension"><span class="nav-number">2.</span> <span class="nav-text">延展 (Extension)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#协议-protocol"><span class="nav-number">3.</span> <span class="nav-text">协议 (protocol)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一-概念"><span class="nav-number">1.</span> <span class="nav-text">一 概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二-初始化-及其相关属性"><span class="nav-number">2.</span> <span class="nav-text">二 初始化,及其相关属性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-初始化"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-配置有关外观的属性"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 配置有关外观的属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-配置事件相关的属性"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 配置事件相关的属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-配置bounds和frame相关的属性"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 配置bounds和frame相关的属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-管理视图的视图层级"><span class="nav-number">2.5.</span> <span class="nav-text">三 管理视图的视图层级</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四-管理手势"><span class="nav-number">3.</span> <span class="nav-text">四 管理手势</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五-动画相关"><span class="nav-number">4.</span> <span class="nav-text">五 动画相关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#六-截图相关的办法-7-0"><span class="nav-number">5.</span> <span class="nav-text">六 截图相关的办法(7.0)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#七-确认View在运行时"><span class="nav-number">6.</span> <span class="nav-text">七 确认View在运行时</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#八-hit-Testing-in-a-View"><span class="nav-number">7.</span> <span class="nav-text">八 hit Testing in a View</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#九-放弃第一响应者"><span class="nav-number">8.</span> <span class="nav-text">九 放弃第一响应者</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十-获得视图相关的变化"><span class="nav-number">9.</span> <span class="nav-text">十 获得视图相关的变化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十一-观察焦点"><span class="nav-number">10.</span> <span class="nav-text">十一 观察焦点</span></a></li></ol></div>
             
           </div>
         </section>
