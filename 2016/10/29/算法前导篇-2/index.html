@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="UIControl," />
+  <meta name="keywords" content="算法," />
 
 
 
@@ -84,18 +84,24 @@
 
 
 
-<meta name="description" content="概述:">
+<meta name="description" content="数据结构和算法的关系:
+
+好比是梁山伯与祝英台 罗密欧与朱丽叶,两者是不可分割的关系.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS-UIControl官方API大总结">
-<meta property="og:url" content="http://yoursite.com/2016/08/09/iOS-UIControl官方API大总结/index.html">
+<meta property="og:title" content="算法前导篇_2">
+<meta property="og:url" content="http://yoursite.com/2016/10/29/算法前导篇-2/index.html">
 <meta property="og:site_name" content="Lianpeng’s Sky">
-<meta property="og:description" content="概述:">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/639412-6edc26d7ac254515.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2016-08-16T02:58:58.000Z">
+<meta property="og:description" content="数据结构和算法的关系:
+
+好比是梁山伯与祝英台 罗密欧与朱丽叶,两者是不可分割的关系.">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/639412-2944738968d26463.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2016-10-29T02:48:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS-UIControl官方API大总结">
-<meta name="twitter:description" content="概述:">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/639412-6edc26d7ac254515.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="算法前导篇_2">
+<meta name="twitter:description" content="数据结构和算法的关系:
+
+好比是梁山伯与祝英台 罗密欧与朱丽叶,两者是不可分割的关系.">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/639412-2944738968d26463.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -116,9 +122,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/08/09/iOS-UIControl官方API大总结/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/10/29/算法前导篇-2/"/>
 
-  <title> iOS-UIControl官方API大总结 | Lianpeng’s Sky </title>
+  <title> 算法前导篇_2 | Lianpeng’s Sky </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -258,7 +264,7 @@
             
             
               
-                iOS-UIControl官方API大总结
+                算法前导篇_2
               
             
           </h1>
@@ -270,30 +276,11 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-09T14:20:38+08:00" content="2016-08-09">
-              2016-08-09
+            <time itemprop="dateCreated" datetime="2016-10-29T10:46:45+08:00" content="2016-10-29">
+              2016-10-29
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/UI/" itemprop="url" rel="index">
-                    <span itemprop="name">UI</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
@@ -304,7 +291,7 @@
 
           
           
-             <span id="/2016/08/09/iOS-UIControl官方API大总结/" class="leancloud_visitors" data-flag-title="iOS-UIControl官方API大总结">
+             <span id="/2016/10/29/算法前导篇-2/" class="leancloud_visitors" data-flag-title="算法前导篇_2">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -326,57 +313,194 @@
       
 
       
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述:"></a>概述:</h1><a id="more"></a>
+        <p>数据结构和算法的关系:</p>
+<blockquote>
+<p>好比是梁山伯与祝英台 罗密欧与朱丽叶,两者是不可分割的关系.</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="1-算法的定义"><a href="#1-算法的定义" class="headerlink" title="1 算法的定义:"></a><strong>1 算法的定义:</strong></h1><p>解决特定问题的求解步骤的描述,在计算机中表现为指令的有限序列,并且每条指令表示一个或多个操作,每一个操作都完成特定的功能.</p>
+<h1 id="2-算法的5个特性"><a href="#2-算法的5个特性" class="headerlink" title="2 算法的5个特性:"></a><strong>2 算法的5个特性:</strong></h1><p><strong>输入输出:</strong></p>
 <ul>
-<li>类继承关系<br>NSObject-&gt;UIResponder-&gt;UIView-&gt;UIControl-&gt;(UIButton<br>UIDatePicker/UIPageControl/UIRefreshControl/UISegmentedControl/UISlider/UIStepper/UISwitch/UITextField)<br>)</li>
+<li>具有0个或多个输入,(输入参数可以是0个)</li>
+<li>一定要输出,否则该算法无意义.</li>
 </ul>
-<p><img src="http://upload-images.jianshu.io/upload_images/639412-6edc26d7ac254515.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="UIView及其子类的继承关系图.png"></p>
+<p><strong>有穷性:</strong></p>
+<p>指算法在执行有限的步骤后,自动结束而不是出现无限循环,并且每一个步骤在可接受的时间内完成.</p>
 <ul>
-<li>该类常用来对用户的交互做出视觉可看到的行为或意图,常见的有UIButton,UISlider,UITextField等.</li>
-<li>采用Taget-Action的机制来进行人机交互.</li>
-<li>不必直接创建UIControl,其已被子类化各种控件,你直接使用对应的子类即可.</li>
-<li>当然你也可以扩展或者修改其子类的行为.</li>
-<li>UIControl的state决定其外观和交互能力.其state被UIControlState决定.你可以改变state根据APP的需要.</li>
+<li>步骤有限</li>
+<li>不会无限循环</li>
+<li>每一个步骤完成的时间有限.</li>
 </ul>
-<h1 id="Taget-Action机制浅析"><a href="#Taget-Action机制浅析" class="headerlink" title="Taget-Action机制浅析"></a>Taget-Action机制浅析</h1><p>代码示例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">addTarget:action:forControlEvents:</div></pre></td></tr></table></figure>
+<p><strong>确定性:</strong></p>
+<p>算法的每一个步骤都具有确定的意义</p>
 <ul>
-<li>简化了代码(跟踪触摸事件的代码).</li>
-<li>必须指定The UIControlEvents type去触发the method.比如 <code>UIButton</code> -&gt;<code>UIControlEventTouchDown or UIControlEventTouchUpInside</code>,<code>UISlider</code>-&gt;<code>UIControlEventValueChanged</code></li>
-<li>当control的event发生时,control会马上唤醒关联的action methods,action methods被当前的UIApplication Object派发,UIApplication Object会按照响应者链,寻找到合适的对象去处理the message.</li>
+<li>算法在一定条件下,只有一条执行路径,对比程序图作比较.</li>
 </ul>
-<h1 id="子类化说明"><a href="#子类化说明" class="headerlink" title="子类化说明"></a>子类化说明</h1><p>子类化已存在的controls 和 修改他们的 behavior 使用下面方法:</p>
+<p><strong>可行性:</strong></p>
+<p>算法的每一个步骤都必须是可行的,即每一步都能够通过执行有限的次数完成.</p>
+<h1 id="3-算法设计的要求"><a href="#3-算法设计的要求" class="headerlink" title="3 算法设计的要求"></a><strong>3 算法设计的要求</strong></h1><p><strong>正确性:</strong><br>至少应该具有输入 输出和加工处理无歧义性,能正确反映问题的需求 能够得到问题的正确答案.</p>
+<blockquote>
+<p>算法程序没有语法错误;</p>
+<p>算法程序对于合法的输入能够产生满足要求的输出结果:</p>
+<p>算法程序对于非法的输入能够给出满足规格说明的结果.</p>
+</blockquote>
+<p>类比实际工作中,接口返回的数据必须有 非真的处理,同样我们在编写代码时,if–else一定要成对出现.</p>
+<p><strong>可读性:</strong></p>
+<p>算法设计的另一目的是为了便于阅读 理解 和交流.</p>
+<blockquote>
+<p>这就是为什么需要代码注释.</p>
+</blockquote>
+<p><strong>健壮性:</strong></p>
+<p>当输入的数据不合法时,算法也能做出相关处理,而不是产生异常或莫名奇妙的结果.</p>
+<p><strong>时间效率高和存储质量低:</strong></p>
+<blockquote>
+<p>时间效率指的是:算法的执行时间.<br>存储需求:算法在执行过程中需要的最大存储空间,包括占用的内存或外部硬盘存储空间.</p>
+</blockquote>
+<h1 id="4-算法效率的度量方法分析"><a href="#4-算法效率的度量方法分析" class="headerlink" title="4 算法效率的度量方法分析:"></a><strong>4 算法效率的度量方法分析:</strong></h1><p>主要分为事后统计方法和事前分析估算方法.</p>
+<blockquote>
+<p>前者一般不考虑,一般着重使用后者.</p>
+</blockquote>
+<p>``</p>
 <ul>
-<li>Override the <code>sendAction:to:forEvent: method</code> of an existing subclass to observe or modify the dispatching of action methods to the control’s associated targets. You might use this method to modify the dispatch behavior based on the specified object, selector, or event.</li>
-<li>Override the <code>beginTrackingWithTouch:withEvent:</code>, <code>continueTrackingWithTouch:withEvent:</code>, <code>endTrackingWithTouch:withEvent:</code>, and <code>cancelTrackingWithEvent:</code> methods to track touch events occurring in the control. You can use the tracking information to perform additional actions. Always use these methods to track touch events instead of the methods defined by the UIResponder class.</li>
+<li><p>(void)sumFenxi<br>{<br>  //算法1</p>
+<p>  int i= 0, sum1 = 0 ,n = 100;  //执行了1次<br>  for (i = 1; i &lt;= n; i++) {</p>
+<pre><code>sum1 = sum1 + 1;          //执行了n+1次
+</code></pre><p>  }<br>  NSLog(@”sum == %d”,sum1);     //执行了1次<br>}</p>
+</li>
+<li><p>(void)sumFenxi2<br>{<br>  //算法2</p>
+<p>  int  sum2 = 0 ,n2 = 100;      //执行了1次<br>  sum2 = (1 + n2) * n2 / 2;      //执行了1次<br>  NSLog(@”sum == %d”,sum2);      //执行了1次<br>}</p>
+</li>
+<li><p>(void)sumFenxi3<br>{<br>  //算法3</p>
+<p>  int i= 0, x = 0 , sum = 0, n = 100;  //执行了1次<br>  for (i = 1; i &lt;= n; i++) {</p>
+<pre><code>for (int j = 0; j&lt;= n ; j++) {
+    x++;
+    sum = sum + x;
+}          //执行了n * n次
+</code></pre><p>  }</p>
+<p>  NSLog(@”sum == %d “,sum); //执行了1次<br>}<br>``</p>
+</li>
 </ul>
-<h1 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">state   </div><div class="line">enabled  </div><div class="line">selected  </div><div class="line">highlighted  </div><div class="line">contentVerticalAlignment </div><div class="line">contentHorzontalAlignment</div></pre></td></tr></table></figure>
-<h1 id="Accessing-the-Control’s-Targets-and-Actions"><a href="#Accessing-the-Control’s-Targets-and-Actions" class="headerlink" title="Accessing the Control’s Targets and Actions"></a>Accessing the Control’s Targets and Actions</h1><ul>
-<li><code>addTarget:action:forControlEvents:</code><br>Associates a target object and action method with the control.</li>
-<li><code>removeTarget:action:forControlEvents:</code><br>Stops the delivery of events to the specified target object.</li>
-<li><code>actionsForTarget:forControlEvent:</code><br>Returns the actions performed on a target object when the specified event occurs.</li>
-<li><code>allControlEvents</code><br>Returns the events for which the control has associated actions.<br>Beta</li>
-<li><code>allTargets</code><br>Returns all target objects associated with the control.</li>
+<p>得出的表格是:</p>
+<table>
+<thead>
+<tr>
+<th>次数</th>
+<th>算法A(n+1+1)</th>
+<th>算法B(1+1+1)</th>
+<th>算法C(n*n + 1 + 1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>n=1</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>n=2</td>
+<td>4</td>
+<td>3</td>
+<td>6</td>
+</tr>
+<tr>
+<td>n=3</td>
+<td>5</td>
+<td>3</td>
+<td>27</td>
+</tr>
+<tr>
+<td>n=10</td>
+<td>12</td>
+<td>3</td>
+<td>102</td>
+</tr>
+<tr>
+<td>n=100</td>
+<td>102</td>
+<td>3</td>
+<td>10002</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>从而得出<strong>函数的渐进增长</strong>:<br>给定两个函数f(n)和g(n),如果存在一个整数N,使得对于所有的n&gt;N,f(n)总是比g(n)大,那么,我们说f(n)的增长渐进快于g(n).<br>类比数学函数上是,斜率大,则y值增长的越快.</li>
+<li>常数可以忽略掉,即算法A (n),算法B (1),算法C (n*n).</li>
 </ul>
-<h1 id="Triggering-Actions-触发事件"><a href="#Triggering-Actions-触发事件" class="headerlink" title="Triggering Actions(触发事件)"></a>Triggering Actions(触发事件)</h1><ul>
-<li><code>sendAction:to:forEvent:</code><br>Calls the specified action method.</li>
-<li><code>sendActionsForControlEvents:</code><br>Calls the action methods associated with the specified events.</li>
+<p><strong>接下来看下图:</strong></p>
+<table>
+<thead>
+<tr>
+<th>次数</th>
+<th>算法A(4n+8)</th>
+<th>算法A’(n)</th>
+<th>算法C(n<em>n</em>2 + 1 )</th>
+<th>算法C’(n*n)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>n=1</td>
+<td>12</td>
+<td>1</td>
+<td>3</td>
+<td>1</td>
+</tr>
+<tr>
+<td>n=2</td>
+<td>16</td>
+<td>2</td>
+<td>9</td>
+<td>4</td>
+</tr>
+<tr>
+<td>n=3</td>
+<td>20</td>
+<td>3</td>
+<td>19</td>
+<td>9</td>
+</tr>
+<tr>
+<td>n=10</td>
+<td>48</td>
+<td>10</td>
+<td>201</td>
+<td>100</td>
+</tr>
+<tr>
+<td>n=100</td>
+<td>408</td>
+<td>100</td>
+<td>2 0001</td>
+<td>1 0000</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>综上可得:</strong></p>
+<ul>
+<li>判断一个算法的效率时,函数中的常熟和其他次要项尝尝可以忽略不计,而只关注最高阶项的阶数.</li>
+<li>某个算法,随着n的增大,他会越来越优于另一算法,或者越来越差于另一算法.</li>
 </ul>
-<h1 id="Tracking-Touches-and-Redrawing-Controls-跟踪触摸事件和重画Controls"><a href="#Tracking-Touches-and-Redrawing-Controls-跟踪触摸事件和重画Controls" class="headerlink" title="Tracking Touches and Redrawing Controls(跟踪触摸事件和重画Controls)"></a>Tracking Touches and Redrawing Controls(跟踪触摸事件和重画Controls)</h1><ul>
-<li><code>beginTrackingWithTouch:withEvent:</code><br>Called when a touch event enters the control’s bounds.</li>
-<li><code>continueTrackingWithTouch:withEvent:</code><br>Called when a touch event associated with the control is updated.</li>
-<li><code>endTrackingWithTouch:withEvent:</code><br>Called when a touch event associated with the control ends.</li>
-<li><code>cancelTrackingWithEvent:</code><br>Tells the control to cancel tracking related to the given event.</li>
-<li><code>tracking</code><br>A Boolean value indicating whether the control is currently tracking touch events.</li>
-<li><code>touchInside</code><br>A Boolean value indicating whether a tracked touch event is currently inside the control’s bounds.</li>
+</blockquote>
+<h1 id="5-算法时间复杂度"><a href="#5-算法时间复杂度" class="headerlink" title="5 算法时间复杂度"></a><strong>5 算法时间复杂度</strong></h1><p><strong>定义:</strong>在进行算法分析时,语句总的执行次数T(n)是关于问题规模n的函数,进而分析T(n)随n的变化情况并确定T(n)的数量级,算法的时间复杂度,也就是算法的时间量度,记作:T(n) = O(f(n)).表示随问题规模n的增大,算法执行时间的增长率和f(n)的增长率相同,称作算法的渐进时间复杂度,简称为时间复杂度.</p>
+<ul>
+<li><strong>一般随着n的增大,T(n)增长最慢的算法为最优算法.</strong></li>
+<li>之前的3个求和算法的时间复杂度为O(n),O(1),O(n*n).分别称为线性阶,常数阶,平方阶.</li>
 </ul>
-<h1 id="Constants-常量"><a href="#Constants-常量" class="headerlink" title="Constants(常量)"></a>Constants(常量)</h1><ul>
-<li><code>UIControlEvents</code><br>Constants describing the types of events possible for controls.</li>
-<li><code>UIControlState</code><br>Constants describing the state of a control.</li>
-<li><code>UIControlContentVerticalAlignment</code><br>Constants for specifying the vertical alignment of content (text and images) in a control.</li>
-<li><code>UIControlContentHorizontalAlignment</code><br>The horizontal alignment of content (text and images) within a control.</li>
+<h1 id="6-推到无穷大O阶的方法"><a href="#6-推到无穷大O阶的方法" class="headerlink" title="6 推到无穷大O阶的方法"></a><strong>6 推到无穷大O阶的方法</strong></h1><ul>
+<li>用常数1取代运行时间中的所有加法常数</li>
+<li>在修改后的运行次数函数中,只保留最高阶项.</li>
+<li>如果最高阶项存在且不是1,则去除与这个项相乘的常数</li>
+<li>最后得到大O阶.</li>
 </ul>
-<p>参考:<a href="http://southpeak.github.io/blog/2015/12/13/cocoa-uikit-uicontrol/" target="_blank" rel="external">UIKit: UIControl,这一篇博客写的更浅显易懂</a></p>
+<h1 id="7-常见的时间复杂度"><a href="#7-常见的时间复杂度" class="headerlink" title="7 常见的时间复杂度"></a><strong>7 常见的时间复杂度</strong></h1><p><img src="http://upload-images.jianshu.io/upload_images/639412-2944738968d26463.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="常见的时间复杂度"></p>
+<h1 id="8-算法的平均情况和最坏情况"><a href="#8-算法的平均情况和最坏情况" class="headerlink" title="8 算法的平均情况和最坏情况"></a><strong>8 算法的平均情况和最坏情况</strong></h1><p>举例说明,在n个随机数字数组里查找某个数字,最好的情况是 取得第一个就是我们要找的,最坏的情况是一直取到最后一个才取到,前者的时间复杂度为O(1),后者的时间复杂度为O(n).而通过我们前面的学习,我们知道这种情况的时间复杂度就是O(n).</p>
+<blockquote>
+<p>平均运行时间是所有情况中最优意义的,因为他是期望运行的.<br>计算所有情况的时间复杂度的平均值为平均时间复杂度<br>计算最坏情况下的时间复杂度为最坏时间复杂度.</p>
+</blockquote>
+<h1 id="9-算法的空间复杂度"><a href="#9-算法的空间复杂度" class="headerlink" title="9 算法的空间复杂度"></a><strong>9 算法的空间复杂度</strong></h1><p><strong>定义:</strong><br>通过计算算法所需的存储空间实现,计算公式为:S(n) = O(f(n)).</p>
+<p><strong>一般求时间复杂度指的就是:时间复杂度.</strong></p>
 
       
     </div>
@@ -415,7 +539,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/UIControl/" rel="tag">#UIControl</a>
+            <a href="/tags/算法/" rel="tag">#算法</a>
           
         </div>
       
@@ -424,17 +548,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/04/iOSUITextView官方文档大总结/" rel="next" title="iOSUITextView官方文档大总结">
-                <i class="fa fa-chevron-left"></i> iOSUITextView官方文档大总结
+              <a href="/2016/10/20/数据结构绪论-1/" rel="next" title="数据结构绪论-1">
+                <i class="fa fa-chevron-left"></i> 数据结构绪论-1
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/08/10/iOS-NSObject官方API大总结/" rel="prev" title="iOS-NSObject官方API大总结">
-                iOS-NSObject官方API大总结 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -568,7 +688,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Taget-Action机制浅析"><span class="nav-number">2.</span> <span class="nav-text">Taget-Action机制浅析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#子类化说明"><span class="nav-number">3.</span> <span class="nav-text">子类化说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#属性"><span class="nav-number">4.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Accessing-the-Control’s-Targets-and-Actions"><span class="nav-number">5.</span> <span class="nav-text">Accessing the Control’s Targets and Actions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Triggering-Actions-触发事件"><span class="nav-number">6.</span> <span class="nav-text">Triggering Actions(触发事件)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tracking-Touches-and-Redrawing-Controls-跟踪触摸事件和重画Controls"><span class="nav-number">7.</span> <span class="nav-text">Tracking Touches and Redrawing Controls(跟踪触摸事件和重画Controls)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Constants-常量"><span class="nav-number">8.</span> <span class="nav-text">Constants(常量)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-算法的定义"><span class="nav-number">1.</span> <span class="nav-text">1 算法的定义:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-算法的5个特性"><span class="nav-number">2.</span> <span class="nav-text">2 算法的5个特性:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-算法设计的要求"><span class="nav-number">3.</span> <span class="nav-text">3 算法设计的要求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-算法效率的度量方法分析"><span class="nav-number">4.</span> <span class="nav-text">4 算法效率的度量方法分析:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-算法时间复杂度"><span class="nav-number">5.</span> <span class="nav-text">5 算法时间复杂度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-推到无穷大O阶的方法"><span class="nav-number">6.</span> <span class="nav-text">6 推到无穷大O阶的方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-常见的时间复杂度"><span class="nav-number">7.</span> <span class="nav-text">7 常见的时间复杂度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-算法的平均情况和最坏情况"><span class="nav-number">8.</span> <span class="nav-text">8 算法的平均情况和最坏情况</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9-算法的空间复杂度"><span class="nav-number">9.</span> <span class="nav-text">9 算法的空间复杂度</span></a></li></ol></div>
             
           </div>
         </section>
