@@ -95,7 +95,7 @@
 
 好比是梁山伯与祝英台 罗密欧与朱丽叶,两者是不可分割的关系.">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/639412-2944738968d26463.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2016-10-29T02:48:07.000Z">
+<meta property="og:updated_time" content="2016-10-29T02:52:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法前导篇_2">
 <meta name="twitter:description" content="数据结构和算法的关系:
@@ -360,26 +360,29 @@
 <blockquote>
 <p>前者一般不考虑,一般着重使用后者.</p>
 </blockquote>
-<p>``</p>
-<ul>
-<li><p>(void)sumFenxi<br>{<br>  //算法1</p>
-<p>  int i= 0, sum1 = 0 ,n = 100;  //执行了1次<br>  for (i = 1; i &lt;= n; i++) {</p>
-<pre><code>sum1 = sum1 + 1;          //执行了n+1次
-</code></pre><p>  }<br>  NSLog(@”sum == %d”,sum1);     //执行了1次<br>}</p>
-</li>
-<li><p>(void)sumFenxi2<br>{<br>  //算法2</p>
-<p>  int  sum2 = 0 ,n2 = 100;      //执行了1次<br>  sum2 = (1 + n2) * n2 / 2;      //执行了1次<br>  NSLog(@”sum == %d”,sum2);      //执行了1次<br>}</p>
-</li>
-<li><p>(void)sumFenxi3<br>{<br>  //算法3</p>
-<p>  int i= 0, x = 0 , sum = 0, n = 100;  //执行了1次<br>  for (i = 1; i &lt;= n; i++) {</p>
-<pre><code>for (int j = 0; j&lt;= n ; j++) {
-    x++;
-    sum = sum + x;
-}          //执行了n * n次
-</code></pre><p>  }</p>
-<p>  NSLog(@”sum == %d “,sum); //执行了1次<br>}<br>``</p>
-</li>
-</ul>
+<p>``<br>-(void)sumFenxi<br>{<br>    //算法1</p>
+<pre><code>int i= 0, sum1 = 0 ,n = 100;  //执行了1次
+for (i = 1; i &lt;= n; i++) {
+    sum1 = sum1 + 1;          //执行了n+1次
+}
+NSLog(@&quot;sum == %d&quot;,sum1);     //执行了1次
+</code></pre><p>}</p>
+<p>-(void)sumFenxi2<br>{<br>    //算法2</p>
+<pre><code>int  sum2 = 0 ,n2 = 100;      //执行了1次
+sum2 = (1 + n2) * n2 / 2;      //执行了1次
+NSLog(@&quot;sum == %d&quot;,sum2);      //执行了1次
+</code></pre><p>}</p>
+<p>-(void)sumFenxi3<br>{<br>    //算法3</p>
+<pre><code>int i= 0, x = 0 , sum = 0, n = 100;  //执行了1次
+for (i = 1; i &lt;= n; i++) {
+    for (int j = 0; j&lt;= n ; j++) {
+        x++;
+        sum = sum + x;
+    }          //执行了n * n次
+}
+
+NSLog(@&quot;sum == %d &quot;,sum); //执行了1次
+</code></pre><p>}<br>``</p>
 <p>得出的表格是:</p>
 <table>
 <thead>
