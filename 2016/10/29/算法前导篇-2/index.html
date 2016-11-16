@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>算法前导篇_2 | Lianpeng’s Sky</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="I am on the way to faraway">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="算法前导篇_2 | Lianpeng’s Sky">
+    <meta name="twitter:description" content="I am on the way to faraway">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="算法前导篇_2 | Lianpeng’s Sky">
+    <meta property="og:description" content="I am on the way to faraway">
+
+    
+    <meta name="author" content="xulianpeng">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar-small.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Lianpeng’s Sky" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2016/10/29/算法前导篇-2/"/>
+
+    
+      
+</head>
+
+<body class="home-template no-js">
+    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Lianpeng’s Sky 的主页"><img src="/images/avatar.jpg" width="80" alt="Lianpeng’s Sky logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Lianpeng’s Sky">Lianpeng’s Sky</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">乐观 美好 奋斗</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">I am on the way to faraway</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/favourite">黄金屋</a></li>
+            
+              <li class="navigation__item"><a href="/favourite/time.html">时光机</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/xulianpeng" title="查看我的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-10-29T02:46:45.000Z" class="post-list__meta--date date">2016-10-29</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/算法/">算法</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">算法前导篇_2</h1>
+  </header>
+
+  <section class="post">
+    <p>数据结构和算法的关系:</p>
+<blockquote>
+<p>好比是梁山伯与祝英台 罗密欧与朱丽叶,两者是不可分割的关系.</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="1-算法的定义"><a href="#1-算法的定义" class="headerlink" title="1 算法的定义:"></a><strong>1 算法的定义:</strong></h1><p>解决特定问题的求解步骤的描述,在计算机中表现为指令的有限序列,并且每条指令表示一个或多个操作,每一个操作都完成特定的功能.</p>
+<h1 id="2-算法的5个特性"><a href="#2-算法的5个特性" class="headerlink" title="2 算法的5个特性:"></a><strong>2 算法的5个特性:</strong></h1><p><strong>输入输出:</strong></p>
+<ul>
+<li>具有0个或多个输入,(输入参数可以是0个)</li>
+<li>一定要输出,否则该算法无意义.</li>
+</ul>
+<p><strong>有穷性:</strong></p>
+<p>指算法在执行有限的步骤后,自动结束而不是出现无限循环,并且每一个步骤在可接受的时间内完成.</p>
+<ul>
+<li>步骤有限</li>
+<li>不会无限循环</li>
+<li>每一个步骤完成的时间有限.</li>
+</ul>
+<p><strong>确定性:</strong></p>
+<p>算法的每一个步骤都具有确定的意义</p>
+<ul>
+<li>算法在一定条件下,只有一条执行路径,对比程序图作比较.</li>
+</ul>
+<p><strong>可行性:</strong></p>
+<p>算法的每一个步骤都必须是可行的,即每一步都能够通过执行有限的次数完成.</p>
+<h1 id="3-算法设计的要求"><a href="#3-算法设计的要求" class="headerlink" title="3 算法设计的要求"></a><strong>3 算法设计的要求</strong></h1><p><strong>正确性:</strong><br>至少应该具有输入 输出和加工处理无歧义性,能正确反映问题的需求 能够得到问题的正确答案.</p>
+<blockquote>
+<p>算法程序没有语法错误;</p>
+<p>算法程序对于合法的输入能够产生满足要求的输出结果:</p>
+<p>算法程序对于非法的输入能够给出满足规格说明的结果.</p>
+</blockquote>
+<p>类比实际工作中,接口返回的数据必须有 非真的处理,同样我们在编写代码时,if–else一定要成对出现.</p>
+<p><strong>可读性:</strong></p>
+<p>算法设计的另一目的是为了便于阅读 理解 和交流.</p>
+<blockquote>
+<p>这就是为什么需要代码注释.</p>
+</blockquote>
+<p><strong>健壮性:</strong></p>
+<p>当输入的数据不合法时,算法也能做出相关处理,而不是产生异常或莫名奇妙的结果.</p>
+<p><strong>时间效率高和存储质量低:</strong></p>
+<blockquote>
+<p>时间效率指的是:算法的执行时间.<br>存储需求:算法在执行过程中需要的最大存储空间,包括占用的内存或外部硬盘存储空间.</p>
+</blockquote>
+<h1 id="4-算法效率的度量方法分析"><a href="#4-算法效率的度量方法分析" class="headerlink" title="4 算法效率的度量方法分析:"></a><strong>4 算法效率的度量方法分析:</strong></h1><p>主要分为事后统计方法和事前分析估算方法.</p>
+<blockquote>
+<p>前者一般不考虑,一般着重使用后者.</p>
+</blockquote>
+<p>``<br>-(void)sumFenxi<br>{<br>    //算法1</p>
+<pre><code>int i= 0, sum1 = 0 ,n = 100;  //执行了1次
+for (i = 1; i &lt;= n; i++) {
+    sum1 = sum1 + 1;          //执行了n+1次
+}
+NSLog(@&quot;sum == %d&quot;,sum1);     //执行了1次
+</code></pre><p>}</p>
+<p>-(void)sumFenxi2<br>{<br>    //算法2</p>
+<pre><code>int  sum2 = 0 ,n2 = 100;      //执行了1次
+sum2 = (1 + n2) * n2 / 2;      //执行了1次
+NSLog(@&quot;sum == %d&quot;,sum2);      //执行了1次
+</code></pre><p>}</p>
+<p>-(void)sumFenxi3<br>{<br>    //算法3</p>
+<pre><code>int i= 0, x = 0 , sum = 0, n = 100;  //执行了1次
+for (i = 1; i &lt;= n; i++) {
+    for (int j = 0; j&lt;= n ; j++) {
+        x++;
+        sum = sum + x;
+    }          //执行了n * n次
+}
+
+NSLog(@&quot;sum == %d &quot;,sum); //执行了1次
+</code></pre><p>}<br>``</p>
+<p>得出的表格是:</p>
+<table>
+<thead>
+<tr>
+<th>次数</th>
+<th>算法A(n+1+1)</th>
+<th>算法B(1+1+1)</th>
+<th>算法C(n*n + 1 + 1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>n=1</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>n=2</td>
+<td>4</td>
+<td>3</td>
+<td>6</td>
+</tr>
+<tr>
+<td>n=3</td>
+<td>5</td>
+<td>3</td>
+<td>27</td>
+</tr>
+<tr>
+<td>n=10</td>
+<td>12</td>
+<td>3</td>
+<td>102</td>
+</tr>
+<tr>
+<td>n=100</td>
+<td>102</td>
+<td>3</td>
+<td>10002</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>从而得出<strong>函数的渐进增长</strong>:<br>给定两个函数f(n)和g(n),如果存在一个整数N,使得对于所有的n&gt;N,f(n)总是比g(n)大,那么,我们说f(n)的增长渐进快于g(n).<br>类比数学函数上是,斜率大,则y值增长的越快.</li>
+<li>常数可以忽略掉,即算法A (n),算法B (1),算法C (n*n).</li>
+</ul>
+<p><strong>接下来看下图:</strong></p>
+<table>
+<thead>
+<tr>
+<th>次数</th>
+<th>算法A(4n+8)</th>
+<th>算法A’(n)</th>
+<th>算法C(n<em>n</em>2 + 1 )</th>
+<th>算法C’(n*n)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>n=1</td>
+<td>12</td>
+<td>1</td>
+<td>3</td>
+<td>1</td>
+</tr>
+<tr>
+<td>n=2</td>
+<td>16</td>
+<td>2</td>
+<td>9</td>
+<td>4</td>
+</tr>
+<tr>
+<td>n=3</td>
+<td>20</td>
+<td>3</td>
+<td>19</td>
+<td>9</td>
+</tr>
+<tr>
+<td>n=10</td>
+<td>48</td>
+<td>10</td>
+<td>201</td>
+<td>100</td>
+</tr>
+<tr>
+<td>n=100</td>
+<td>408</td>
+<td>100</td>
+<td>2 0001</td>
+<td>1 0000</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>综上可得:</strong></p>
+<ul>
+<li>判断一个算法的效率时,函数中的常熟和其他次要项尝尝可以忽略不计,而只关注最高阶项的阶数.</li>
+<li>某个算法,随着n的增大,他会越来越优于另一算法,或者越来越差于另一算法.</li>
+</ul>
+</blockquote>
+<h1 id="5-算法时间复杂度"><a href="#5-算法时间复杂度" class="headerlink" title="5 算法时间复杂度"></a><strong>5 算法时间复杂度</strong></h1><p><strong>定义:</strong>在进行算法分析时,语句总的执行次数T(n)是关于问题规模n的函数,进而分析T(n)随n的变化情况并确定T(n)的数量级,算法的时间复杂度,也就是算法的时间量度,记作:T(n) = O(f(n)).表示随问题规模n的增大,算法执行时间的增长率和f(n)的增长率相同,称作算法的渐进时间复杂度,简称为时间复杂度.</p>
+<ul>
+<li><strong>一般随着n的增大,T(n)增长最慢的算法为最优算法.</strong></li>
+<li>之前的3个求和算法的时间复杂度为O(n),O(1),O(n*n).分别称为线性阶,常数阶,平方阶.</li>
+</ul>
+<h1 id="6-推到无穷大O阶的方法"><a href="#6-推到无穷大O阶的方法" class="headerlink" title="6 推到无穷大O阶的方法"></a><strong>6 推到无穷大O阶的方法</strong></h1><ul>
+<li>用常数1取代运行时间中的所有加法常数</li>
+<li>在修改后的运行次数函数中,只保留最高阶项.</li>
+<li>如果最高阶项存在且不是1,则去除与这个项相乘的常数</li>
+<li>最后得到大O阶.</li>
+</ul>
+<h1 id="7-常见的时间复杂度"><a href="#7-常见的时间复杂度" class="headerlink" title="7 常见的时间复杂度"></a><strong>7 常见的时间复杂度</strong></h1><p><img src="http://upload-images.jianshu.io/upload_images/639412-2944738968d26463.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="常见的时间复杂度"></p>
+<h1 id="8-算法的平均情况和最坏情况"><a href="#8-算法的平均情况和最坏情况" class="headerlink" title="8 算法的平均情况和最坏情况"></a><strong>8 算法的平均情况和最坏情况</strong></h1><p>举例说明,在n个随机数字数组里查找某个数字,最好的情况是 取得第一个就是我们要找的,最坏的情况是一直取到最后一个才取到,前者的时间复杂度为O(1),后者的时间复杂度为O(n).而通过我们前面的学习,我们知道这种情况的时间复杂度就是O(n).</p>
+<blockquote>
+<p>平均运行时间是所有情况中最优意义的,因为他是期望运行的.<br>计算所有情况的时间复杂度的平均值为平均时间复杂度<br>计算最坏情况下的时间复杂度为最坏时间复杂度.</p>
+</blockquote>
+<h1 id="9-算法的空间复杂度"><a href="#9-算法的空间复杂度" class="headerlink" title="9 算法的空间复杂度"></a><strong>9 算法的空间复杂度</strong></h1><p><strong>定义:</strong><br>通过计算算法所需的存储空间实现,计算公式为:S(n) = O(f(n)).</p>
+<p><strong>一般求时间复杂度指的就是:时间复杂度.</strong></p>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">最近的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2016/11/16/AF先导篇/" title="AF先导篇">AF先导篇</a></h2>
+                <p class="excerpt">
+                
+                一 AF先导篇iOS 7 和 Mac OS X 10.9 Mavericks 中一个显著的变化就是对 Foundation URL 加载系统的彻底重构。
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2016-11-16T08:20:41.000Z" class="post-list__meta--date date">2016-11-16</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2016/11/16/AF先导篇/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2016/10/20/数据结构绪论-1/" title="数据结构绪论-1">数据结构绪论-1</a></h2>
+                <p class="excerpt">
+                
+                小结美女 我想和你做朋友
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2016-10-20T07:27:20.000Z" class="post-list__meta--date date">2016-10-20</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/数据结构/">数据结构</a>
+</span><a class="btn-border-small" href="/2016/10/20/数据结构绪论-1/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+            
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2016 - 本站由 <a href="/">@Monniya</a> 创建,
+        使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">hexo-theme-new-vno</a> 主题,
+        修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+    </span>
+</footer>
+        </div>
+    </div>
+
+    
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    
+    </script>
+    
+</body>
+</html>

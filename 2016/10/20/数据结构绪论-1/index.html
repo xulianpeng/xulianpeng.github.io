@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>数据结构绪论-1 | Lianpeng’s Sky</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="I am on the way to faraway">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="数据结构绪论-1 | Lianpeng’s Sky">
+    <meta name="twitter:description" content="I am on the way to faraway">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="数据结构绪论-1 | Lianpeng’s Sky">
+    <meta property="og:description" content="I am on the way to faraway">
+
+    
+    <meta name="author" content="xulianpeng">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar-small.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Lianpeng’s Sky" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2016/10/20/数据结构绪论-1/"/>
+
+    
+      
+</head>
+
+<body class="home-template no-js">
+    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Lianpeng’s Sky 的主页"><img src="/images/avatar.jpg" width="80" alt="Lianpeng’s Sky logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Lianpeng’s Sky">Lianpeng’s Sky</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">乐观 美好 奋斗</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">I am on the way to faraway</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/favourite">黄金屋</a></li>
+            
+              <li class="navigation__item"><a href="/favourite/time.html">时光机</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/xulianpeng" title="查看我的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-10-20T07:27:20.000Z" class="post-list__meta--date date">2016-10-20</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/数据结构/">数据结构</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">数据结构绪论-1</h1>
+  </header>
+
+  <section class="post">
+    <h1 id="小结美女-我想和你做朋友"><a href="#小结美女-我想和你做朋友" class="headerlink" title="小结美女 我想和你做朋友"></a>小结美女 我想和你做朋友</h1><a id="more"></a>
+<blockquote>
+<p>走上开发这条不归路也有2年多的时间了,大学的时候数据结构低空飘过,那时候的自己以为这辈子或许都不会再和你见面了,哪知道最终还是要还债啊,那好吧,”小结美女,我们重新认识一下,我是小徐,我想和你做朋友.”</p>
+</blockquote>
+<h1 id="你的-lt-数据结构-gt-怎么学的"><a href="#你的-lt-数据结构-gt-怎么学的" class="headerlink" title="你的&lt;数据结构&gt;怎么学的"></a>你的&lt;数据结构&gt;怎么学的</h1><p>先举个例子,做一个银行客户排队的设计,用数据库设计了一个表,用一个自动递增的整型数字作为客户的编.来一个客户末尾插入一个数字,走一个客户,则把该数字删除.交给领导后,领导说:”你数据结构怎么学的!!!”</p>
+<p>这个处理的方法估计是很多无数据结构基础的程序员的处理方法,那么正确的处理方法是什么呢?</p>
+<p>针对这种实时的排队系统,通常用数据结构中的”队列结构”(虽然我还是对这个没印象)是比较好的,用数组虽然也可以,但是得考虑溢出,又要考虑新增和删除后数据的移动.</p>
+<p>我想这个问题估计能筛选百分之80的菜鸟程序员,好吧,我 也是其中一个!!!</p>
+<h1 id="1-1-数据结构的起源"><a href="#1-1-数据结构的起源" class="headerlink" title="1.1 数据结构的起源"></a>1.1 数据结构的起源</h1><p>早期人们认为计算机就是数值计算工具,说白了就是一个计算器,在中国应该是算盘.但是在当代在现实生活中,我们更多的不是解决数值计算的问题,而是需要一些更科学有效的手段(比如表 树和图等数据结构)的帮助,才能更好的解决处理问题.</p>
+<blockquote>
+<p>数据结构:是一门研究非数值计算的程序设计问题中的操作对象,以及他们之间关系和操作等相关问题的科学.</p>
+</blockquote>
+<h1 id="1-2-基本概念和术语"><a href="#1-2-基本概念和术语" class="headerlink" title="1.2 基本概念和术语"></a>1.2 基本概念和术语</h1><blockquote>
+<p>巧妇难为无米之炊,这里巧妇可以看做是 计算机,那么米 就是数据.</p>
+</blockquote>
+<p><strong>关于数据的了解过程:数据-&gt;数据元素-&gt;数据项-&gt;数据对象</strong></p>
+<p><strong>数据</strong></p>
+<p><strong>定义</strong>:是描述客观事物的符号,是计算机中可以操作的对象,是能被计算机识别,并能输入给计算机处理的符号集合.</p>
+<ul>
+<li><p><strong>数据</strong>不仅仅包括整型 实型等数值类型,也包括字符 声音 图像 视频等非数值对象.</p>
+</li>
+<li><p>对于数值类型数据可以进行数值运算,而对于字符数据类型,就需要进行非数值的处理.而字符 声音 图像 视频等其实可以通过编码的手段变成字符数据来处理的.哈哈哈 大学的数字信号变换貌似就是说的这个问题,然并卵.不过理解起来更容易.</p>
+</li>
+</ul>
+<p><strong>字符等数据的特点</strong>:</p>
+<ul>
+<li>可以输入到计算机.</li>
+<li>能被计算机程序处理.</li>
+</ul>
+<p><strong>数据元素</strong></p>
+<p><strong>定义</strong>:是组成数据的有一定意义的基本单位,在计算机中常作为一个整体处理.<br>比如 人类 中的 张三 李四 等每个个体人都是数据元素,畜类 中的 猪马牛羊等.当然 人类中的 中国人 美国人 印度人等也是.</p>
+<p><strong>数据项</strong></p>
+<p><strong>定义</strong>:一个数据元素可以由多个数据项组成.</p>
+<p>比如 人 其数据项包括 五官等 以及姓名 年龄 性别等</p>
+<ul>
+<li>数据项是数据不可分割的最小单位</li>
+</ul>
+<p><strong>数据对象</strong></p>
+<p><strong>定义</strong>:性质形同的数据元素的集合,是数据的子集.</p>
+<blockquote>
+<p>有点类似OC编程中的对象的理解,一对比,万法归一啊.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>数据结构</th>
+<th>数据元素</th>
+<th>数据对象</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OC</td>
+<td>属性</td>
+<td>对象</td>
+</tr>
+</tbody>
+</table>
+<p><strong>结构</strong></p>
+<p><strong>定义:</strong>关系,比如分子结构.严格来说,结构指的是 各个组成部分相互搭配和排列的方式.<br><strong>在现实世界中,不同的数据元素之间不是独立的,而是存在特定的关系,我们把这些关系称为结构.</strong></p>
+<blockquote>
+<p><strong>数据结构:是相互之间存在一种或多种特定关系的数据元素的集合.</strong></p>
+</blockquote>
+<h1 id="1-3-逻辑结构和物理结构"><a href="#1-3-逻辑结构和物理结构" class="headerlink" title="1.3 逻辑结构和物理结构"></a>1.3 逻辑结构和物理结构</h1><blockquote>
+<p>按照切入点的不同,分为逻辑结构和物理结构</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>–</th>
+<th>逻辑结构</th>
+<th>物理结构</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>定义</td>
+<td>指数据对象中数据元素之间的相互关系</td>
+<td>数据的逻辑结构在计算机中的存储形式.</td>
+</tr>
+<tr>
+<td>分类</td>
+<td>集合结构,线性结构,树形结构,图形结构</td>
+<td>顺序存储结构,链式存储结构</td>
+</tr>
+</tbody>
+</table>
+<p><strong>逻辑结构分类:</strong></p>
+<ul>
+<li>集合结构:集合结构中的数据元素除了同属一个集合外,没有其他关系,各个元素之间是平等的.类比于数学中集合中元素之间的特点.</li>
+<li>线性结构:线性结构中的元素是一对一的.</li>
+<li>树形结构:树形……….之间存在一对多的层次关系.</li>
+<li>图形结构:图形…           …多对多的关系.</li>
+</ul>
+<p><strong>物理结构分类:</strong></p>
+<ul>
+<li>顺序存储结构:是把数据元素存放在地址连续的存储单元里,其数据间的逻辑关系和物理关系是一致的.常见的例子:数组.</li>
+<li>链式存储结构:是把数据元素存放在任意地址的存储单元里,这些存储单元可以是连续的,也可以不是连续的.数据元素的存储关系不能反映其逻辑关系,因此需要一个指针来存储数据元素的地址,这样通过指针就可以找到对应的数据元素的位置.</li>
+</ul>
+<blockquote>
+<p>例子:比如去银行办理业务时,按照顺序存储结构的话,则每个人都排队站好,不插队.但是实际情况是,大家都会先领一个号码,不用排队,随便找个位置坐着,你可以中途离去,等很多情况,这样找个结构始终在变化,找个就是链式存储结构出马的时候,指针就是你取的那个号码,叫到你的号了,你就去办理自己的业务.</p>
+</blockquote>
+<h1 id="1-4-抽象数据类型"><a href="#1-4-抽象数据类型" class="headerlink" title="1.4 抽象数据类型"></a>1.4 抽象数据类型</h1><p><strong>小结:</strong></p>
+<ul>
+<li><strong>抽象数据类型把现实生活中的问题分解为多个规模小且容易处理的问题,然后建立一个计算机能处理的数据模型,并把每个功能模块的实现细节作为一个独立的单元,从而把具体的实现过程隐藏起来.</strong> </li>
+<li><strong>抽象数据结构类型体现了程序设计中问题分解 抽象和信息隐藏的过程.</strong></li>
+</ul>
+<p>为什么把这个放在前面,是因为这个跟之前了解的OC中对象的概念差不多,还是那句话,万法归一.</p>
+<p><strong>数据类型:</strong></p>
+<p>定义:指的是一组性质相同的值的集合及定义在此集合上的一些操作的集合. </p>
+<p><strong>抽象:</strong></p>
+<p>定义:指的是抽取事物具有的普遍性的本质.他是抽出问题的特征而忽略非本质的细节,是对具体事物的一个概括.抽象是一种思考问题的方式,他隐藏了繁杂的细节,只保留了实现目标多必须的信息.</p>
+<p><strong>抽象数据类型:</strong></p>
+<p>是指一个数学模型及定义在该模型上的一组操作.</p>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">最近的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2016/10/29/算法前导篇-2/" title="算法前导篇_2">算法前导篇_2</a></h2>
+                <p class="excerpt">
+                
+                数据结构和算法的关系:
+
+好比是梁山伯与祝英台 罗密欧与朱丽叶,两者是不可分割的关系.
+
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2016-10-29T02:46:45.000Z" class="post-list__meta--date date">2016-10-29</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/算法/">算法</a>
+</span><a class="btn-border-small" href="/2016/10/29/算法前导篇-2/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2016/10/10/iOS-UICollectionView官方API分析/" title="iOS-UICollectionView官方API分析">iOS-UICollectionView官方API分析</a></h2>
+                <p class="excerpt">
+                
+                一 定义
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2016-10-10T08:33:33.000Z" class="post-list__meta--date date">2016-10-10</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/UICollectionView/">UICollectionView</a>
+</span><a class="btn-border-small" href="/2016/10/10/iOS-UICollectionView官方API分析/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+            
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2016 - 本站由 <a href="/">@Monniya</a> 创建,
+        使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">hexo-theme-new-vno</a> 主题,
+        修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+    </span>
+</footer>
+        </div>
+    </div>
+
+    
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    
+    </script>
+    
+</body>
+</html>

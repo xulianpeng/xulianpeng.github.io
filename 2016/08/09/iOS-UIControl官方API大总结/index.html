@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>iOS-UIControl官方API大总结 | Lianpeng’s Sky</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="I am on the way to faraway">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="iOS-UIControl官方API大总结 | Lianpeng’s Sky">
+    <meta name="twitter:description" content="I am on the way to faraway">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="iOS-UIControl官方API大总结 | Lianpeng’s Sky">
+    <meta property="og:description" content="I am on the way to faraway">
+
+    
+    <meta name="author" content="xulianpeng">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar-small.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Lianpeng’s Sky" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2016/08/09/iOS-UIControl官方API大总结/"/>
+
+    
+      
+</head>
+
+<body class="home-template no-js">
+    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Lianpeng’s Sky 的主页"><img src="/images/avatar.jpg" width="80" alt="Lianpeng’s Sky logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Lianpeng’s Sky">Lianpeng’s Sky</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">乐观 美好 奋斗</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">I am on the way to faraway</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/favourite">黄金屋</a></li>
+            
+              <li class="navigation__item"><a href="/favourite/time.html">时光机</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/xulianpeng" title="查看我的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-08-09T06:20:38.000Z" class="post-list__meta--date date">2016-08-09</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/UIControl/">UIControl</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">iOS-UIControl官方API大总结</h1>
+  </header>
+
+  <section class="post">
+    <h1 id="概述"><a href="#概述" class="headerlink" title="概述:"></a>概述:</h1><a id="more"></a>
+<ul>
+<li>类继承关系<br>NSObject-&gt;UIResponder-&gt;UIView-&gt;UIControl-&gt;(UIButton<br>UIDatePicker/UIPageControl/UIRefreshControl/UISegmentedControl/UISlider/UIStepper/UISwitch/UITextField)<br>)</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/639412-6edc26d7ac254515.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="UIView及其子类的继承关系图.png"></p>
+<ul>
+<li>该类常用来对用户的交互做出视觉可看到的行为或意图,常见的有UIButton,UISlider,UITextField等.</li>
+<li>采用Taget-Action的机制来进行人机交互.</li>
+<li>不必直接创建UIControl,其已被子类化各种控件,你直接使用对应的子类即可.</li>
+<li>当然你也可以扩展或者修改其子类的行为.</li>
+<li>UIControl的state决定其外观和交互能力.其state被UIControlState决定.你可以改变state根据APP的需要.</li>
+</ul>
+<h1 id="Taget-Action机制浅析"><a href="#Taget-Action机制浅析" class="headerlink" title="Taget-Action机制浅析"></a>Taget-Action机制浅析</h1><p>代码示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">addTarget:action:forControlEvents:</div></pre></td></tr></table></figure>
+<ul>
+<li>简化了代码(跟踪触摸事件的代码).</li>
+<li>必须指定The UIControlEvents type去触发the method.比如 <code>UIButton</code> -&gt;<code>UIControlEventTouchDown or UIControlEventTouchUpInside</code>,<code>UISlider</code>-&gt;<code>UIControlEventValueChanged</code></li>
+<li>当control的event发生时,control会马上唤醒关联的action methods,action methods被当前的UIApplication Object派发,UIApplication Object会按照响应者链,寻找到合适的对象去处理the message.</li>
+</ul>
+<h1 id="子类化说明"><a href="#子类化说明" class="headerlink" title="子类化说明"></a>子类化说明</h1><p>子类化已存在的controls 和 修改他们的 behavior 使用下面方法:</p>
+<ul>
+<li>Override the <code>sendAction:to:forEvent: method</code> of an existing subclass to observe or modify the dispatching of action methods to the control’s associated targets. You might use this method to modify the dispatch behavior based on the specified object, selector, or event.</li>
+<li>Override the <code>beginTrackingWithTouch:withEvent:</code>, <code>continueTrackingWithTouch:withEvent:</code>, <code>endTrackingWithTouch:withEvent:</code>, and <code>cancelTrackingWithEvent:</code> methods to track touch events occurring in the control. You can use the tracking information to perform additional actions. Always use these methods to track touch events instead of the methods defined by the UIResponder class.</li>
+</ul>
+<h1 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">state   </div><div class="line">enabled  </div><div class="line">selected  </div><div class="line">highlighted  </div><div class="line">contentVerticalAlignment </div><div class="line">contentHorzontalAlignment</div></pre></td></tr></table></figure>
+<h1 id="Accessing-the-Control’s-Targets-and-Actions"><a href="#Accessing-the-Control’s-Targets-and-Actions" class="headerlink" title="Accessing the Control’s Targets and Actions"></a>Accessing the Control’s Targets and Actions</h1><ul>
+<li><code>addTarget:action:forControlEvents:</code><br>Associates a target object and action method with the control.</li>
+<li><code>removeTarget:action:forControlEvents:</code><br>Stops the delivery of events to the specified target object.</li>
+<li><code>actionsForTarget:forControlEvent:</code><br>Returns the actions performed on a target object when the specified event occurs.</li>
+<li><code>allControlEvents</code><br>Returns the events for which the control has associated actions.<br>Beta</li>
+<li><code>allTargets</code><br>Returns all target objects associated with the control.</li>
+</ul>
+<h1 id="Triggering-Actions-触发事件"><a href="#Triggering-Actions-触发事件" class="headerlink" title="Triggering Actions(触发事件)"></a>Triggering Actions(触发事件)</h1><ul>
+<li><code>sendAction:to:forEvent:</code><br>Calls the specified action method.</li>
+<li><code>sendActionsForControlEvents:</code><br>Calls the action methods associated with the specified events.</li>
+</ul>
+<h1 id="Tracking-Touches-and-Redrawing-Controls-跟踪触摸事件和重画Controls"><a href="#Tracking-Touches-and-Redrawing-Controls-跟踪触摸事件和重画Controls" class="headerlink" title="Tracking Touches and Redrawing Controls(跟踪触摸事件和重画Controls)"></a>Tracking Touches and Redrawing Controls(跟踪触摸事件和重画Controls)</h1><ul>
+<li><code>beginTrackingWithTouch:withEvent:</code><br>Called when a touch event enters the control’s bounds.</li>
+<li><code>continueTrackingWithTouch:withEvent:</code><br>Called when a touch event associated with the control is updated.</li>
+<li><code>endTrackingWithTouch:withEvent:</code><br>Called when a touch event associated with the control ends.</li>
+<li><code>cancelTrackingWithEvent:</code><br>Tells the control to cancel tracking related to the given event.</li>
+<li><code>tracking</code><br>A Boolean value indicating whether the control is currently tracking touch events.</li>
+<li><code>touchInside</code><br>A Boolean value indicating whether a tracked touch event is currently inside the control’s bounds.</li>
+</ul>
+<h1 id="Constants-常量"><a href="#Constants-常量" class="headerlink" title="Constants(常量)"></a>Constants(常量)</h1><ul>
+<li><code>UIControlEvents</code><br>Constants describing the types of events possible for controls.</li>
+<li><code>UIControlState</code><br>Constants describing the state of a control.</li>
+<li><code>UIControlContentVerticalAlignment</code><br>Constants for specifying the vertical alignment of content (text and images) in a control.</li>
+<li><code>UIControlContentHorizontalAlignment</code><br>The horizontal alignment of content (text and images) within a control.</li>
+</ul>
+<p>参考:<a href="http://southpeak.github.io/blog/2015/12/13/cocoa-uikit-uicontrol/" target="_blank" rel="external">UIKit: UIControl,这一篇博客写的更浅显易懂</a></p>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">最近的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2016/08/10/iOS-NSObject官方API大总结/" title="iOS-NSObject官方API大总结">iOS-NSObject官方API大总结</a></h2>
+                <p class="excerpt">
+                
+                先看下NSObject继承图.
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2016-08-10T09:17:26.000Z" class="post-list__meta--date date">2016-08-10</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/NSObject/">NSObject</a>
+</span><a class="btn-border-small" href="/2016/08/10/iOS-NSObject官方API大总结/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2016/08/04/iOSUITextView官方文档大总结/" title="iOSUITextView官方文档大总结">iOSUITextView官方文档大总结</a></h2>
+                <p class="excerpt">
+                
+                iOS-UITextView官方文档大总结
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2016-08-04T07:00:36.000Z" class="post-list__meta--date date">2016-08-04</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/UITextview/">UITextview</a>
+</span><a class="btn-border-small" href="/2016/08/04/iOSUITextView官方文档大总结/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+            
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2016 - 本站由 <a href="/">@Monniya</a> 创建,
+        使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">hexo-theme-new-vno</a> 主题,
+        修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+    </span>
+</footer>
+        </div>
+    </div>
+
+    
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    
+    </script>
+    
+</body>
+</html>
