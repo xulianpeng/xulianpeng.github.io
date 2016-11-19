@@ -1,0 +1,789 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/ven/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/ven/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="由setter getter方法引出内存管理相关的一些总结.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="内存管理高级总结">
+<meta property="og:url" content="http://yoursite.com/2016/11/19/内存管理高级总结/index.html">
+<meta property="og:site_name" content="Lianpeng’s Sky">
+<meta property="og:description" content="由setter getter方法引出内存管理相关的一些总结.">
+<meta property="og:updated_time" content="2016-11-19T14:22:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="内存管理高级总结">
+<meta name="twitter:description" content="由setter getter方法引出内存管理相关的一些总结.">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/11/19/内存管理高级总结/"/>
+
+  <title> 内存管理高级总结 | Lianpeng’s Sky </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Lianpeng’s Sky</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">乐观 美好 奋斗</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                内存管理高级总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-19T17:21:13+08:00" content="2016-11-19">
+              2016-11-19
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/11/19/内存管理高级总结/" class="leancloud_visitors" data-flag-title="内存管理高级总结">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>由setter getter方法引出内存管理相关的一些总结.</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="1-首先其MRC-ARC下的写法"><a href="#1-首先其MRC-ARC下的写法" class="headerlink" title="1 首先其MRC ARC下的写法:"></a><strong>1 首先其MRC ARC下的写法:</strong></h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">MRC下:</div><div class="line">@property(nonatomic,copy)NSString *name;</div><div class="line">setter方法:</div><div class="line">- (void)setName:(NSString *)name</div><div class="line">&#123;</div><div class="line">    if (_name != name) &#123;</div><div class="line">        [_name release];</div><div class="line">        _name = [name copy];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">getter方法:</div><div class="line">- (NSString *)name</div><div class="line">&#123;</div><div class="line">    return [[_name copy] autorelease];</div><div class="line">&#125;</div><div class="line"> ARC下:</div><div class="line">setter方法:</div><div class="line">- (void)setName:(NSString *)name</div><div class="line">&#123;</div><div class="line">    if (_name != name) &#123;</div><div class="line">        _name = name;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">getter方法:</div><div class="line">- (NSString *)name</div><div class="line">&#123;</div><div class="line">    return _name;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="2-这样写的原因-从内存管理角度方面思考一下"><a href="#2-这样写的原因-从内存管理角度方面思考一下" class="headerlink" title="2 这样写的原因 从内存管理角度方面思考一下."></a><strong>2 这样写的原因 从内存管理角度方面思考一下.</strong></h1><p>(1), if (_name != name)判断条件目的: 判断原有对象和新对象是否是同一个,如果是同一个就没必要重新赋值了,否则会先release, release后空间就被系统回收了,此时若再retain就会出现野指针问题<br>(2), [_namerelease]操作的目的: 释放保有的之前对象的所有权,若不释放会造成内存泄露,因为前一个对象已经不再使用了<br>(3), _name = [name retain]操作的目的: 让实例变量保有新的对象所有权,retain解决了野指针问题<br>(4) _name = [name copy]此处的copy操作跟上面的retain操作有所不同,copy是把sex指向的空间复制一份(即重新开辟一个空间,大小跟sex指向的空间大小一样,空间里存储的数据都相同),的操作的目的:让实例变量保有新的对象所有权,retain解决了野指针问题,</p>
+<h1 id="3-为什么setter-getter方法不能同时写呢"><a href="#3-为什么setter-getter方法不能同时写呢" class="headerlink" title="3 为什么setter getter方法不能同时写呢"></a><strong>3 为什么setter getter方法不能同时写呢</strong></h1><p>因为property默认生成setter getter方法,同时生成_Var的实例变量,若同时写了这2个方法,等于是告诉系统自己生成这两个方法,但是未使用@syn导致系统会提示不识别该实例变量,若想取消该警告,则需要在.m文件 写 @sy…. = _Var.所以只可写其中一个方法.</p>
+<p>有一种情况可以同时写这两个方法,uitextview 利用类目(+号方法)以及runtime来实现其预留字相关属性的方法时,参考代码.这个时候两者可以同时写.</p>
+<p>待测试 移动到普通的视图控制器试试 是我的写法有问题还是说在这种情况写才可以同时写,还须验证下.</p>
+<h1 id="4-为什么要重写setter方法"><a href="#4-为什么要重写setter方法" class="headerlink" title="4 为什么要重写setter方法"></a><strong>4 为什么要重写setter方法</strong></h1><p>因为一般情况下,系统默认生成的setter方法太简单,不能很好的适应项目的开发,比如在开发tableview时,布局cell时往往把数据模型Model赋值给cell,在cell里面通过重写模型的setter方法来实现数据在cell上的展示.</p>
+<h1 id="5-点语法"><a href="#5-点语法" class="headerlink" title="5 点语法"></a><strong>5 点语法</strong></h1><p>self.  或者 .<br>点语法在=左边是setter方法  右边是 getter方法**</p>
+<h1 id="6-从OC语言特性上分析一下"><a href="#6-从OC语言特性上分析一下" class="headerlink" title="6 从OC语言特性上分析一下"></a><strong>6 从OC语言特性上分析一下</strong></h1><ul>
+<li><p>属性是OC语言的特性,用于封装对象中数据.OC对象通常会把所需要的数据保存为各种<strong>实例变量</strong>.<strong>实例变量</strong>一般通过getter getter方法来访问(存getter/取getter).</p>
+</li>
+<li><p>回忆之前写的代码,使用@property来声明的实例变量有很多种类型,比如基本数据类型 NSString  NSArray NSDictionary 以及Model,还有各种UI控件(常见于cell的布局.)通过今天的总结我们知道了 严格意义上来说 UI控件最好不要通过这个来声明,一般在.m文件通过_Var来声明一个私有UI控件变量.当然当这个UI控件需要在其他类使用到 则需要通过<code>@property(nonatomic,strong)UILabel *label</code>;在.h文件声明,在.m文件通过<code>@property(nonatomic,strong)UILabel *label;</code> 是无法在其他类被识别.</p>
+</li>
+</ul>
+<h1 id="7-由property我们引出-成员变量-实例变量-属性变量-局部变量-全局变量这几个概念"><a href="#7-由property我们引出-成员变量-实例变量-属性变量-局部变量-全局变量这几个概念" class="headerlink" title="7 由property我们引出 成员变量 实例变量 属性变量 局部变量 全局变量这几个概念."></a><strong>7 由property我们引出 成员变量 实例变量 属性变量 局部变量 全局变量这几个概念.</strong></h1><h2 id="成员变量："><a href="#成员变量：" class="headerlink" title="成员变量："></a>成员变量：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@interface MyViewController :UIViewControlle </div><div class="line">&#123;</div><div class="line">    UIButton *yourButton; </div><div class="line">    int count; </div><div class="line">    id data； </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>成员变量用于类内部，无需与外界接触的变量，成员变量默认是protected，一般情况下，非子类对象无法访问</li>
+<li>且因为成员变量不会生成set、get方法，所以外界无法与成员变量接触</li>
+<li>成员变量是定义在｛｝号中的变量，如果变量的数据类型是一个类则称这个<strong>成员变量</strong>为<strong>实例变量</strong>,所以实例变量是成员变量的一种特殊情况</li>
+<li>当实例变量在.m文件设置时,即类似@property(nonatomic,strong)UILabel *label;`在.m文件出现时,该实例变量也是仅在类内部使用的，外部类无法访问该实例变量，这个也就是所谓的类私有变量.</li>
+</ul>
+<h2 id="局部变量："><a href="#局部变量：" class="headerlink" title="局部变量："></a>局部变量：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">-（void）viewDidLoad </div><div class="line">&#123; </div><div class="line">    // 局部变量 </div><div class="line">    NSArray *array = [[NSArray alloc] initWithObject:@“123”,nil]; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>局部变量是根据其生存周期定义的，在源文件中的array，其生命周期是在以“{ }”为界限的代码块中，虽然它的名称与成员变量相同，但不是同一个变量</p>
+<h2 id="属性变量："><a href="#属性变量：" class="headerlink" title="属性变量："></a>属性变量：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@interface MyViewController :UIViewControlle </div><div class="line">@property (nonatomic, strong) UIButton *myButton; </div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>属性变量是用于与其他对象交互的变量。 属性变量的好处就是允许让其他对象访问到该变量（因为属性创建过程中自动产生了set 和get方法）。 当然，你可以设置只读或者可写等，设置方法也可自定义。 现在大家似乎都不怎么喜欢用成员变量来定义类的变量， 都喜欢用属性变量来定义类的变量。把需要与外部接触的变量定义在.h文件中，只在本类中使用的变量定义在.m文件中</p>
+<h2 id="实例变量："><a href="#实例变量：" class="headerlink" title="实例变量："></a>实例变量：</h2><p>实例变量本质上就是成员变量，只是实例是针对类而言， 编译器会自动为你生成以下划线开头的实例变量 _myButton，也会自动为你生成setter，getter方法。 如果.m文件中写了@synthesize myButton，那么生成的实例变量就是myButton；如果没写@synthesize myButton，那么生成的实例变量就是_myButton</p>
+<h2 id="全局变量："><a href="#全局变量：" class="headerlink" title="全局变量："></a>全局变量：</h2><p>定义：在@implementation外定义的变量（在@implementation中定义也是可以但是一般不这么干） </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">举例： </div><div class="line">// 规范的</div><div class="line">static int hu=3;// 全局变量 </div><div class="line">NSString *str1= @&quot;S1ViewController&quot;;// 全局变量 </div><div class="line">@implementation S1ViewController </div><div class="line">@end</div></pre></td></tr></table></figure>
+<h1 id="8-synthesize和-dynamic分别有什么作用？"><a href="#8-synthesize和-dynamic分别有什么作用？" class="headerlink" title="8 @synthesize和@dynamic分别有什么作用？"></a><strong>8 @synthesize和@dynamic分别有什么作用？</strong></h1><ol>
+<li>@property的本质是 _var+setter+getter. (生成一个成员变量+自动合成setter getter方法)</li>
+<li>@property有两个对应的词，一个是 @synthesize，一个是 @dynamic。如果 @synthesize和 @dynamic都没写，那么默认的就是@syntheszie var = _var;</li>
+<li>@synthesize 的语义是如果你没有手动实现 setter 方法和 getter 方法，那么编译器会自动为你加上这两个方法。</li>
+<li>@dynamic 告诉编译器：属性的 setter 与 getter 方法由用户自己实现，不自动生成。（当然对于 readonly 的属性只需提供 getter 即可）。假如一个属性被声明为 @dynamic var，然后你没有提供 @setter方法和 @getter 方法，编译的时候没问题，但是当程序运行到 instance.var = someVar，由于缺 setter 方法会导致程序崩溃；或者当运行到 someVar = var时，由于缺 getter 方法同样会导致崩溃。编译时没问题，运行时才执行相应的方法，这就是所谓的动态绑定。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">@interface ViewController ()</div><div class="line">&#123;</div><div class="line">    NSString *_name;</div><div class="line">    //NSString *name;//此时会提示警告 ,因为成员变量和属性变量的名字一样.</div><div class="line">&#125;</div><div class="line">@property(nonatomic,copy)NSString *name;</div><div class="line">@end</div><div class="line"></div><div class="line">@implementation ViewController</div><div class="line">@synthesize name = _theName;</div><div class="line"></div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line">    // Do any additional setup after loading the view, typically from a nib.</div><div class="line">    </div><div class="line">    </div><div class="line">    _theName = @&quot;12314&quot;;</div><div class="line">    _name = @&quot;mnabdnmabd&quot;;</div><div class="line">    </div><div class="line">    NSLog(@&quot;===%@===%@===%@&quot;,self.name,_name,_theName);</div><div class="line">    //打印结果是===12314===mnabdnmabd===12314</div></pre></td></tr></table></figure>
+<ul>
+<li>这个结果说明 默认生成的成员变量_var 和 self.var 以及 自定义的_var是同一个.</li>
+<li>但是若没有自定义的_var成员变量时,仅仅<code>@property(nonatomic,copy)NSString *name;</code>和<code>@synthesize name = _theName;</code>时 ,只会生成_theName成员变量,_name不识别,但识别self.name.</li>
+<li>@synthesize name = _theName; 是生成另外一个成员变量了.且没有其setter  getter方法.即self.theName不识别.</li>
+</ul>
+<h1 id="9-什么情况下不会autosynthesis（自动合成）？"><a href="#9-什么情况下不会autosynthesis（自动合成）？" class="headerlink" title="9 什么情况下不会autosynthesis（自动合成）？"></a><strong>9 什么情况下不会autosynthesis（自动合成）？</strong></h1><ol>
+<li>同时重写了 setter 和 getter 时</li>
+<li>重写了只读属性的 getter 时</li>
+<li>使用了 @dynamic 时</li>
+<li>在 @protocol 中定义的所有属性</li>
+<li>在 category 中定义的所有属性</li>
+<li>重载的属性,当你在子类中重载了父类中的属性，你必须 使用 @synthesize 来手动合成ivar。</li>
+</ol>
+<h1 id="10-ARC下，不显式指定任何属性关键字时，默认的关键字都有哪些？"><a href="#10-ARC下，不显式指定任何属性关键字时，默认的关键字都有哪些？" class="headerlink" title="10. ARC下，不显式指定任何属性关键字时，默认的关键字都有哪些？"></a><strong>10. ARC下，不显式指定任何属性关键字时，默认的关键字都有哪些？</strong></h1><p>1.<br>对应基本数据类型默认关键字是</p>
+<p>atomic,readwrite,assign</p>
+<p>2.<br>对于普通的 Objective-C 对象</p>
+<p>atomic,readwrite,strong</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.jpg" alt="xulianpeng WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/16/AF先导篇/" rel="next" title="AF先导篇">
+                <i class="fa fa-chevron-left"></i> AF先导篇
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="xulianpeng" />
+          <p class="site-author-name" itemprop="name">xulianpeng</p>
+          <p class="site-description motion-element" itemprop="description">I am on the way to faraway</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xulianpeng" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/5f7143127114" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-首先其MRC-ARC下的写法"><span class="nav-number">1.</span> <span class="nav-text">1 首先其MRC ARC下的写法:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-这样写的原因-从内存管理角度方面思考一下"><span class="nav-number">2.</span> <span class="nav-text">2 这样写的原因 从内存管理角度方面思考一下.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-为什么setter-getter方法不能同时写呢"><span class="nav-number">3.</span> <span class="nav-text">3 为什么setter getter方法不能同时写呢</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-为什么要重写setter方法"><span class="nav-number">4.</span> <span class="nav-text">4 为什么要重写setter方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-点语法"><span class="nav-number">5.</span> <span class="nav-text">5 点语法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-从OC语言特性上分析一下"><span class="nav-number">6.</span> <span class="nav-text">6 从OC语言特性上分析一下</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-由property我们引出-成员变量-实例变量-属性变量-局部变量-全局变量这几个概念"><span class="nav-number">7.</span> <span class="nav-text">7 由property我们引出 成员变量 实例变量 属性变量 局部变量 全局变量这几个概念.</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#成员变量："><span class="nav-number">7.1.</span> <span class="nav-text">成员变量：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#局部变量："><span class="nav-number">7.2.</span> <span class="nav-text">局部变量：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性变量："><span class="nav-number">7.3.</span> <span class="nav-text">属性变量：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例变量："><span class="nav-number">7.4.</span> <span class="nav-text">实例变量：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全局变量："><span class="nav-number">7.5.</span> <span class="nav-text">全局变量：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-synthesize和-dynamic分别有什么作用？"><span class="nav-number">8.</span> <span class="nav-text">8 @synthesize和@dynamic分别有什么作用？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9-什么情况下不会autosynthesis（自动合成）？"><span class="nav-number">9.</span> <span class="nav-text">9 什么情况下不会autosynthesis（自动合成）？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#10-ARC下，不显式指定任何属性关键字时，默认的关键字都有哪些？"><span class="nav-number">10.</span> <span class="nav-text">10. ARC下，不显式指定任何属性关键字时，默认的关键字都有哪些？</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xulianpeng</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/ven/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/ven/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/ven/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/ven/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/ven/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/ven/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("kxIjFcyoMk4rdO3nb3fJvCeq-gzGzoHsz", "eXlDfzJ1LVFxLb2qpYCfUA1l");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
