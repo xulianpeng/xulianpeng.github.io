@@ -85,29 +85,20 @@
 
 
 <meta name="description" content="为什么要使用NSURLSession而不是NSURLConnection
-为什么要用共享的SessionManager/Session，而不是每次都启动一个新的
-
-
-AFNetworking都是目前iOS开发者网络库中的不二选择。Github上2W+的star数足见其流行程度。而从iOS7.0开始，苹果推出了新的网络库继承者NSURLSession后，AFNetworking也毫不犹豫地加入了">
+为什么要用共享的SessionManager/Session，而不是每次都启动一个新的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AF先导篇二">
 <meta property="og:url" content="http://yoursite.com/2016/11/21/AF先导篇二/index.html">
 <meta property="og:site_name" content="Lianpeng’s Sky">
 <meta property="og:description" content="为什么要使用NSURLSession而不是NSURLConnection
-为什么要用共享的SessionManager/Session，而不是每次都启动一个新的
-
-
-AFNetworking都是目前iOS开发者网络库中的不二选择。Github上2W+的star数足见其流行程度。而从iOS7.0开始，苹果推出了新的网络库继承者NSURLSession后，AFNetworking也毫不犹豫地加入了">
+为什么要用共享的SessionManager/Session，而不是每次都启动一个新的">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/639412-c844571401a6a218.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://img.blog.csdn.net/20160702174330929">
-<meta property="og:updated_time" content="2016-11-21T12:26:04.000Z">
+<meta property="og:updated_time" content="2016-11-21T12:32:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AF先导篇二">
 <meta name="twitter:description" content="为什么要使用NSURLSession而不是NSURLConnection
-为什么要用共享的SessionManager/Session，而不是每次都启动一个新的
-
-
-AFNetworking都是目前iOS开发者网络库中的不二选择。Github上2W+的star数足见其流行程度。而从iOS7.0开始，苹果推出了新的网络库继承者NSURLSession后，AFNetworking也毫不犹豫地加入了">
+为什么要用共享的SessionManager/Session，而不是每次都启动一个新的">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/639412-c844571401a6a218.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -323,10 +314,10 @@ AFNetworking都是目前iOS开发者网络库中的不二选择。Github上2W+�
         <blockquote>
 <ol>
 <li>为什么要使用NSURLSession而不是NSURLConnection</li>
-<li>为什么要用共享的SessionManager/Session，而不是每次都启动一个新的</li>
+<li>为什么要用共享的SessionManager/Session，而不是每次都启动一个新的<a id="more"></a>
+<strong>AFNetworking</strong>都是目前iOS开发者网络库中的不二选择。Github上2W+的star数足见其流行程度。而从iOS7.0开始，苹果推出了新的网络库继承者NSURLSession后，AFNetworking也毫不犹豫地加入了对其的支持。3.0+更加只是提供了NSURLSession的支持。</li>
 </ol>
 </blockquote>
-<p><strong>AFNetworking</strong>都是目前iOS开发者网络库中的不二选择。Github上2W+的star数足见其流行程度。而从iOS7.0开始，苹果推出了新的网络库继承者NSURLSession后，AFNetworking也毫不犹豫地加入了对其的支持。3.0+更加只是提供了NSURLSession的支持。</p>
 <p>我们使用AFNetworking的时候，可能会有很多的朋友都会采用以下的写法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];</div><div class="line">sessionManager.requestSerializer     = [AFHTTPRequestSerializer serializer];</div><div class="line">sessionManager.responseSerializer    = [AFHTTPResponseSerializer serializer];</div><div class="line">[sessionManager GET:urlString</div><div class="line">             parameters:parameters</div><div class="line">               progress:progressBlock</div><div class="line">                success:successHandler</div><div class="line">                failure:failureHandler];</div></pre></td></tr></table></figure>
 <p>大概可以描述一下这个过程，每次开启一个网络请求时，首先新建一个AFHTTPSessionManager，然后将相关的requestSerializer和reponseSerializer赋值；最后发起相应的GET/POST等请求。</p>

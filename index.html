@@ -310,58 +310,15 @@
 
       
         
-          
-            <blockquote>
+          <blockquote>
 <ol>
 <li>为什么要使用NSURLSession而不是NSURLConnection</li>
-<li>为什么要用共享的SessionManager/Session，而不是每次都启动一个新的</li>
-</ol>
-</blockquote>
-<p><strong>AFNetworking</strong>都是目前iOS开发者网络库中的不二选择。Github上2W+的star数足见其流行程度。而从iOS7.0开始，苹果推出了新的网络库继承者NSURLSession后，AFNetworking也毫不犹豫地加入了对其的支持。3.0+更加只是提供了NSURLSession的支持。</p>
-<p>我们使用AFNetworking的时候，可能会有很多的朋友都会采用以下的写法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];</div><div class="line">sessionManager.requestSerializer     = [AFHTTPRequestSerializer serializer];</div><div class="line">sessionManager.responseSerializer    = [AFHTTPResponseSerializer serializer];</div><div class="line">[sessionManager GET:urlString</div><div class="line">             parameters:parameters</div><div class="line">               progress:progressBlock</div><div class="line">                success:successHandler</div><div class="line">                failure:failureHandler];</div></pre></td></tr></table></figure>
-<p>大概可以描述一下这个过程，每次开启一个网络请求时，首先新建一个AFHTTPSessionManager，然后将相关的requestSerializer和reponseSerializer赋值；最后发起相应的GET/POST等请求。</p>
-<p>而如果是直接采用NSURLSession来请求网络呢，我们则经常会采用以下的写法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">NSURLSession *session =  [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]</div><div class="line">                delegate:nil</div><div class="line">           delegateQueue:[NSOperationQueue mainQueue]];</div><div class="line">       </div><div class="line">NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request</div><div class="line">      completionHandler:completionHandler];</div><div class="line">       </div><div class="line">[dataTask resume];</div></pre></td></tr></table></figure>
-<p>这个过程其实和上面的基本一致。新建一个Session，然后新建task，激活task，完成网络请求。</p>
-<p>那么现在问题来了。</p>
-<ul>
-<li>为什么每次都需要新建一个SessionManager/Session？</li>
-<li>如果在多个Task请求的情况下，如果采取一个共享的SessionManager/Session是否可行？</li>
-<li>如果可行，与之前每次新建SessionManager/Session相比，孰优孰劣？</li>
-</ul>
-<p>在之前的开发过程的时候,更多的是将其作为一个工具使用,现在要考虑为什么,为什么要把网络层抽出来,除了减少耦合,减少一些不必要的代码重复,还有一些其他原因.</p>
-<h1 id="原因一"><a href="#原因一" class="headerlink" title="原因一:"></a><strong>原因一:</strong></h1><p><strong>HTTP/2</strong>, 2015年5月RFC 7540正式发表的下一代HTTP协议，是1999年来HTTP 1.1发布后的首个更新。相对于前一个版本，HTTP /2以快著称.根据2015的WWDC Session711，我们知道iOS9+，NSURLSession开始正式支持HTTP /2，也就意味着你的网络连接速度也可以得到差不多几倍的提升。</p>
-<h1 id="原因二"><a href="#原因二" class="headerlink" title="原因二:"></a><strong>原因二:</strong></h1><p>为什么要尽量共享Session，而不是每次新建Session?</p>
-<ul>
-<li><p>在回答这个问题以前，我们先来聊聊网络的通讯协议。我们也都知道，HTTP协议是基于TCP协议的。所以在每次的HTTP请求之前，客户端和服务器端，都先需要经过TCP连接的三次握手，即每次请求之前，网络的数据都已经在客户端和服务器端之间来回了三次.<strong>即每次HTTP的请求，都需要先经过TCP的连接，然后才开始HTTP的请求.</strong> 那么，为了让我们的请求更快，避免每次都产生一个TCP三次握手，成了一个优化的选项。</p>
-</li>
-<li><p>于是在HTTP 1.1中，出现了Connection: keep-alive这个选项。这个优化选项，可以使得客户端和服务器端复用一个TCP连接，从而减小每次的网络请求时间。</p>
-</li>
-<li>共享的Session将会复用TCP的连接,加速了整个网络的请求时间.而每次都新建Session的操作将导致每次的网络请求都开启一个TCP的三次握手。</li>
-</ul>
-<p>这些原因也是我们为什么把把网络请求独立出来,作为一个工具类.</p>
-<h1 id="AF3-0源码组成"><a href="#AF3-0源码组成" class="headerlink" title="AF3.0源码组成"></a>AF3.0源码组成</h1><p><img src="http://upload-images.jianshu.io/upload_images/639412-c844571401a6a218.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="AF架构.png"></p>
-<p>如图所示,AF已经舍弃对NSURLConnection的支持,开始全面拥抱NSURLSession.</p>
-<p>除去一些支持文件,基本分为5个模块:</p>
-<ul>
-<li>网络通信模块</li>
-<li>网络状态监听模块</li>
-<li>网络通信安全策略模块</li>
-<li>网络通信信息序列化和反序列化模块</li>
-<li>对于UIKit库的支持比如uibutton  uiimage</li>
-</ul>
-<p>当然核心类是<strong>AFURLSessionManager</strong>,其余几个均是配合其完成网络通信.<strong>AFHTTPSessionManager</strong>是其子类协议做了优化,针对HTTP.五个模块的关系如下:<br><img src="http://img.blog.csdn.net/20160702174330929" alt=""></p>
-<h1 id="我们的源码解析之路如下所示"><a href="#我们的源码解析之路如下所示" class="headerlink" title="我们的源码解析之路如下所示:"></a><strong>我们的源码解析之路如下所示:</strong></h1><ul>
-<li>HTTP网络通信核心AFHTTPSessionManager分析 </li>
-<li>网络数据的装配解析员AFURLResponseSerialization分析 </li>
-<li>网络状态监测员AFNetworkReachabilityManager分析 </li>
-<li>网络数据的组装与解AFURLRequestSerialization/AFURLResponseSerialization 分析 </li>
-<li>网络安全策略 AFSecurityPolicy分析 </li>
-<li>AF提供的工具包AF UIKit的功能类分析 </li>
-</ul>
-
-          
+<li>为什么要用共享的SessionManager/Session，而不是每次都启动一个新的
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/21/AF先导篇二/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
