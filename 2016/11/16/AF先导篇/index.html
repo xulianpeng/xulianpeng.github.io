@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/11/16/AF先导篇/index.html">
 <meta property="og:site_name" content="Lianpeng’s Sky">
 <meta property="og:description" content="一 AF先导篇iOS 7 和 Mac OS X 10.9 Mavericks 中一个显著的变化就是对 Foundation URL 加载系统的彻底重构。">
-<meta property="og:updated_time" content="2016-11-16T08:22:39.000Z">
+<meta property="og:updated_time" content="2016-11-21T12:09:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AF先导篇">
 <meta name="twitter:description" content="一 AF先导篇iOS 7 和 Mac OS X 10.9 Mavericks 中一个显著的变化就是对 Foundation URL 加载系统的彻底重构。">
@@ -307,8 +307,7 @@
       
         <h1 id="一-AF先导篇"><a href="#一-AF先导篇" class="headerlink" title="一 AF先导篇"></a>一 AF先导篇</h1><p><strong>iOS 7 和 Mac OS X 10.9 Mavericks 中一个显著的变化就是对 Foundation URL 加载系统的彻底重构。</strong></p>
 <a id="more"></a>
-<p>现在已经有人在深入苹果的网络层基础架构的地方做研究了，所以我想是时候来分享一些对于我对于这些新的 API 的看法和心得了，新的 API 将如何影响我们编写程序，以及它们对于 API 设计理念的影响。</p>
-<p><strong>NSURLConnection</strong> 作为 Core Foundation / CFNetwork 框架的 API 之上的一个抽象，在 2003 年，随着第一版的 Safari 的发布就发布了。</p>
+<h2 id="首先了解下NSURLConnection的使用原理"><a href="#首先了解下NSURLConnection的使用原理" class="headerlink" title="首先了解下NSURLConnection的使用原理:"></a><strong>首先了解下NSURLConnection的使用原理:</strong></h2><p><strong>NSURLConnection</strong> 作为 Core Foundation / CFNetwork 框架的 API 之上的一个抽象，在 2003 年，随着第一版的 Safari 的发布就发布了。</p>
 <p><strong>NSURLConnection</strong> 这个名字，实际上是指代的 Foundation 框架的 URL 加载系统中一系列有关联的组件：<strong>NSURLRequest、NSURLResponse、NSURLProtocol、 NSURLCache、 NSHTTPCookieStorage、NSURLCredentialStorage 以及同名类 NSURLConnection</strong>。</p>
 <p><strong>NSURLRequest</strong> 被传递给 <strong>NSURLConnection</strong>。被委托对象（遵守以前的非正式协议 <nsurlconnectiondelegate> 和 <nsurlconnectiondatadelegate>）异步地返回一个 <strong>NSURLResponse</strong> 以及包含服务器返回信息的 <strong>NSData</strong>。</nsurlconnectiondatadelegate></nsurlconnectiondelegate></p>
 <ul>
@@ -325,17 +324,16 @@
 <p>和 NSURLConnection 一样，NSURLSession 指的也不仅是同名类 NSURLSession，还包括一系列相互关联的类。NSURLSession 包括了与之前相同的组件，分别为:</p>
 <ul>
 <li>NSURLRequest 与 NSURLCache，</li>
-<li><p>把 NSURLConnection 替换成了 NSURLSession、NSURLSessionConfiguration 以及 NSURLSessionTask 的 3 个子类：NSURLSessionDataTask，NSURLSessionUploadTask，NSURLSessionDownloadTask。</p>
-</li>
-<li><p>与 NSURLConnection 相比，NSURLsession 最直接的改进就是可以配置每个 session 的缓存，协议，cookie，以及证书策略（credential policy），甚至跨程序共享这些信息。</p>
-</li>
+<li>把 NSURLConnection 替换成了 NSURLSession、NSURLSessionConfiguration 以及 NSURLSessionTask 的 3 个子类：NSURLSessionDataTask，NSURLSessionUploadTask，NSURLSessionDownloadTask。</li>
+</ul>
+<h2 id="优势"><a href="#优势" class="headerlink" title="优势:"></a><strong>优势:</strong></h2><ul>
+<li>与 NSURLConnection 相比，NSURLsession 最直接的改进就是可以配置每个 session 的缓存，协议，cookie，以及证书策略（credential policy），甚至跨程序共享这些信息。</li>
 <li>这将允许程序和网络基础框架之间相互独立，不会发生干扰。</li>
 <li>每个 NSURLSession 对象都由一个 NSURLSessionConfiguration 对象来进行初始化，后者指定了刚才提到的那些策略以及一些用来增强移动设备上性能的新选项。</li>
 <li>NSURLSession 中另一大块就是 session task。它负责处理数据的加载以及文件和数据在客户端与服务端之间的上传和下载。NSURLSessionTask 与 NSURLConnection 最大的相似之处在于它也负责数据的加载，最大的不同之处在于所有的 task 共享其创造者 NSURLSession 这一公共委托者（common delegate）。</li>
 </ul>
 <p>#<strong>NSURLSessionTask</strong><br>我们先来深入探讨 task，过后再来讨论 NSURLSessionConfiguration。</p>
 <h2 id="NSURLSessionTask"><a href="#NSURLSessionTask" class="headerlink" title="NSURLSessionTask"></a><strong>NSURLSessionTask</strong></h2><p>NSURLsessionTask 是一个抽象类，其下有 3 个实体子类可以直接使用：NSURLSessionDataTask、NSURLSessionUploadTask、NSURLSessionDownloadTask。这 3 个子类封装了现代程序三个最基本的网络任务：获取数据，比如 JSON 或者 XML，上传文件和下载文件。</p>
-<p>![]</p>
 <ul>
 <li>当一个 NSURLSessionDataTask 完成时，它会带有相关联的数据，</li>
 <li>当一个 NSURLSessionDownloadTask 任务结束时，它会带回已下载文件的一个临时的文件路径。</li>
@@ -365,7 +363,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">NSURL *URL = [NSURL URLWithString:@&quot;http://example.com/file.zip&quot;];</div><div class="line">NSURLRequest *request = [NSURLRequest requestWithURL:URL];</div><div class="line"></div><div class="line">NSURLSession *session = [NSURLSession sharedSession];</div><div class="line">NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithRequest:request</div><div class="line">                                                        completionHandler:</div><div class="line">   ^(NSURL *location, NSURLResponse *response, NSError *error) &#123;</div><div class="line">       NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];</div><div class="line">       NSURL *documentsDirectoryURL = [NSURL fileURLWithPath:documentsPath];</div><div class="line">       NSURL *newFileLocation = [documentsDirectoryURL URLByAppendingPathComponent:[[response URL] lastPathComponent]];</div><div class="line">       [[NSFileManager defaultManager] copyItemAtURL:location toURL:newFileLocation error:nil];</div><div class="line">   &#125;];</div><div class="line"></div><div class="line">[downloadTask resume];</div></pre></td></tr></table></figure>
 <p>编者注 原文中这块代码以及上文的表述中存有一些问题，详见这个 issue，本文已进行更正，如果您有不同意见，欢迎在 Github 上给我们反馈。<br>NSURLSession 与 NSURLConnection 的 delegate 方法<br>总体而言，NSURLSession 的 delegate 方法是 NSURLConnection 的演化的十年中对于 ad-hoc 模式的一个显著改善。您可以查看这个映射表来进行一个完整的概览。</p>
 <p>以下是一些具体的观察：</p>
-<p><strong>NSURLSession 既拥有 seesion 的 delegate 方法，又拥有 task 的 delegate 方法用来处理鉴权查询。</strong></p>
+<h2 id="优势2"><a href="#优势2" class="headerlink" title="优势2:"></a><strong>优势2:</strong></h2><p><strong>NSURLSession 既拥有 seesion 的 delegate 方法，又拥有 task 的 delegate 方法用来处理鉴权查询。</strong></p>
 <ul>
 <li>session 的 delegate 方法处理连接层的问题，诸如服务器信任，客户端证书的评估，NTLM 和 Kerberos 协议这类问题，</li>
 <li><p>而 task 的 delegate 则处理以网络请求为基础的问题，如 Basic，Digest，以及代理身份验证（Proxy authentication）等。</p>
@@ -538,7 +536,7 @@ configuration.HTTPAdditionalHeaders = @{@&quot;Accept&quot;: @&quot;application/
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -604,7 +602,7 @@ configuration.HTTPAdditionalHeaders = @{@&quot;Accept&quot;: @&quot;application/
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一-AF先导篇"><span class="nav-number">1.</span> <span class="nav-text">一 AF先导篇</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NSURLSession"><span class="nav-number">2.</span> <span class="nav-text">NSURLSession</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#NSURLSessionTask"><span class="nav-number">2.1.</span> <span class="nav-text">NSURLSessionTask</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NSURLSessionTask-的工厂方法"><span class="nav-number">3.</span> <span class="nav-text">NSURLSessionTask 的工厂方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NSURLSessionConfiguration"><span class="nav-number">4.</span> <span class="nav-text">NSURLSessionConfiguration</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置属性"><span class="nav-number">5.</span> <span class="nav-text">配置属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本配置"><span class="nav-number">5.0.1.</span> <span class="nav-text">基本配置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结论"><span class="nav-number">6.</span> <span class="nav-text">结论</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一-AF先导篇"><span class="nav-number">1.</span> <span class="nav-text">一 AF先导篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#首先了解下NSURLConnection的使用原理"><span class="nav-number">1.1.</span> <span class="nav-text">首先了解下NSURLConnection的使用原理:</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NSURLSession"><span class="nav-number">2.</span> <span class="nav-text">NSURLSession</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#优势"><span class="nav-number">2.1.</span> <span class="nav-text">优势:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NSURLSessionTask"><span class="nav-number">2.2.</span> <span class="nav-text">NSURLSessionTask</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NSURLSessionTask-的工厂方法"><span class="nav-number">3.</span> <span class="nav-text">NSURLSessionTask 的工厂方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#优势2"><span class="nav-number">3.1.</span> <span class="nav-text">优势2:</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NSURLSessionConfiguration"><span class="nav-number">4.</span> <span class="nav-text">NSURLSessionConfiguration</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置属性"><span class="nav-number">5.</span> <span class="nav-text">配置属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本配置"><span class="nav-number">5.0.1.</span> <span class="nav-text">基本配置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结论"><span class="nav-number">6.</span> <span class="nav-text">结论</span></a></li></ol></div>
             
           </div>
         </section>
