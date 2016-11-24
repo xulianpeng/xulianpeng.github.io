@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="UIControl," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -84,18 +84,16 @@
 
 
 
-<meta name="description" content="概述:">
+<meta name="description" content="一 查找概论:当今时代,在互联网上查找信息是家常便饭,所有这些需要被查的数据所在的集合,我们给他一个统称 叫 查找表.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS-UIControl官方API大总结">
-<meta property="og:url" content="http://yoursite.com/2016/08/09/iOS-UIControl官方API大总结/index.html">
+<meta property="og:title" content="数据结构-查找">
+<meta property="og:url" content="http://yoursite.com/2016/11/24/数据结构-查找/index.html">
 <meta property="og:site_name" content="Lianpeng’s Sky">
-<meta property="og:description" content="概述:">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/639412-6edc26d7ac254515.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2016-08-16T02:58:58.000Z">
+<meta property="og:description" content="一 查找概论:当今时代,在互联网上查找信息是家常便饭,所有这些需要被查的数据所在的集合,我们给他一个统称 叫 查找表.">
+<meta property="og:updated_time" content="2016-11-24T00:39:29.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS-UIControl官方API大总结">
-<meta name="twitter:description" content="概述:">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/639412-6edc26d7ac254515.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="数据结构-查找">
+<meta name="twitter:description" content="一 查找概论:当今时代,在互联网上查找信息是家常便饭,所有这些需要被查的数据所在的集合,我们给他一个统称 叫 查找表.">
 
 
 
@@ -116,9 +114,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/08/09/iOS-UIControl官方API大总结/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/11/24/数据结构-查找/"/>
 
-  <title> iOS-UIControl官方API大总结 | Lianpeng’s Sky </title>
+  <title> 数据结构-查找 | Lianpeng’s Sky </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -258,7 +256,7 @@
             
             
               
-                iOS-UIControl官方API大总结
+                数据结构-查找
               
             
           </h1>
@@ -270,30 +268,11 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-09T14:20:38+08:00" content="2016-08-09">
-              2016-08-09
+            <time itemprop="dateCreated" datetime="2016-11-24T08:38:40+08:00" content="2016-11-24">
+              2016-11-24
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/UI/" itemprop="url" rel="index">
-                    <span itemprop="name">UI</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
@@ -304,7 +283,7 @@
 
           
           
-             <span id="/2016/08/09/iOS-UIControl官方API大总结/" class="leancloud_visitors" data-flag-title="iOS-UIControl官方API大总结">
+             <span id="/2016/11/24/数据结构-查找/" class="leancloud_visitors" data-flag-title="数据结构-查找">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -326,57 +305,82 @@
       
 
       
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述:"></a>概述:</h1><a id="more"></a>
+        <h1 id="一-查找概论"><a href="#一-查找概论" class="headerlink" title="一 查找概论:"></a>一 <strong>查找概论:</strong></h1><p>当今时代,在互联网上查找信息是家常便饭,所有这些需要被查的数据所在的集合,我们给他一个统称 叫 <strong>查找表</strong>.</p>
+<a id="more"></a>
+<p><strong>查找表定义:</strong> 查找表是由同一类型的数据元素或记录构成的集合.</p>
+<p><strong>关键字:</strong><br>树数据元素中某个数据项的值,又称为键值,或关键码.</p>
 <ul>
-<li>类继承关系<br>NSObject-&gt;UIResponder-&gt;UIView-&gt;UIControl-&gt;(UIButton<br>UIDatePicker/UIPageControl/UIRefreshControl/UISegmentedControl/UISlider/UIStepper/UISwitch/UITextField)<br>)</li>
+<li>若此关键字可以唯一的标识一个记录,则称此关键字为主关键字或主关键码.即对不同的记录,其主关键字均不相同.</li>
+<li>对于那些 可以识别多个数据元素的关键字,我们称为次关键字,或次关键码</li>
 </ul>
-<p><img src="http://upload-images.jianshu.io/upload_images/639412-6edc26d7ac254515.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="UIView及其子类的继承关系图.png"></p>
+<p><strong>查找:</strong><br>就是根据给定的某个值,在查找表中确定一个其关键字等于给定值的数据元素或记录.</p>
+<p><strong>若查找不成功,查找的结果可给出一个”空”记录或者”空指针”</strong>.</p>
+<p>查找表按照操作方式分为2种:<strong>静态表查找</strong>和<strong>动态表查找</strong>.</p>
+<p><strong>静态表查找:(只做查找操作的查找表)</strong></p>
 <ul>
-<li>该类常用来对用户的交互做出视觉可看到的行为或意图,常见的有UIButton,UISlider,UITextField等.</li>
-<li>采用Taget-Action的机制来进行人机交互.</li>
-<li>不必直接创建UIControl,其已被子类化各种控件,你直接使用对应的子类即可.</li>
-<li>当然你也可以扩展或者修改其子类的行为.</li>
-<li>UIControl的state决定其外观和交互能力.其state被UIControlState决定.你可以改变state根据APP的需要.</li>
+<li>查询某个”特定的”数据元素是否在查找表中</li>
+<li>检索某个”特定的”数据元素和各种属性.</li>
 </ul>
-<h1 id="Taget-Action机制浅析"><a href="#Taget-Action机制浅析" class="headerlink" title="Taget-Action机制浅析"></a>Taget-Action机制浅析</h1><p>代码示例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">addTarget:action:forControlEvents:</div></pre></td></tr></table></figure>
+<p><strong>动态表查找:(在查找过程中同时插入查找表中不存在的数据元素,或者从查找表中傻女胡已经存在的某个数据元素)</strong></p>
 <ul>
-<li>简化了代码(跟踪触摸事件的代码).</li>
-<li>必须指定The UIControlEvents type去触发the method.比如 <code>UIButton</code> -&gt;<code>UIControlEventTouchDown or UIControlEventTouchUpInside</code>,<code>UISlider</code>-&gt;<code>UIControlEventValueChanged</code></li>
-<li>当control的event发生时,control会马上唤醒关联的action methods,action methods被当前的UIApplication Object派发,UIApplication Object会按照响应者链,寻找到合适的对象去处理the message.</li>
+<li>查找时插入数据元素</li>
+<li>查找时删除数据元素</li>
 </ul>
-<h1 id="子类化说明"><a href="#子类化说明" class="headerlink" title="子类化说明"></a>子类化说明</h1><p>子类化已存在的controls 和 修改他们的 behavior 使用下面方法:</p>
+<p>为了提高查找的效率,我们需要专门为查找操作设置数据结构,这种面向查找操作的数据结构称为查找结构.</p>
+<p><strong>从逻辑上来说,查找所基于的数据结构是集合,集合中的记录之间没有本质关系.但为了提高查找性能,我们就不得不改变数据元素之间的关系,在存储时可以将查找集合组织成 表 或 树等结构.</strong></p>
 <ul>
-<li>Override the <code>sendAction:to:forEvent: method</code> of an existing subclass to observe or modify the dispatching of action methods to the control’s associated targets. You might use this method to modify the dispatch behavior based on the specified object, selector, or event.</li>
-<li>Override the <code>beginTrackingWithTouch:withEvent:</code>, <code>continueTrackingWithTouch:withEvent:</code>, <code>endTrackingWithTouch:withEvent:</code>, and <code>cancelTrackingWithEvent:</code> methods to track touch events occurring in the control. You can use the tracking information to perform additional actions. Always use these methods to track touch events instead of the methods defined by the UIResponder class.</li>
+<li>对于静态查找表来说,我们一般使用线性表结构来组织数据,这样可以使用顺序查找算法,如果在对主关键字排序,则可以使用折半查找等算法进行高效地查找.</li>
+<li>对于动态查找表,则会复杂一些,可以考虑二叉排序树的查找技术.</li>
 </ul>
-<h1 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">state   </div><div class="line">enabled  </div><div class="line">selected  </div><div class="line">highlighted  </div><div class="line">contentVerticalAlignment </div><div class="line">contentHorzontalAlignment</div></pre></td></tr></table></figure>
-<h1 id="Accessing-the-Control’s-Targets-and-Actions"><a href="#Accessing-the-Control’s-Targets-and-Actions" class="headerlink" title="Accessing the Control’s Targets and Actions"></a>Accessing the Control’s Targets and Actions</h1><ul>
-<li><code>addTarget:action:forControlEvents:</code><br>Associates a target object and action method with the control.</li>
-<li><code>removeTarget:action:forControlEvents:</code><br>Stops the delivery of events to the specified target object.</li>
-<li><code>actionsForTarget:forControlEvent:</code><br>Returns the actions performed on a target object when the specified event occurs.</li>
-<li><code>allControlEvents</code><br>Returns the events for which the control has associated actions.<br>Beta</li>
-<li><code>allTargets</code><br>Returns all target objects associated with the control.</li>
+<h1 id="二-顺序表查找"><a href="#二-顺序表查找" class="headerlink" title="二 顺序表查找"></a>二 <strong>顺序表查找</strong></h1><blockquote>
+<p>例子:一堆杂乱的书堆中,查找某一本书,如果将这些书的集合排列整齐,这样就构成一个线性表.</p>
+</blockquote>
+<p><strong>顺序查找:</strong>又叫线性查找,是最基本的查找技术,他的查找过程是:从表中第一个(或最后一个)记录开始,逐个进行记录的关键字个给定值比较,若某个关键字和给定值相等,则查找成功,如果直到最后一个(或第一个)记录,其关键字和给定值比较都不等时,则表中没有所查找的记录,查找不成功.</p>
+<h1 id="三-有序表查找"><a href="#三-有序表查找" class="headerlink" title="三 有序表查找"></a>三 <strong>有序表查找</strong></h1><blockquote>
+<p>接着一中的开篇例子,如果对书进行排序,比如书名拼音排序,则查找的效率会更高.</p>
+</blockquote>
+<p><strong>1 折半查找:</strong>又称为<strong>二分查找</strong></p>
+<blockquote>
+<p>引子:在酒桌上一个小游戏,在1-100之间的自然数,两人之间,一人在心中任意记一个数,另一人猜同时可以问记数的那个人其给出的数相对正确的数是大了还是小了,在7次内猜出该数,则成功,否则失败,普通人一想,怎么可能,100个数,100中可能,但是若使用折半查找则完胜.</p>
+</blockquote>
+<p><strong>定义:</strong>在有序表中,取中间记录作为比较对象,若给定值与中间记录的关键字相等,则查找成功,否则若给定值小于中间记录,则在中间记录的左半区域继续折半查找;若给定值大于中间记录,则在中间记录的右半区域继续折半查找;不断重复这些操作,直到查找成功或者查找失败(无此记录).</p>
+<p><strong>2 插值查找:</strong></p>
+<blockquote>
+<p>为什么一定要折半查找而不是折四分之一呢或者更多呢?比如当你使用牛津词典查阅单词时,比如”apple”,你肯定不会傻乎乎的折半查找,而是有目的的查阅.</p>
+<p>再比如取值范围为1-100000,之间100个元素从小到大均匀分布的数组,查找5,我们肯定也不会折半查找,肯定是从数组下标较小的开始查找.</p>
+</blockquote>
+<p><strong>结论:折半查找还是有优化的空间.</strong></p>
+<p>折半查找中有这样的等式:</p>
+<p>算法科学家改进后为:</p>
+<p>这个就是<strong>插值插值</strong>,根据要查找的关键字Key与查找表中的最大值 最小值的关键字比较后的查找方法,其核心就在于插值的计算公式:<strong>(key-a[low])/(a[high]-a[low])</strong>.</p>
+<p><strong>3 裴波那契查找:</strong></p>
+<p>涉及到裴波那契数列,暂时不做研究,这3种查找不同的是分割点的选择不同.</p>
+<h1 id="四-线性索引查找"><a href="#四-线性索引查找" class="headerlink" title="四 线性索引查找"></a>四 <strong>线性索引查找</strong></h1><blockquote>
+<p>引子:前面都是有序查找,但事实上很多数据都是增长很快的,比如大型论坛的帖子和回复总数,每天都;是成百上千万条,服务器的日志信息记录也可能是海量的数据,要保证记录全部是按照当中的某个关键字有序,其时间代价是非常高昂的,所以这种数据都是按先后顺序存储的.对于这样的查找表,我们怎么快速查找到需要的数据呢?</p>
+</blockquote>
+<p><strong>办法就是 “索引”.</strong></p>
+<p>数据结构的最终目的就是提高数据的处理速度.索引就是为了加快查找速度而设计的一种数据结构.</p>
+<p><strong>索引就是把一个关键字与他对应的记录相关联的过程,一个索引由若干个索引项构成.每个索引至少应包含关键字和其对应的记录在存储器中位置等信息.</strong></p>
+<p><strong>索引技术是组织大型数据库以及磁盘文件的一种重要技术.</strong></p>
+<p>索引按照结构可以分为:<strong>线性索引 树形索引 多级索引</strong>.</p>
+<p><strong>线性索引:将索引项集合组织为线性结构,也称为索引表.</strong>我们重点介绍:<strong>稠密索引 分块索引 倒排索引</strong></p>
+<p><strong>4.1 稠密索引:</strong>在线性索引中,将数据集中的每个记录对应一个索引项.</p>
+<blockquote>
+<p>个人感觉类似 书的目录一样.</p>
+</blockquote>
+<p>但是如果数据量非常大,比如上亿条数据,那么索引的数据规模也会很大,这样这种方法就不适合了.</p>
+<p><strong>4.2 分块索引:就是把数据集的记录分成了若干块,并且这些快需要满足2个条件:</strong></p>
+<ul>
+<li>块内无序,当然有序更理想,不过若付出大量的时间和空间的代价,所以一般不要求有序.</li>
+<li>块间有序.比如图书馆的书架上贴的关键字是按英语字母表顺序排列的.但是书架内的书与书之间可以无序.</li>
 </ul>
-<h1 id="Triggering-Actions-触发事件"><a href="#Triggering-Actions-触发事件" class="headerlink" title="Triggering Actions(触发事件)"></a>Triggering Actions(触发事件)</h1><ul>
-<li><code>sendAction:to:forEvent:</code><br>Calls the specified action method.</li>
-<li><code>sendActionsForControlEvents:</code><br>Calls the action methods associated with the specified events.</li>
+<p><strong>分块索引的索引项结构分为3个数据项:</strong></p>
+<ul>
+<li>最大关键码,存储每一块中的最大关键字.</li>
+<li>存储了块中的记录的个数</li>
+<li>用于指向块首数据元素的指针,便于开始对这一块中记录进行遍历.</li>
 </ul>
-<h1 id="Tracking-Touches-and-Redrawing-Controls-跟踪触摸事件和重画Controls"><a href="#Tracking-Touches-and-Redrawing-Controls-跟踪触摸事件和重画Controls" class="headerlink" title="Tracking Touches and Redrawing Controls(跟踪触摸事件和重画Controls)"></a>Tracking Touches and Redrawing Controls(跟踪触摸事件和重画Controls)</h1><ul>
-<li><code>beginTrackingWithTouch:withEvent:</code><br>Called when a touch event enters the control’s bounds.</li>
-<li><code>continueTrackingWithTouch:withEvent:</code><br>Called when a touch event associated with the control is updated.</li>
-<li><code>endTrackingWithTouch:withEvent:</code><br>Called when a touch event associated with the control ends.</li>
-<li><code>cancelTrackingWithEvent:</code><br>Tells the control to cancel tracking related to the given event.</li>
-<li><code>tracking</code><br>A Boolean value indicating whether the control is currently tracking touch events.</li>
-<li><code>touchInside</code><br>A Boolean value indicating whether a tracked touch event is currently inside the control’s bounds.</li>
-</ul>
-<h1 id="Constants-常量"><a href="#Constants-常量" class="headerlink" title="Constants(常量)"></a>Constants(常量)</h1><ul>
-<li><code>UIControlEvents</code><br>Constants describing the types of events possible for controls.</li>
-<li><code>UIControlState</code><br>Constants describing the state of a control.</li>
-<li><code>UIControlContentVerticalAlignment</code><br>Constants for specifying the vertical alignment of content (text and images) in a control.</li>
-<li><code>UIControlContentHorizontalAlignment</code><br>The horizontal alignment of content (text and images) within a control.</li>
-</ul>
-<p>参考:<a href="http://southpeak.github.io/blog/2015/12/13/cocoa-uikit-uicontrol/" target="_blank" rel="external">UIKit: UIControl,这一篇博客写的更浅显易懂</a></p>
+<p><strong>4.3 倒排索引:</strong></p>
 
       
     </div>
@@ -413,28 +417,18 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/UIControl/" rel="tag">#UIControl</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/04/iOSUITextView官方文档大总结/" rel="next" title="iOSUITextView官方文档大总结">
-                <i class="fa fa-chevron-left"></i> iOSUITextView官方文档大总结
+              <a href="/2016/11/24/数据结构-树/" rel="next" title="数据结构-树">
+                <i class="fa fa-chevron-left"></i> 数据结构-树
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/08/10/iOS-NSObject官方API大总结/" rel="prev" title="iOS-NSObject官方API大总结">
-                iOS-NSObject官方API大总结 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -568,7 +562,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Taget-Action机制浅析"><span class="nav-number">2.</span> <span class="nav-text">Taget-Action机制浅析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#子类化说明"><span class="nav-number">3.</span> <span class="nav-text">子类化说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#属性"><span class="nav-number">4.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Accessing-the-Control’s-Targets-and-Actions"><span class="nav-number">5.</span> <span class="nav-text">Accessing the Control’s Targets and Actions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Triggering-Actions-触发事件"><span class="nav-number">6.</span> <span class="nav-text">Triggering Actions(触发事件)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tracking-Touches-and-Redrawing-Controls-跟踪触摸事件和重画Controls"><span class="nav-number">7.</span> <span class="nav-text">Tracking Touches and Redrawing Controls(跟踪触摸事件和重画Controls)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Constants-常量"><span class="nav-number">8.</span> <span class="nav-text">Constants(常量)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一-查找概论"><span class="nav-number">1.</span> <span class="nav-text">一 查找概论:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二-顺序表查找"><span class="nav-number">2.</span> <span class="nav-text">二 顺序表查找</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三-有序表查找"><span class="nav-number">3.</span> <span class="nav-text">三 有序表查找</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四-线性索引查找"><span class="nav-number">4.</span> <span class="nav-text">四 线性索引查找</span></a></li></ol></div>
             
           </div>
         </section>
