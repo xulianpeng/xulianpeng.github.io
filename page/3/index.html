@@ -84,19 +84,15 @@
 
 
 
-<meta name="description" content="hljs.initHighlightingOnLoad();
- $(document).ready(function(){      $(“h1,h2,h3,h4,h5,h6”).each(function(i,item){        var tag = $(item).get(0).localName;        $(item).attr(“id”,”wow”+i);">
-<meta property="og:type" content="article">
-<meta property="og:title" content="ssh brief introduction">
-<meta property="og:url" content="http://yoursite.com/2016/07/20/ssh-brief-introduction/index.html">
+<meta name="description" content="I am on the way to faraway">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Lianpeng’s Sky">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
 <meta property="og:site_name" content="Lianpeng’s Sky">
-<meta property="og:description" content="hljs.initHighlightingOnLoad();
- $(document).ready(function(){      $(“h1,h2,h3,h4,h5,h6”).each(function(i,item){        var tag = $(item).get(0).localName;        $(item).attr(“id”,”wow”+i);">
-<meta property="og:updated_time" content="2016-07-25T03:33:06.000Z">
+<meta property="og:description" content="I am on the way to faraway">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ssh brief introduction">
-<meta name="twitter:description" content="hljs.initHighlightingOnLoad();
- $(document).ready(function(){      $(“h1,h2,h3,h4,h5,h6”).each(function(i,item){        var tag = $(item).get(0).localName;        $(item).attr(“id”,”wow”+i);">
+<meta name="twitter:title" content="Lianpeng’s Sky">
+<meta name="twitter:description" content="I am on the way to faraway">
 
 
 
@@ -117,9 +113,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/07/20/ssh-brief-introduction/"/>
+  <link rel="canonical" href="http://yoursite.com/page/3/"/>
 
-  <title> ssh brief introduction | Lianpeng’s Sky </title>
+  <title> Lianpeng’s Sky </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -140,7 +136,9 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -237,9 +235,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
   
@@ -259,7 +257,10 @@
             
             
               
-                ssh brief introduction
+                
+                <a class="post-title-link" href="/2016/07/20/内存管理大总结/" itemprop="url">
+                  内存管理大总结
+                </a>
               
             
           </h1>
@@ -271,7 +272,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-20T23:49:34+08:00" content="2016-07-20">
+            <time itemprop="dateCreated" datetime="2016-07-20T23:43:58+08:00" content="2016-07-20">
               2016-07-20
             </time>
           </span>
@@ -286,7 +287,7 @@
 
           
           
-             <span id="/2016/07/20/ssh-brief-introduction/" class="leancloud_visitors" data-flag-title="ssh brief introduction">
+             <span id="/2016/07/20/内存管理大总结/" class="leancloud_visitors" data-flag-title="内存管理大总结">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -308,71 +309,31 @@
       
 
       
-        <link rel="stylesheet" href="http://yandex.st/highlightjs/6.2/styles/googlecode.min.css">
+        
+          <link rel="stylesheet" href="http://yandex.st/highlightjs/6.2/styles/googlecode.min.css">
 
 <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 <script src="http://yandex.st/highlightjs/6.2/highlight.min.js"></script>
 
 <p><script>hljs.initHighlightingOnLoad();</script></p>
 <p><script type="text/javascript"><br> $(document).ready(function(){<br>      $(“h1,h2,h3,h4,h5,h6”).each(function(i,item){<br>        var tag = $(item).get(0).localName;<br>        $(item).attr(“id”,”wow”+i);<br>        $(“#category”).append(‘<a class="new'+tag+'" href="#wow'+i+'">‘+$(this).text()+’</a></br>‘);<br>        $(“.newh1”).css(“margin-left”,0);<br>        $(“.newh2”).css(“margin-left”,20);<br>        $(“.newh3”).css(“margin-left”,40);<br>        $(“.newh4”).css(“margin-left”,60);<br>        $(“.newh5”).css(“margin-left”,80);<br>        $(“.newh6”).css(“margin-left”,100);<br>      });<br> });<br></script></p>
-<p><div id="category"></div></p>
-<h1 id="SSH概述"><a href="#SSH概述" class="headerlink" title="SSH概述"></a>SSH概述</h1><a id="more"></a>
-<ul>
-<li>SSH,全称为Secure Shell,由IETF的网络工作小组所制定,ssh为一项创建在<strong>应用层</strong>和<strong>传输层</strong>基础上的安全协议.</li>
-<li>SSH是目前较可靠的,专为远程登录会话和其他网络服务提供安全性的协议.利用SSH协议可以有效防止远程管理过程中的信息泄露问题.</li>
-<li>SSH最初是UNIX系统上的一个程序,后来又迅速扩展到其他操作平台.SSH在正确使用时可弥补网络中的漏洞.</li>
-<li>SSH客户端适用于多种平台.几乎所有UNIX平台包括HP-UX,LINUX,AIX,Solaris,Digital UNIX,Irix,以及其他平台,都可以运行SSH.</li>
-</ul>
-<h1 id="SSH-历史"><a href="#SSH-历史" class="headerlink" title="SSH 历史"></a>SSH 历史</h1><p>最初的SSH协议是由芬兰的一家公司的研究员Tatu Ylönen于1995年设计开发的，但是因为受版权和加密算法等等的限制，现在很多人都转而使用OpenSSH。OpenSSH是SSH的替代软件包，而且是开放源代码且自由的。</p>
-<h1 id="SSH-基本架构"><a href="#SSH-基本架构" class="headerlink" title="SSH 基本架构"></a>SSH 基本架构</h1><p>SSH协议框架中最主要的部分是三个协议：</p>
-<ul>
-<li>传输层协议（The Transport Layer Protocol）：传输层协议提供服务器认证，数据机密性，信息完整性等的支持。</li>
-<li>用户认证协议（The User Authentication Protocol）：用户认证协议为服务器提供客户端的身份鉴别。</li>
-<li>连接协议（The Connection Protocol）：连接协议将加密的信息隧道复用成若干个逻辑通道，提供给更高层的应用协议使用。<br>同时还有为许多高层的网络安全应用协议提供扩展的支持。</li>
-</ul>
-<p>各种高层应用协议可以相对地独立于SSH基本体系之外，并依靠这个基本框架，通过连接协议使用SSH的安全机制。</p>
-<h1 id="SSH-的安全验证"><a href="#SSH-的安全验证" class="headerlink" title="SSH 的安全验证"></a>SSH 的安全验证</h1><h2 id="1-在客户端来看，SSH提供两种级别的安全验证。"><a href="#1-在客户端来看，SSH提供两种级别的安全验证。" class="headerlink" title="1.在客户端来看，SSH提供两种级别的安全验证。"></a>1.在客户端来看，SSH提供两种级别的安全验证。</h2><ul>
-<li>第一种级别（基于密码的安全验证），知道帐号和密码，就可以登录到远程主机，并且所有传输的数据都会被加密。但是，可能会有别的服务器在冒充真正的服务器，无法避免被“中间人”攻击。</li>
-<li>第二种级别（基于密钥的安全验证），需要依靠密钥，也就是你必须为自己创建一对密钥，并把公有密钥放在需要访问的服务器上。客户端软件会向服务器发出请求，请求用你的密钥进行安全验证。服务器收到请求之后，先在你在该服务器的用户根目录下寻找你的公有密钥，然后把它和你发送过来的公有密钥进行比较。如果两个密钥一致，服务器就用公有密钥加密“质询”（challenge）并把它发送给客户端软件。从而避免被“中间人”攻击。</li>
-</ul>
-<h2 id="2-在服务器端，SSH也提供安全验证。"><a href="#2-在服务器端，SSH也提供安全验证。" class="headerlink" title="2.在服务器端，SSH也提供安全验证。"></a>2.在服务器端，SSH也提供安全验证。</h2><ul>
-<li>在第一种方案中，主机将自己的公用密钥分发给相关的客户端，客户端在访问主机时则使用该主机的公开密钥来加密数据，主机则使用自己的私有密钥来解密数据，从而实现主机密钥认证，确保数据的保密性。 <ul>
-<li>在第二种方案中，存在一个密钥认证中心，所有提供服务的主机都将自己的公开密钥提交给认证中心，而任何作为客户端的主机则只要保存一份认证中心的公开密钥就可以了。在这种模式下，客户端必须访问认证中心然后才能访问服务器主机。</li>
-</ul>
-</li>
-</ul>
-<h1 id="SSH-协议的可扩展能力"><a href="#SSH-协议的可扩展能力" class="headerlink" title="SSH 协议的可扩展能力"></a>SSH 协议的可扩展能力</h1><p>SSH协议框架中设计了大量可扩展的冗余能力，比如用户自定义算法、客户自定义密钥规则、高层扩展功能性应用协议。这些扩展大多遵循IANA的有关规定，特别是在重要的部分，像命名规则和消息编码方面。</p>
+<div id="category"></div>
 
+<h1 id="内存管理大总结"><a href="#内存管理大总结" class="headerlink" title="内存管理大总结"></a>内存管理大总结</h1><h2 id="1-自动引用计数的概念"><a href="#1-自动引用计数的概念" class="headerlink" title="1.自动引用计数的概念"></a>1.自动引用计数的概念</h2>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/20/内存管理大总结/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
       
     </div>
 
     <div>
       
-        
-
-      
     </div>
 
     <div>
-      
-        
-  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
-    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-      <span>赏</span>
-    </button>
-    <div id="QR" style="display: none;">
-      
-        <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/images/wechat-reward-image.jpg" alt="xulianpeng WeChat Pay"/>
-          <p>微信打赏</p>
-        </div>
-      
-      
-    </div>
-  </div>
-
-
       
     </div>
 
@@ -380,36 +341,23 @@
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/07/20/内存管理大总结/" rel="next" title="内存管理大总结">
-                <i class="fa fa-chevron-left"></i> 内存管理大总结
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/07/20/shell-brief-introduction/" rel="prev" title="shell brief introduction">
-                shell brief introduction <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
 
       
+      
+        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+
 
 
           </div>
@@ -417,10 +365,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -440,17 +384,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -520,17 +455,6 @@
 
       </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SSH概述"><span class="nav-number">1.</span> <span class="nav-text">SSH概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSH-历史"><span class="nav-number">2.</span> <span class="nav-text">SSH 历史</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSH-基本架构"><span class="nav-number">3.</span> <span class="nav-text">SSH 基本架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSH-的安全验证"><span class="nav-number">4.</span> <span class="nav-text">SSH 的安全验证</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-在客户端来看，SSH提供两种级别的安全验证。"><span class="nav-number">4.1.</span> <span class="nav-text">1.在客户端来看，SSH提供两种级别的安全验证。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-在服务器端，SSH也提供安全验证。"><span class="nav-number">4.2.</span> <span class="nav-text">2.在服务器端，SSH也提供安全验证。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSH-协议的可扩展能力"><span class="nav-number">5.</span> <span class="nav-text">SSH 协议的可扩展能力</span></a></li></ol></div>
-            
-          </div>
-        </section>
       
 
     </div>
@@ -634,10 +558,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
 
   
 

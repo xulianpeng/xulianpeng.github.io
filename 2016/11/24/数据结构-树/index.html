@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="数据结构," />
 
 
 
@@ -84,19 +84,51 @@
 
 
 
-<meta name="description" content="hljs.initHighlightingOnLoad();
- $(document).ready(function(){      $(“h1,h2,h3,h4,h5,h6”).each(function(i,item){        var tag = $(item).get(0).localName;        $(item).attr(“id”,”wow”+i);">
+<meta name="description" content="树
+这一节是个大章节,让我们做好准备.
+
+1 定义:树是n &amp;gt;= 0 个结点的有限集.n = 0 是为空树.
+在任意一颗非空树中:
+
+有且只有一个根结点.
+当n &amp;gt; i 时,其余结点可分为m(m &amp;gt; 0)个互不相交的有限集,其中每一个集合本身也是一棵树,成为根结点的子树.
+
+1.1 结点的分类:定义:包含一个数据元素及若干指向子树的分支.
+结点拥有的子树的个数称为结点的度.
+叶结">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ssh brief introduction">
-<meta property="og:url" content="http://yoursite.com/2016/07/20/ssh-brief-introduction/index.html">
+<meta property="og:title" content="数据结构-树">
+<meta property="og:url" content="http://yoursite.com/2016/11/24/数据结构-树/index.html">
 <meta property="og:site_name" content="Lianpeng’s Sky">
-<meta property="og:description" content="hljs.initHighlightingOnLoad();
- $(document).ready(function(){      $(“h1,h2,h3,h4,h5,h6”).each(function(i,item){        var tag = $(item).get(0).localName;        $(item).attr(“id”,”wow”+i);">
-<meta property="og:updated_time" content="2016-07-25T03:33:06.000Z">
+<meta property="og:description" content="树
+这一节是个大章节,让我们做好准备.
+
+1 定义:树是n &amp;gt;= 0 个结点的有限集.n = 0 是为空树.
+在任意一颗非空树中:
+
+有且只有一个根结点.
+当n &amp;gt; i 时,其余结点可分为m(m &amp;gt; 0)个互不相交的有限集,其中每一个集合本身也是一棵树,成为根结点的子树.
+
+1.1 结点的分类:定义:包含一个数据元素及若干指向子树的分支.
+结点拥有的子树的个数称为结点的度.
+叶结">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/639412-2cd019a830581814.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2016-11-24T00:37:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ssh brief introduction">
-<meta name="twitter:description" content="hljs.initHighlightingOnLoad();
- $(document).ready(function(){      $(“h1,h2,h3,h4,h5,h6”).each(function(i,item){        var tag = $(item).get(0).localName;        $(item).attr(“id”,”wow”+i);">
+<meta name="twitter:title" content="数据结构-树">
+<meta name="twitter:description" content="树
+这一节是个大章节,让我们做好准备.
+
+1 定义:树是n &amp;gt;= 0 个结点的有限集.n = 0 是为空树.
+在任意一颗非空树中:
+
+有且只有一个根结点.
+当n &amp;gt; i 时,其余结点可分为m(m &amp;gt; 0)个互不相交的有限集,其中每一个集合本身也是一棵树,成为根结点的子树.
+
+1.1 结点的分类:定义:包含一个数据元素及若干指向子树的分支.
+结点拥有的子树的个数称为结点的度.
+叶结">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/639412-2cd019a830581814.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -117,9 +149,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/07/20/ssh-brief-introduction/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/11/24/数据结构-树/"/>
 
-  <title> ssh brief introduction | Lianpeng’s Sky </title>
+  <title> 数据结构-树 | Lianpeng’s Sky </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -259,7 +291,7 @@
             
             
               
-                ssh brief introduction
+                数据结构-树
               
             
           </h1>
@@ -271,8 +303,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-20T23:49:34+08:00" content="2016-07-20">
-              2016-07-20
+            <time itemprop="dateCreated" datetime="2016-11-24T08:36:30+08:00" content="2016-11-24">
+              2016-11-24
             </time>
           </span>
 
@@ -286,7 +318,7 @@
 
           
           
-             <span id="/2016/07/20/ssh-brief-introduction/" class="leancloud_visitors" data-flag-title="ssh brief introduction">
+             <span id="/2016/11/24/数据结构-树/" class="leancloud_visitors" data-flag-title="数据结构-树">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -308,41 +340,79 @@
       
 
       
-        <link rel="stylesheet" href="http://yandex.st/highlightjs/6.2/styles/googlecode.min.css">
-
-<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-<script src="http://yandex.st/highlightjs/6.2/highlight.min.js"></script>
-
-<p><script>hljs.initHighlightingOnLoad();</script></p>
-<p><script type="text/javascript"><br> $(document).ready(function(){<br>      $(“h1,h2,h3,h4,h5,h6”).each(function(i,item){<br>        var tag = $(item).get(0).localName;<br>        $(item).attr(“id”,”wow”+i);<br>        $(“#category”).append(‘<a class="new'+tag+'" href="#wow'+i+'">‘+$(this).text()+’</a></br>‘);<br>        $(“.newh1”).css(“margin-left”,0);<br>        $(“.newh2”).css(“margin-left”,20);<br>        $(“.newh3”).css(“margin-left”,40);<br>        $(“.newh4”).css(“margin-left”,60);<br>        $(“.newh5”).css(“margin-left”,80);<br>        $(“.newh6”).css(“margin-left”,100);<br>      });<br> });<br></script></p>
-<p><div id="category"></div></p>
-<h1 id="SSH概述"><a href="#SSH概述" class="headerlink" title="SSH概述"></a>SSH概述</h1><a id="more"></a>
+        <h1 id="树"><a href="#树" class="headerlink" title="树"></a>树</h1><blockquote>
+<p>这一节是个大章节,让我们做好准备.</p>
+</blockquote>
+<h1 id="1-定义"><a href="#1-定义" class="headerlink" title="1 定义:"></a><strong>1 定义:</strong></h1><p><strong>树是n &gt;= 0 个结点的有限集.n = 0 是为空树.</strong></p>
+<p><strong>在任意一颗非空树中:</strong></p>
 <ul>
-<li>SSH,全称为Secure Shell,由IETF的网络工作小组所制定,ssh为一项创建在<strong>应用层</strong>和<strong>传输层</strong>基础上的安全协议.</li>
-<li>SSH是目前较可靠的,专为远程登录会话和其他网络服务提供安全性的协议.利用SSH协议可以有效防止远程管理过程中的信息泄露问题.</li>
-<li>SSH最初是UNIX系统上的一个程序,后来又迅速扩展到其他操作平台.SSH在正确使用时可弥补网络中的漏洞.</li>
-<li>SSH客户端适用于多种平台.几乎所有UNIX平台包括HP-UX,LINUX,AIX,Solaris,Digital UNIX,Irix,以及其他平台,都可以运行SSH.</li>
+<li><strong>有且只有一个</strong>根结点.</li>
+<li>当n &gt; i 时,其余结点可分为m(m &gt; 0)个<strong>互不相交</strong>的有限集,其中每一个集合本身也是一棵树,成为根结点的子树.</li>
 </ul>
-<h1 id="SSH-历史"><a href="#SSH-历史" class="headerlink" title="SSH 历史"></a>SSH 历史</h1><p>最初的SSH协议是由芬兰的一家公司的研究员Tatu Ylönen于1995年设计开发的，但是因为受版权和加密算法等等的限制，现在很多人都转而使用OpenSSH。OpenSSH是SSH的替代软件包，而且是开放源代码且自由的。</p>
-<h1 id="SSH-基本架构"><a href="#SSH-基本架构" class="headerlink" title="SSH 基本架构"></a>SSH 基本架构</h1><p>SSH协议框架中最主要的部分是三个协议：</p>
+<h2 id="1-1-结点的分类"><a href="#1-1-结点的分类" class="headerlink" title="1.1 结点的分类:"></a><strong>1.1 结点的分类:</strong></h2><p><strong>定义:包含一个数据元素及若干指向子树的分支.</strong></p>
+<p>结点拥有的子树的个数称为结点的<strong>度</strong>.</p>
+<p><strong>叶结点(终端结点)</strong>:度为<strong>0</strong>.其他成为<strong>非终端结点</strong>或<strong>分支结点(内部结点)</strong>.</p>
+<h2 id="1-2-结点间的关系"><a href="#1-2-结点间的关系" class="headerlink" title="1.2 结点间的关系"></a><strong>1.2 结点间的关系</strong></h2><p>结点的子树的根称为该结点的孩子(Child),对应该结点为孩子的双亲(Parent).<br>同一个双亲的孩子之间互为兄弟(Sibling).结点的祖先是从根结点到该结点所经分支上所有的结点.以某结点为根的子树中的任一结点都称为该结点的子孙.</p>
+<p>类比小时候的家族亲戚关系之间的图或者中学学习遗传疾病分析图.</p>
+<h2 id="1-3-树的其他相关概念"><a href="#1-3-树的其他相关概念" class="headerlink" title="1.3 树的其他相关概念:"></a><strong>1.3 树的其他相关概念:</strong></h2><p>结点的层次从根结点开始定义,根为第一层 根的孩子为第二层.根的孙子为第三层.</p>
+<p><strong>树的深度或高度:</strong>树中结点的最大层次称为树的深度或高度.</p>
+<p><strong>如果将树中结点的各子树看成从左至右是有次序的,不能互换的,则称该树为有序树,否则为无序树.</strong></p>
+<p><strong>森林:</strong>是m( m &gt;= 0)棵互不相交的树的集合.</p>
+<p>目前为止,关于数据结构学了2种.</p>
+<table>
+<thead>
+<tr>
+<th>线性结构</th>
+<th>树结构</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第<strong>一个数据元素:</strong>无前驱;<strong>最后一个数据元素:</strong>无后继;<strong>中间元素:</strong>一个前驱一个后继</td>
+<td><strong>根节点</strong>:无双亲,唯一;<strong>叶节点</strong>:无孩子,可以多个;<strong>中间结点:</strong>一个双亲 多个孩子</td>
+</tr>
+</tbody>
+</table>
+<h1 id="2-树的存储结构"><a href="#2-树的存储结构" class="headerlink" title="2 树的存储结构"></a><strong>2 树的存储结构</strong></h1><blockquote>
+<p>类比线性结构的学习过程,接下里肯定要研究其存储特点.显然顺序存储无法直接反映逻辑关系,比如谁是谁的双亲,谁是谁的孩子.</p>
+</blockquote>
+<p>这里只介绍三种不同的表示方法:<strong>双亲表示法,孩子表示法,孩子兄弟表示法</strong></p>
+<h2 id="2-1-双亲表示法"><a href="#2-1-双亲表示法" class="headerlink" title="2.1 双亲表示法"></a><strong>2.1 双亲表示法</strong></h2><h1 id="3-二叉树"><a href="#3-二叉树" class="headerlink" title="3 二叉树"></a><strong>3 二叉树</strong></h1><h2 id="3-1-定义"><a href="#3-1-定义" class="headerlink" title="3.1 定义:"></a><strong>3.1 定义:</strong></h2><p>是n ( &gt;= 0)个 结点的有限集合.n = 0时,称为空集合或空二叉树.<br>n &gt; 0时,由一个根结点和2棵互不相交的分别称为根结点的左子树和右子树的二叉树组成.</p>
+<p><strong>特点:</strong></p>
 <ul>
-<li>传输层协议（The Transport Layer Protocol）：传输层协议提供服务器认证，数据机密性，信息完整性等的支持。</li>
-<li>用户认证协议（The User Authentication Protocol）：用户认证协议为服务器提供客户端的身份鉴别。</li>
-<li>连接协议（The Connection Protocol）：连接协议将加密的信息隧道复用成若干个逻辑通道，提供给更高层的应用协议使用。<br>同时还有为许多高层的网络安全应用协议提供扩展的支持。</li>
+<li>每个结点最多有2棵子树.</li>
+<li>左右子树是有顺序的,跟人的左右手 左右脚一样.</li>
+<li>即是某一结点只有一棵子树也分左右,同理残疾人.</li>
 </ul>
-<p>各种高层应用协议可以相对地独立于SSH基本体系之外，并依靠这个基本框架，通过连接协议使用SSH的安全机制。</p>
-<h1 id="SSH-的安全验证"><a href="#SSH-的安全验证" class="headerlink" title="SSH 的安全验证"></a>SSH 的安全验证</h1><h2 id="1-在客户端来看，SSH提供两种级别的安全验证。"><a href="#1-在客户端来看，SSH提供两种级别的安全验证。" class="headerlink" title="1.在客户端来看，SSH提供两种级别的安全验证。"></a>1.在客户端来看，SSH提供两种级别的安全验证。</h2><ul>
-<li>第一种级别（基于密码的安全验证），知道帐号和密码，就可以登录到远程主机，并且所有传输的数据都会被加密。但是，可能会有别的服务器在冒充真正的服务器，无法避免被“中间人”攻击。</li>
-<li>第二种级别（基于密钥的安全验证），需要依靠密钥，也就是你必须为自己创建一对密钥，并把公有密钥放在需要访问的服务器上。客户端软件会向服务器发出请求，请求用你的密钥进行安全验证。服务器收到请求之后，先在你在该服务器的用户根目录下寻找你的公有密钥，然后把它和你发送过来的公有密钥进行比较。如果两个密钥一致，服务器就用公有密钥加密“质询”（challenge）并把它发送给客户端软件。从而避免被“中间人”攻击。</li>
+<p><strong>二叉树的五种基本形态:</strong></p>
+<ul>
+<li>空二叉树</li>
+<li>只有一个根结点</li>
+<li>只有一个左子树</li>
+<li>只有一个右子树</li>
+<li>根结点既有左子树又有右子树.</li>
 </ul>
-<h2 id="2-在服务器端，SSH也提供安全验证。"><a href="#2-在服务器端，SSH也提供安全验证。" class="headerlink" title="2.在服务器端，SSH也提供安全验证。"></a>2.在服务器端，SSH也提供安全验证。</h2><ul>
-<li>在第一种方案中，主机将自己的公用密钥分发给相关的客户端，客户端在访问主机时则使用该主机的公开密钥来加密数据，主机则使用自己的私有密钥来解密数据，从而实现主机密钥认证，确保数据的保密性。 <ul>
-<li>在第二种方案中，存在一个密钥认证中心，所有提供服务的主机都将自己的公开密钥提交给认证中心，而任何作为客户端的主机则只要保存一份认证中心的公开密钥就可以了。在这种模式下，客户端必须访问认证中心然后才能访问服务器主机。</li>
+<p><strong>特殊二叉树的种类:</strong></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/639412-2cd019a830581814.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="特殊二叉树的分类.png"></p>
+<ul>
+<li><strong>斜树: </strong>所有结点只有左子树或者右子树.</li>
+<li><strong>满二叉树:</strong>所有分支结点都存在左右子树,并且所有叶子都在用一层. </li>
+<li><strong>完全二叉树:</strong> 对一颗具有n个结点的二叉树按层序编号,如果编号为i的结点与同样深度的满二叉树中编号为i的结点在二叉树中的位置完全相同.</li>
 </ul>
-</li>
+<p><strong>完全二叉树的特点:</strong></p>
+<ul>
+<li>叶子结点只能出现在最下两层.</li>
+<li>最下层的叶子一定集中在左部连续的位置.</li>
+<li>倒数二层,若有叶子结点,一定都在右边连续位置</li>
+<li>如果结点度为1,则该结点只有左子树.</li>
+<li>同样结点数的二叉树,完全二叉树的深度最小.</li>
 </ul>
-<h1 id="SSH-协议的可扩展能力"><a href="#SSH-协议的可扩展能力" class="headerlink" title="SSH 协议的可扩展能力"></a>SSH 协议的可扩展能力</h1><p>SSH协议框架中设计了大量可扩展的冗余能力，比如用户自定义算法、客户自定义密钥规则、高层扩展功能性应用协议。这些扩展大多遵循IANA的有关规定，特别是在重要的部分，像命名规则和消息编码方面。</p>
-
+<h2 id="3-2-二叉树的性质"><a href="#3-2-二叉树的性质" class="headerlink" title="3.2 二叉树的性质"></a><strong>3.2 二叉树的性质</strong></h2><ul>
+<li>性质1:在二叉树的第i层上至多有2^(i-1)个结点.(i&gt;=1)</li>
+<li>性质2:深度为k的二叉树至多有 2^k - 1个节点.(k&gt;=1)</li>
+<li>还有很多性质,均可以通过推到推导出来.</li>
+</ul>
+<h1 id="4-二叉树的存储结构"><a href="#4-二叉树的存储结构" class="headerlink" title="4 二叉树的存储结构"></a><strong>4 二叉树的存储结构</strong></h1>
       
     </div>
 
@@ -378,22 +448,24 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/数据结构/" rel="tag">#数据结构</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/20/内存管理大总结/" rel="next" title="内存管理大总结">
-                <i class="fa fa-chevron-left"></i> 内存管理大总结
+              <a href="/2016/11/21/AF源码解析之NSURLSessionManager/" rel="next" title="AF源码解析之NSURLSessionManager">
+                <i class="fa fa-chevron-left"></i> AF源码解析之NSURLSessionManager
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/07/20/shell-brief-introduction/" rel="prev" title="shell brief introduction">
-                shell brief introduction <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -527,7 +599,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SSH概述"><span class="nav-number">1.</span> <span class="nav-text">SSH概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSH-历史"><span class="nav-number">2.</span> <span class="nav-text">SSH 历史</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSH-基本架构"><span class="nav-number">3.</span> <span class="nav-text">SSH 基本架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSH-的安全验证"><span class="nav-number">4.</span> <span class="nav-text">SSH 的安全验证</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-在客户端来看，SSH提供两种级别的安全验证。"><span class="nav-number">4.1.</span> <span class="nav-text">1.在客户端来看，SSH提供两种级别的安全验证。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-在服务器端，SSH也提供安全验证。"><span class="nav-number">4.2.</span> <span class="nav-text">2.在服务器端，SSH也提供安全验证。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSH-协议的可扩展能力"><span class="nav-number">5.</span> <span class="nav-text">SSH 协议的可扩展能力</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#树"><span class="nav-number">1.</span> <span class="nav-text">树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-定义"><span class="nav-number">2.</span> <span class="nav-text">1 定义:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-结点的分类"><span class="nav-number">2.1.</span> <span class="nav-text">1.1 结点的分类:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-结点间的关系"><span class="nav-number">2.2.</span> <span class="nav-text">1.2 结点间的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-树的其他相关概念"><span class="nav-number">2.3.</span> <span class="nav-text">1.3 树的其他相关概念:</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-树的存储结构"><span class="nav-number">3.</span> <span class="nav-text">2 树的存储结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-双亲表示法"><span class="nav-number">3.1.</span> <span class="nav-text">2.1 双亲表示法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-二叉树"><span class="nav-number">4.</span> <span class="nav-text">3 二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-定义"><span class="nav-number">4.1.</span> <span class="nav-text">3.1 定义:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-二叉树的性质"><span class="nav-number">4.2.</span> <span class="nav-text">3.2 二叉树的性质</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-二叉树的存储结构"><span class="nav-number">5.</span> <span class="nav-text">4 二叉树的存储结构</span></a></li></ol></div>
             
           </div>
         </section>
