@@ -1,0 +1,778 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/ven/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/ven/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="排序
+引子:网购时我们查找某件商品时,会搜出很多的数据,这时我们可能会按照价格从小到大排序或者信用排序 或者综合排序等,这就引出了接下来这个排序的概念.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构- 排序">
+<meta property="og:url" content="http://yoursite.com/2016/11/24/数据结构-排序/index.html">
+<meta property="og:site_name" content="Lianpeng’s Sky">
+<meta property="og:description" content="排序
+引子:网购时我们查找某件商品时,会搜出很多的数据,这时我们可能会按照价格从小到大排序或者信用排序 或者综合排序等,这就引出了接下来这个排序的概念.">
+<meta property="og:updated_time" content="2016-11-24T00:45:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据结构- 排序">
+<meta name="twitter:description" content="排序
+引子:网购时我们查找某件商品时,会搜出很多的数据,这时我们可能会按照价格从小到大排序或者信用排序 或者综合排序等,这就引出了接下来这个排序的概念.">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/11/24/数据结构-排序/"/>
+
+  <title> 数据结构- 排序 | Lianpeng’s Sky </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Lianpeng’s Sky</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">乐观 美好 奋斗</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                数据结构- 排序
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-24T08:43:54+08:00" content="2016-11-24">
+              2016-11-24
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/11/24/数据结构-排序/" class="leancloud_visitors" data-flag-title="数据结构- 排序">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><blockquote>
+<p>引子:网购时我们查找某件商品时,会搜出很多的数据,这时我们可能会按照价格从小到大排序或者信用排序 或者综合排序等,这就引出了接下来这个<strong>排序</strong>的概念.<br><a id="more"></a></p>
+<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a><strong>定义</strong></h1><p><strong>定义:</strong>假设含有n个记录的序列,使其按照某个关键字有序的过程,这样的操作为排序.</p>
+</blockquote>
+<ul>
+<li>同样的序列,针对不同的关键字排序,会得到不同的序列.比如班级的成绩表,按总成绩 语文成绩 数学成绩 会得到3种不同的结果,再比如淘宝时,我们按照价格从低到高 或综合排序 等都会得到不同的结果.</li>
+<li>问题来了,若是多个关键字,要怎么排序呢?暂时先放下.</li>
+</ul>
+<h1 id="内排序和外排序"><a href="#内排序和外排序" class="headerlink" title="内排序和外排序:"></a><strong>内排序和外排序:</strong></h1><p>根据排序过程中待排序的记录是否全部被放置在内存中,排序分为:<strong>外排序和内排序</strong>.</p>
+<ul>
+<li>内排序:在整个排序的过程中,待排序的所有记录全部放在内存中.</li>
+<li>外排序:由于排序的记录的个数太多,不能同时放置在内存中,整个排序过程需要在内外存之间多次交换数据才能进行.</li>
+</ul>
+<blockquote>
+<p><strong>我们主要研究的是内排序的算法.</strong></p>
+</blockquote>
+<h1 id="影响排序算法性能的因素有"><a href="#影响排序算法性能的因素有" class="headerlink" title="影响排序算法性能的因素有:"></a><strong>影响排序算法性能的因素有:</strong></h1><ul>
+<li>时间性能:排序是数据处理经常执行的一种操作,往往属于系统的核心部分,因此排序算法的时间开销量是衡量其好坏的最重要的标注.<strong>在内排序中,主要进行的两种操作是:比较和移动</strong>.比较指关键字之间的比较,这是排序最起码得操作.移动指的是记录从一个位置移动到另个一个位置.</li>
+</ul>
+<blockquote>
+<p>总之,高效率的内排序算法应该是<strong>具有尽可能少的关键字比较次数</strong>和<strong>尽可能少的记录移动次数</strong>.</p>
+</blockquote>
+<ul>
+<li>辅助空间:评价算法的另一个指标:执行算法所需要的辅助存储空间.辅助存储空间是除了存放待排序所占用的存储空间之外,执行算法需要的其他存储空间.</li>
+<li>算法的复杂性:这里指的是算法本身的复杂度,而不是算法的时间复杂度.显然算法过于复杂也会影响排序的性能.</li>
+</ul>
+<h1 id="内排序的分类"><a href="#内排序的分类" class="headerlink" title="内排序的分类:"></a><strong>内排序的分类:</strong></h1><p><strong>根据排序过程中借助的操作,我们把内排序分为:插入排序 交换排序 选择排序 和 归并排序</strong></p>
+<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a><strong>冒泡排序</strong></h2><h3 id="冒泡排序方法1"><a href="#冒泡排序方法1" class="headerlink" title="冒泡排序方法1:"></a><strong>冒泡排序方法1:</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> *  冒泡排序</div><div class="line"> *  对数组中每个位置的数据，从后往前推，依次比较相邻的两个数，如果后面的数较小，则交换两者位置</div><div class="line"> *  如果一次遍历没有发生任何数据交换，则排序直接完成</div><div class="line"> *  @param array 数组</div><div class="line"> */</div><div class="line">  for (int i = 0; i &lt; theArr.count; i ++) &#123;</div><div class="line">       </div><div class="line">        for (int j = 0; j &lt; theArr.count - 1; j++) &#123;</div><div class="line">            if (theArr[j] &gt; theArr[j+1]) &#123;</div><div class="line">                [theArr exchangeObjectAtIndex:j withObjectAtIndex:j+1];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h3 id="冒泡排序方法2"><a href="#冒泡排序方法2" class="headerlink" title="冒泡排序方法2"></a><strong>冒泡排序方法2</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">+(void)bubbleSort:(NSMutableArray *)list&#123;</div><div class="line">    if (list.count &lt;= 1) &#123;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line">    int i, y;</div><div class="line">    BOOL bFinish = YES; //是否发生数据交换</div><div class="line">    for (i = 1; i&lt;= [list count] &amp;&amp; bFinish; i++) &#123;</div><div class="line">        bFinish = NO; //每次遍历时，重置标志</div><div class="line">        //从最后一位开始，依次跟前一位相比，如果较小，则交换位置</div><div class="line">        //当一次遍历没有任何数据交换时，则说明已经排序完成(bFinish=YES)，则不再进行循环</div><div class="line">        for (y = (int)[list count]-1; y&gt;=i; y--) &#123;</div><div class="line">            if ([[list objectAtIndex:y] intValue] &lt; [[list objectAtIndex:y-1] intValue]) &#123;</div><div class="line">                //交换位置</div><div class="line">//                NSLog(@&quot;%d&lt;-&gt;%d&quot;,[[array objectAtIndex:y-1] intValue],[[array objectAtIndex:y] intValue]);</div><div class="line">                [list exchangeObjectAtIndex:y-1 withObjectAtIndex:y];</div><div class="line">                bFinish = YES; //发生数据交换，则继续进行下一次遍历，直到未发生数据交换或者循环完成为止</div><div class="line"></div><div class="line">//                NSLog(@&quot;%@&quot;,[array componentsJoinedByString:@&quot; &quot;]);</div><div class="line">            &#125;</div><div class="line">           </div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="冒泡排序方法3"><a href="#冒泡排序方法3" class="headerlink" title="冒泡排序方法3"></a><strong>冒泡排序方法3</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> *  冒泡排序(倒叙)</div><div class="line"> *</div><div class="line"> *  @param list 待排序的数组</div><div class="line"> */</div><div class="line">+(void)bubbleSortDesc:(NSMutableArray *)list&#123;</div><div class="line">    if (list.count &lt;= 1) &#123;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line">    int i, y;</div><div class="line">    BOOL bFinish = YES; //是否发生数据交换</div><div class="line">    for (i = 1; i&lt;= [list count] &amp;&amp; bFinish; i++) &#123;</div><div class="line">        bFinish = NO; //每次遍历时，重置标志</div><div class="line">        //从最后一位开始，依次跟前一位相比，如果较小，则交换位置</div><div class="line">        //当一次遍历没有任何数据交换时，则说明已经排序完成(bFinish=YES)，则不再进行循环</div><div class="line">        for (y = (int)[list count]-1; y&gt;=i; y--) &#123;</div><div class="line">            if ([[list objectAtIndex:y] intValue] &gt; [[list objectAtIndex:y-1] intValue]) &#123;</div><div class="line">                //交换位置</div><div class="line">                //                NSLog(@&quot;%d&lt;-&gt;%d&quot;,[[array objectAtIndex:y-1] intValue],[[array objectAtIndex:y] intValue]);</div><div class="line">                [list exchangeObjectAtIndex:y-1 withObjectAtIndex:y];</div><div class="line">                bFinish = YES; //发生数据交换，则继续进行下一次遍历，直到未发生数据交换或者循环完成为止</div><div class="line">                </div><div class="line">                //                NSLog(@&quot;%@&quot;,[array componentsJoinedByString:@&quot; &quot;]);</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="简单选择排序"><a href="#简单选择排序" class="headerlink" title="简单选择排序"></a><strong>简单选择排序</strong></h2><blockquote>
+<p>炒股票的人,总喜欢不断的买进卖出,想通过价差来实现利润,但通常这种频繁操作的人,即使失误不多,也会因为操作的手续费和印花税过高而获利很少.但还有一种人,他们很少出手,只是不断的观察和判断,等到时机一到,果断出手,因为冷静和沉着,以及交易次数少,而最终受益颇丰.<br>冒泡排序的思想就是不断的交换,最终完成最终的排序,这个股票短线频繁的交易类似.<br>那后一类人,我们需要找到合适的关键字再做交换,并且只移动一次就完成相应关键字的排序,这是选择排序的初步思想.</p>
+</blockquote>
+<p><strong>最终的排序思想:每一趟在 n - i + 1 (一共是n个)个记录中选取关键字最小的作为有序序列的第 i 个记录.</strong></p>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a><strong>快速排序</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> *  快速排序</div><div class="line"> *</div><div class="line"> *  @param list array</div><div class="line"> */</div><div class="line">+(void)quickSort:(NSMutableArray *)list&#123;</div><div class="line">    if (list.count &lt;= 1) &#123;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line">    [self quickSort:list startIndex:0 endIndex:list.count-1];</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> *  快速排序</div><div class="line"> *  任意选取一个数据（通常选用数组的第一个数）作为关键数据，然后将所有比它小的数都放到它前面，所有比它大的数都放到它后面</div><div class="line"> *  再分别对两边的数据进行快速排序</div><div class="line"> *  @param list  数组</div><div class="line"> *  @param start 低位索引</div><div class="line"> *  @param end   高位索引</div><div class="line"> */</div><div class="line">+(void)quickSort:(NSMutableArray *)list startIndex:(NSInteger)start endIndex:(NSInteger)end&#123;</div><div class="line">    if (start &gt;= end) &#123; //低位大于高位，排序结束</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line">    NSInteger low = start;</div><div class="line">    NSInteger high = end;</div><div class="line">    NSInteger key = [[list objectAtIndex:start] integerValue]; //取第一个数作为关键数据</div><div class="line">    while (low &lt; high) &#123;</div><div class="line">        </div><div class="line">        //从后往前推，直到找到第一个比关键数据小的值</div><div class="line">        while ([[list objectAtIndex:high] integerValue] &gt;= key &amp;&amp; low &lt; high) &#123;</div><div class="line">            high--;</div><div class="line">        &#125;</div><div class="line">        //将这个值与关键数据对调（关键数据处于low位置），对调完关键数据处于high位置</div><div class="line">        [list exchangeObjectAtIndex:low withObjectAtIndex:high];</div><div class="line">        </div><div class="line">        //从前往后推，直到找到第一个比关键数据大的值</div><div class="line">        while ([[list objectAtIndex:low] integerValue] &lt;= key &amp;&amp; low &lt; high) &#123;</div><div class="line">            low++;</div><div class="line">        &#125;</div><div class="line">        //将这个值与关键数据（关键数据已经处于high位置）对调，对调完关键数据处于low位置</div><div class="line">        [list exchangeObjectAtIndex:high withObjectAtIndex:low];</div><div class="line">    &#125;</div><div class="line">    //对关键数据前面的数据进行快速排序</div><div class="line">    [self quickSort:list startIndex:start endIndex:low-1];</div><div class="line">    //对关键数据后面的数据进行快速排序</div><div class="line">    [self quickSort:list startIndex:low+1 endIndex:end];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="直接插入排序"><a href="#直接插入排序" class="headerlink" title="直接插入排序"></a><strong>直接插入排序</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> *  直接插入排序</div><div class="line"> *  把待排序的纪录按其关键码值的大小逐个插入到一个已经排好序的有序序列中，直到所有的纪录插入完为止</div><div class="line"> *</div><div class="line"> *  @param list 待排序的数组</div><div class="line"> */</div><div class="line">+(void)insertionSort:(NSMutableArray *)list&#123;</div><div class="line">    if (list.count &lt;= 1) &#123;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    //从第1位开始，依次将数组分成2部分：前一部分可以视为已经排好序的，后一部分是未排序的</div><div class="line">    //对后一部分的数据依次遍历，插入到前一部分中的合适位置</div><div class="line">    for (int i=1; i&lt;list.count; i++) &#123;</div><div class="line">        int j=i;</div><div class="line">        //待排序的数（是未排序部分的第1个数，它的上一位数就是已经排序的部分的最后一位数）</div><div class="line">        NSInteger temp = [[list objectAtIndex:i] integerValue];</div><div class="line">        //从已排序部分的最后一位开始依次往前推，如果比待排序的数大，则将其位置往后移一位</div><div class="line">        while (j&gt;0 &amp;&amp; [[list objectAtIndex:(j-1)]integerValue] &gt; temp) &#123;</div><div class="line">            [list replaceObjectAtIndex:j withObject:[list objectAtIndex:(j-1)]];</div><div class="line">            j--;</div><div class="line">        &#125;</div><div class="line">        //循环结束后的j即为待排序的数需要插入的位置</div><div class="line">        [list replaceObjectAtIndex:j withObject:@(temp)];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="二分排序（插入排序）"><a href="#二分排序（插入排序）" class="headerlink" title="二分排序（插入排序）"></a><strong>二分排序（插入排序）</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> *  二分排序（插入排序）</div><div class="line"> *</div><div class="line"> *  @param list 待排序的数组</div><div class="line"> */</div><div class="line">+(void)binaryInsertionSort:(NSMutableArray *)list&#123;</div><div class="line">    if (list.count &lt;= 1) &#123;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line">    //从第1位开始，依次将数组分成2部分：前一部分可以视为已经排好序的，后一部分是未排序的</div><div class="line">    //对后一部分的数据依次遍历，插入到前一部分中的合适位置</div><div class="line">    for (int i=1; i&lt;list.count; i++) &#123;</div><div class="line">        int left = 0;</div><div class="line">        int right = i-1;</div><div class="line">        int middle;</div><div class="line">        //待排序的数（是未排序部分的第1个数，它的上一位数就是已经排序的部分的最后一位数）</div><div class="line">        NSInteger temp = [[list objectAtIndex:i] integerValue];</div><div class="line">        </div><div class="line">        while (left &lt;= right) &#123;</div><div class="line">            //每次从已经排序的部分中取中间位置的数进行比较</div><div class="line">            middle = (left+right)/2;</div><div class="line">            //如果跟待排序数相等，则直接插入到此位置即可</div><div class="line">            if ([[list objectAtIndex:middle]integerValue] == temp)&#123;</div><div class="line">                left = middle;</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">            //如果比待排序数大，则从中间位置左边范围内再次取中间数查找（下一循环）</div><div class="line">            else if ([[list objectAtIndex:middle]integerValue] &gt; temp) &#123;</div><div class="line">                right = middle-1;</div><div class="line">            &#125;</div><div class="line">            //如果比待排序数小，则从中间位置右边范围再次取中间数查找（下一循环）</div><div class="line">            else&#123;</div><div class="line">                left = middle+1;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        //循环结束，找到待插入位置left</div><div class="line">        //依次将left右边（比left位置数据都大）的数据向右移动一位</div><div class="line">        for (int j=i; j&gt;left; j--) &#123;</div><div class="line">            [list replaceObjectAtIndex:j withObject:[list objectAtIndex:j-1]];</div><div class="line">        &#125;</div><div class="line">        //在left位置插入待排序数</div><div class="line">        [list replaceObjectAtIndex:left withObject:@(temp)];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a><strong>希尔排序</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> *  希尔排序（插入排序）</div><div class="line"> *  先取一个正整数d1&lt;n，把所有序号相隔d1的数组元素放一组，组内进行直接插入排序；然后取d2&lt;d1，重复上述分组和排序操作；直至di=1，即所有记录放进一个组中排序为止</div><div class="line"> *</div><div class="line"> *  @param list 待排序的数组</div><div class="line"> */</div><div class="line">+(void)shellInsertionSort:(NSMutableArray *)list&#123;</div><div class="line">    if (list.count &lt;= 1) &#123;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line">    NSInteger delt = list.count / 2; //增量：取数组长度一半，以后每次减半，直到增量为1</div><div class="line">    NSInteger i;</div><div class="line">    while (delt &gt;= 1) &#123;</div><div class="line">        //对位置距离=增量的组分别进行直接插入排序</div><div class="line">        for (i=delt; i&lt;list.count; i++) &#123;</div><div class="line">            NSInteger k=i;</div><div class="line">            //待排序的数</div><div class="line">            NSInteger temp = [[list objectAtIndex:i] integerValue];</div><div class="line">            //从已排序部分的最后一位开始依次往前推(间隔=增量)，如果比待排序的数大，则将其位置往后移“增量”位</div><div class="line">            while (k&gt;=delt &amp;&amp; [[list objectAtIndex:k-delt]integerValue] &gt; temp) &#123;</div><div class="line">                [list replaceObjectAtIndex:k withObject:[list objectAtIndex:k-delt]];</div><div class="line">                k -= delt; //按增量递推</div><div class="line">            &#125;</div><div class="line">            //循环结束后的j即为待排序的数需要插入的位置</div><div class="line">            [list replaceObjectAtIndex:k withObject:@(temp)];</div><div class="line">        &#125;</div><div class="line">        delt = delt/2; //增量：每次减半</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a><strong>堆排序</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> *  堆排序</div><div class="line"> *  利用堆的特性（堆顶肯定是最大或者最小值），将堆顶数据与堆尾数据交换（相当于删除堆顶数据并保存到堆尾），再重新构造堆，直到堆中只剩下1个数据</div><div class="line"> *</div><div class="line"> *  @param list 待排序的数组</div><div class="line"> */</div><div class="line">+(void)heapSort:(NSMutableArray *)list&#123;</div><div class="line">    if (list.count &lt;= 1) &#123;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line">    NSInteger i;</div><div class="line">    //初始化堆，取父节点和左右子节点中最大（或者最小）值作为堆顶</div><div class="line">    //因为堆节点i的叶子节点是2*i+1，因此初始化是从length/2-1处开始整理堆即可</div><div class="line">    for(i=list.count/2-1;i&gt;=0;i--)&#123;</div><div class="line">        [self heapAdjust:list withIndex:i andLength:list.count];</div><div class="line">    &#125;</div><div class="line">//    NSLog(@&quot;构造堆:%@&quot;, [list componentsJoinedByString:@&quot; &quot;]);</div><div class="line">    //整理完堆后，第0位数肯定是最大（或者最小）值，将它跟第n-1位交换，相当于从堆中删除第0位，再对剩下的数据重新整理堆</div><div class="line">    //依次执行上述交换操作，直到只剩下1个数</div><div class="line">    for(i=list.count-1;i&gt;0;i--)&#123;</div><div class="line">        [list exchangeObjectAtIndex:0 withObjectAtIndex:i];</div><div class="line">        [self heapAdjust:list withIndex:0 andLength:i];</div><div class="line">//        NSLog(@&quot;构造堆:%@&quot;, [list componentsJoinedByString:@&quot; &quot;]);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">/**</div><div class="line"> *  构造堆（最大堆）</div><div class="line"> *</div><div class="line"> *</div><div class="line"> *  @param list   待整理的数组</div><div class="line"> *  @param index  待整理的位置</div><div class="line"> *  @param length 待整理的数组的长度（这里因为待排序的数据和已排序的数据共用了一个数组）</div><div class="line"> */</div><div class="line">+(void)heapAdjust:(NSMutableArray *)list withIndex:(NSInteger)index andLength:(NSInteger)length&#123;</div><div class="line">    //左子节点，右子节点为lchild+1</div><div class="line">    NSInteger lchild = index*2+1;</div><div class="line"></div><div class="line">    while (lchild &lt; length) &#123;</div><div class="line">        //判断是否有右子节点，如果有则判断右子节点是否比左节点大，如果比左节点大则用右子节点于父节点进行比较</div><div class="line">        if (lchild+1 &lt; length &amp;&amp; [[list objectAtIndex:lchild+1]integerValue] &gt; [[list objectAtIndex:lchild] integerValue]) &#123;</div><div class="line">            lchild++; //++表示将左节点位置移到右节点位置,为的是下面跟父节点进行比较</div><div class="line">        &#125;</div><div class="line">        //如果父节点比子节点小，则说明本身就是一个堆，无需再整理</div><div class="line">        if ([[list objectAtIndex:lchild]integerValue] &lt; [[list objectAtIndex:index]integerValue]) &#123;</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">        //交换父节点和子节点的值（将父节点下沉）</div><div class="line">        [list exchangeObjectAtIndex:index withObjectAtIndex:lchild];</div><div class="line">        //父节点位置下沉到子节点的位置，再继续整理下面的堆</div><div class="line">        index = lchild;</div><div class="line">        lchild = index*2+1;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a><strong>选择排序</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> *  选择排序</div><div class="line"> *  每一次从待排序的数据元素中选出最小（或最大）的一个元素，存放在序列的起始位置，直到全部待排序的数据元素排完</div><div class="line"> *</div><div class="line"> *  @param list 待排序的数组</div><div class="line"> */</div><div class="line">+(void)selectSort:(NSMutableArray *)list&#123;</div><div class="line">    if (list.count &lt;= 1) &#123;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line">    NSInteger i,j;</div><div class="line">    //从第0位开始排序，直到最后一位（最后一位无需再排序）</div><div class="line">    for (i=0; i&lt;list.count-1; i++) &#123;</div><div class="line">        j=i;//记录当前位置，作为对比的关键元素</div><div class="line">        //依次遍历后面的元素</div><div class="line">        for (NSInteger k=i+1; k&lt;list.count; k++) &#123;</div><div class="line">            //如果元素比关键元素小，则将关键元素位置指向此位置，再继续遍历</div><div class="line">            if ([[list objectAtIndex:k]integerValue] &lt; [[list objectAtIndex:j]integerValue]) &#123;</div><div class="line">                j=k;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        //遍历结束后，得到最小元素位置j，如果不是初始位置，则交换2个位置的值</div><div class="line">        if (i!=j) &#123;</div><div class="line">            [list exchangeObjectAtIndex:i withObjectAtIndex:j];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a><strong>归并排序</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> *  归并排序</div><div class="line"> *  将数组分割成2部分，使左右2部分都有序，再合并成一个</div><div class="line"> *  为了使左右2部分都有序，可通过递归的方式，再对其进行分割，直至分割后只剩1个元素，可以视其为已经有序的，再将左右2部分进行合并</div><div class="line"> *  合并时，分别从2部分中取第0个数进行比较，将较小（或者较大）的数保存到临时数组里，再用下一个数和上次比较中较大者进行比较，直到某一边没有数据，再将另外一边中剩余的数复制到临时数组里</div><div class="line"> *  最后生成的临时数组就是已经排好序的结果</div><div class="line"> *</div><div class="line"> *  @param list 待排序的数组</div><div class="line"> */</div><div class="line">+(void)mergeSort:(NSMutableArray *)list&#123;</div><div class="line">    if (list.count &lt;= 1) &#123;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line">    [self mergeSort:list startIndex:0 endIndex:list.count-1];</div><div class="line">&#125;</div><div class="line">+(void)mergeSort:(NSMutableArray *)list startIndex:(NSInteger)startIndex endIndex:(NSInteger)endIndex&#123;</div><div class="line">   </div><div class="line">    if (startIndex &lt; endIndex) &#123;</div><div class="line">       </div><div class="line">        //取中间位置，将左右两边分别递归进行归并，直至左右两边只剩1个元素</div><div class="line">        NSInteger middle = (startIndex + endIndex) / 2;</div><div class="line">        [self mergeSort:list startIndex:startIndex endIndex:middle];</div><div class="line">        [self mergeSort:list startIndex:middle+1 endIndex:endIndex];</div><div class="line">        //对左右2边的数据进行合并</div><div class="line">        NSInteger i=startIndex; //左边数据的起始位置</div><div class="line">        NSInteger j= middle+1; //右边数据的起始位置</div><div class="line">        NSMutableArray *temp = [NSMutableArray array]; //临时数组</div><div class="line">        while (i&lt;=middle &amp;&amp; j &lt;= endIndex) &#123;</div><div class="line">            //如果左边数据较小，则将其放到临时数组里，并将左边位置向后移一位</div><div class="line">            if ([[list objectAtIndex:i]integerValue] &lt; [[list objectAtIndex:j]integerValue]) &#123;</div><div class="line">                [temp addObject:[list objectAtIndex:i]];</div><div class="line">                i++;</div><div class="line">            &#125;</div><div class="line">            //否则将右边数据放到临时数组里，并将右边位置向后移一位</div><div class="line">            else&#123;</div><div class="line">                [temp addObject:[list objectAtIndex:j]];</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        //如果左边还有数据，则将剩余的部分全都复制到临时数组里</div><div class="line">        while (i&lt;=middle) &#123;</div><div class="line">            [temp addObject:[list objectAtIndex:i]];</div><div class="line">            i++;</div><div class="line">        &#125;</div><div class="line">        //如果右边还有数据（左右两边只可能存在一边有剩余数据的情况），则将剩余的部分全都复制到临时数组里</div><div class="line">        while (j&lt;=endIndex) &#123;</div><div class="line">            [temp addObject:[list objectAtIndex:j]];</div><div class="line">            j++;</div><div class="line">        &#125;</div><div class="line">        //再将临时数组里的数据（已经排好序了）保存到原始数据中，以达到对原始数据的排序</div><div class="line">        for (i=0; i&lt;temp.count; i++) &#123;</div><div class="line">            //注意：需要从startIndex位置开始，因为这里是递归调用的</div><div class="line">            [list replaceObjectAtIndex:startIndex withObject:[temp objectAtIndex:i]];</div><div class="line">            startIndex++;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.jpg" alt="xulianpeng WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/24/数据结构-线性表/" rel="next" title="数据结构-线性表">
+                <i class="fa fa-chevron-left"></i> 数据结构-线性表
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="xulianpeng" />
+          <p class="site-author-name" itemprop="name">xulianpeng</p>
+          <p class="site-description motion-element" itemprop="description">I am on the way to faraway</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xulianpeng" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/5f7143127114" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#排序"><span class="nav-number">1.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定义"><span class="nav-number">2.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内排序和外排序"><span class="nav-number">3.</span> <span class="nav-text">内排序和外排序:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#影响排序算法性能的因素有"><span class="nav-number">4.</span> <span class="nav-text">影响排序算法性能的因素有:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内排序的分类"><span class="nav-number">5.</span> <span class="nav-text">内排序的分类:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#冒泡排序"><span class="nav-number">5.1.</span> <span class="nav-text">冒泡排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#冒泡排序方法1"><span class="nav-number">5.1.1.</span> <span class="nav-text">冒泡排序方法1:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#冒泡排序方法2"><span class="nav-number">5.1.2.</span> <span class="nav-text">冒泡排序方法2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#冒泡排序方法3"><span class="nav-number">5.1.3.</span> <span class="nav-text">冒泡排序方法3</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单选择排序"><span class="nav-number">5.2.</span> <span class="nav-text">简单选择排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快速排序"><span class="nav-number">5.3.</span> <span class="nav-text">快速排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#直接插入排序"><span class="nav-number">5.4.</span> <span class="nav-text">直接插入排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二分排序（插入排序）"><span class="nav-number">5.5.</span> <span class="nav-text">二分排序（插入排序）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#希尔排序"><span class="nav-number">5.6.</span> <span class="nav-text">希尔排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆排序"><span class="nav-number">5.7.</span> <span class="nav-text">堆排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择排序"><span class="nav-number">5.8.</span> <span class="nav-text">选择排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#归并排序"><span class="nav-number">5.9.</span> <span class="nav-text">归并排序</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xulianpeng</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/ven/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/ven/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/ven/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/ven/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/ven/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/ven/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("kxIjFcyoMk4rdO3nb3fJvCeq-gzGzoHsz", "eXlDfzJ1LVFxLb2qpYCfUA1l");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

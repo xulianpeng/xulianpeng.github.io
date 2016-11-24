@@ -84,19 +84,19 @@
 
 
 
-<meta name="description" content="hljs.initHighlightingOnLoad();
- $(document).ready(function(){      $(“h1,h2,h3,h4,h5,h6”).each(function(i,item){        var tag = $(item).get(0).localName;        $(item).attr(“id”,”wow”+i);">
+<meta name="description" content="线性表数据结构Data Structure
+是指相互之间具有(存在)一定练习(关系)的数据元素的集合。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="shell brief introduction">
-<meta property="og:url" content="http://yoursite.com/2016/07/20/shell-brief-introduction/index.html">
+<meta property="og:title" content="数据结构-线性表">
+<meta property="og:url" content="http://yoursite.com/2016/11/24/数据结构-线性表/index.html">
 <meta property="og:site_name" content="Lianpeng’s Sky">
-<meta property="og:description" content="hljs.initHighlightingOnLoad();
- $(document).ready(function(){      $(“h1,h2,h3,h4,h5,h6”).each(function(i,item){        var tag = $(item).get(0).localName;        $(item).attr(“id”,”wow”+i);">
-<meta property="og:updated_time" content="2016-07-25T03:32:45.000Z">
+<meta property="og:description" content="线性表数据结构Data Structure
+是指相互之间具有(存在)一定练习(关系)的数据元素的集合。">
+<meta property="og:updated_time" content="2016-11-24T00:45:13.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="shell brief introduction">
-<meta name="twitter:description" content="hljs.initHighlightingOnLoad();
- $(document).ready(function(){      $(“h1,h2,h3,h4,h5,h6”).each(function(i,item){        var tag = $(item).get(0).localName;        $(item).attr(“id”,”wow”+i);">
+<meta name="twitter:title" content="数据结构-线性表">
+<meta name="twitter:description" content="线性表数据结构Data Structure
+是指相互之间具有(存在)一定练习(关系)的数据元素的集合。">
 
 
 
@@ -117,9 +117,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/07/20/shell-brief-introduction/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/11/24/数据结构-线性表/"/>
 
-  <title> shell brief introduction | Lianpeng’s Sky </title>
+  <title> 数据结构-线性表 | Lianpeng’s Sky </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -259,7 +259,7 @@
             
             
               
-                shell brief introduction
+                数据结构-线性表
               
             
           </h1>
@@ -271,8 +271,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-20T23:54:05+08:00" content="2016-07-20">
-              2016-07-20
+            <time itemprop="dateCreated" datetime="2016-11-24T08:43:08+08:00" content="2016-11-24">
+              2016-11-24
             </time>
           </span>
 
@@ -286,7 +286,7 @@
 
           
           
-             <span id="/2016/07/20/shell-brief-introduction/" class="leancloud_visitors" data-flag-title="shell brief introduction">
+             <span id="/2016/11/24/数据结构-线性表/" class="leancloud_visitors" data-flag-title="数据结构-线性表">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -308,68 +308,388 @@
       
 
       
-        <link rel="stylesheet" href="http://yandex.st/highlightjs/6.2/styles/googlecode.min.css">
+        <h1 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a><strong>线性表</strong></h1><p>数据结构Data Structure</p>
+<p>是指相互之间具有(存在)一定练习(关系)的数据元素的集合。</p>
+<a id="more"></a>
+<p>管理大量数据的方法。数据多到一定程度。</p>
+<p>数据结构分为逻辑结构和存储结构。</p>
+<p>逻辑结构，人对数据分析的结果，不存在于计算机中。</p>
+<p>1.元素之间的相互联系(关系)</p>
+<p>2.四种基本类型，根据元素之间关系的复杂度进行的分类。</p>
+<p>  2.1集合：结构中的数据元素除了“同属于一个集合”外，没有其它关系。</p>
+<p>  2.2线性结构：结构中的数据元素之间存在一对一的关系。</p>
+<p>  2.3树型结构：结构中的数据元素之间存在一对多的关系。</p>
+<p>  2.4图状结构或网状结构：结构中的数据元素之间存在多对多的关系。</p>
+<p>存储结构，数据在计算机(内存、外存)中如何实际存放。</p>
+<p>1.顺序存储结构：用数据元素在存储器中的相对位置(数组的下标)来表示数据元素之间的逻辑结构(关系)。所有数据元素都在一起。数组。</p>
+<p>2.链式存储结构：在每一个数据元素中增加一个存放另一个元素地址的指针(pointer)，用该指针来表示数据元素之间的逻辑结构(关系)。链表。</p>
+<p>逻辑结构      物理结构</p>
+<p>线性表          顺序、链式</p>
+<p>树                  链式 (顺序的应用较少)</p>
+<p>图                  复合(同时使用顺序和链式)</p>
+<pre><code>                                     数据的逻辑结构
 
-<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-<script src="http://yandex.st/highlightjs/6.2/highlight.min.js"></script>
+  线性结构                                                      非线性结构
 
-<p><script>hljs.initHighlightingOnLoad();</script></p>
-<p><script type="text/javascript"><br> $(document).ready(function(){<br>      $(“h1,h2,h3,h4,h5,h6”).each(function(i,item){<br>        var tag = $(item).get(0).localName;<br>        $(item).attr(“id”,”wow”+i);<br>        $(“#category”).append(‘<a class="new'+tag+'" href="#wow'+i+'">‘+$(this).text()+’</a></br>‘);<br>        $(“.newh1”).css(“margin-left”,0);<br>        $(“.newh2”).css(“margin-left”,20);<br>        $(“.newh3”).css(“margin-left”,40);<br>        $(“.newh4”).css(“margin-left”,60);<br>        $(“.newh5”).css(“margin-left”,80);<br>        $(“.newh6”).css(“margin-left”,100);<br>      });<br> });<br></script></p>
-<p><div id="category"></div></p>
-<h1 id="一-Shell简介"><a href="#一-Shell简介" class="headerlink" title="一 Shell简介"></a>一 Shell简介</h1><a id="more"></a>
-<p>Shell本身是一个用C语言编写的程序，它是用户使用Unix/Linux的桥梁，用户的大部分工作都是通过Shell完成的。Shell既是一种命令语言，又是一种程序设计语言。<strong>作为命令语言，它交互式地解释和执行用户输入的命令；作为程序设计语言，它定义了各种变量和参数，并提供了许多在高级语言中才具有的控制结构，包括循环和分支。</strong></p>
-<p>它虽然不是Unix/Linux系统内核的一部分，但它调用了系统核心的大部分功能来执行程序、建立文件并以并行的方式协调各个程序的运行。因此，对于用户来说，shell是最重要的实用程序，深入了解和熟练掌握shell的特性极其使用方法，是用好Unix/Linux系统的关键。</p>
-<p>可以说，shell使用的熟练程度反映了用户对Unix/Linux使用的熟练程度。</p>
-<p><strong>注意：单独地学习 Shell 是没有意义的，请先参考Unix/Linux入门教程，了解 Unix/Linux 基础。</strong></p>
-<p>Shell有两种执行命令的方式：</p>
-<ul>
-<li>交互式（Interactive）：解释执行用户的命令，用户输入一条命令，Shell就解释执行一条。</li>
-<li>批处理（Batch）：用户事先写一个Shell脚本(Script)，其中有很多条命令，让Shell一次把这些命令执行完，而不必一条一条地敲命令。</li>
-</ul>
-<p>Shell脚本和编程语言很相似，也有变量和流程控制语句，但Shell脚本是解释执行的，不需要编译，Shell程序从脚本中一行一行读取并执行这些命令，相当于一个用户把脚本中的命令一行一行敲到Shell提示符下执行。</p>
-<p><strong>Shell初学者请注意，在平常应用中，建议不要用 root 帐号运行 Shell 。作为普通用户，不管您有意还是无意，都无法破坏系统；但如果是 root，那就不同了，只要敲几个字母，就可能导致灾难性后果。</strong></p>
-<h1 id="二-几种常见的Shell"><a href="#二-几种常见的Shell" class="headerlink" title="二 几种常见的Shell"></a>二 几种常见的Shell</h1><p>上面提到过，Shell是一种脚本语言，那么，就必须有<strong>解释器</strong>来执行这些脚本。</p>
-<p>Unix/Linux上常见的Shell脚本解释器有<strong>bash、sh、csh、ksh</strong>等，习惯上把它们称作一种Shell。我们常说有多少种Shell，其实说的是Shell脚本解释器。</p>
-<h2 id="bash"><a href="#bash" class="headerlink" title="bash"></a>bash</h2><p>bash是Linux标准默认的shell，本教程也基于bash讲解。bash由Brian Fox和Chet Ramey共同完成，是BourneAgain Shell的缩写，内部命令一共有40个。</p>
-<p>Linux使用它作为默认的shell是因为它有诸如以下的特色：<br>可以使用类似DOS下面的doskey的功能，用方向键查阅和快速输入并修改命令。<br>自动通过查找匹配的方式给出以某字符串开头的命令。<br>包含了自身的帮助功能，你只要在提示符下面键入help就可以得到相关的帮助。</p>
-<h2 id="sh"><a href="#sh" class="headerlink" title="sh"></a>sh</h2><p>sh 由Steve Bourne开发，是Bourne Shell的缩写，sh 是Unix 标准默认的shell。</p>
-<h2 id="ash"><a href="#ash" class="headerlink" title="ash"></a>ash</h2><p>ash shell 是由Kenneth Almquist编写的，Linux中占用系统资源最少的一个小shell，它只包含24个内部命令，因而使用起来很不方便。</p>
-<h2 id="csh"><a href="#csh" class="headerlink" title="csh"></a>csh</h2><p>csh 是Linux比较大的内核，它由以William Joy为代表的共计47位作者编成，共有52个内部命令。该shell其实是指向/bin/tcsh这样的一个shell，也就是说，csh其实就是tcsh。</p>
-<h2 id="ksh"><a href="#ksh" class="headerlink" title="ksh"></a>ksh</h2><p>ksh 是Korn shell的缩写，由Eric Gisin编写，共有42条内部命令。该shell最大的优点是几乎和商业发行版的ksh完全兼容，这样就可以在不用花钱购买商业版本的情况下尝试商业版本的性能了。</p>
-<p>注意：bash是 Bourne Again Shell 的缩写，是linux标准的默认shell ，它基于Bourne shell，吸收了C shell和Korn shell的一些特性。bash完全兼容sh，也就是说，用sh写的脚本可以不加修改的在bash中执行。</p>
-<h1 id="三-Shell脚本语言与编译型语言的差异"><a href="#三-Shell脚本语言与编译型语言的差异" class="headerlink" title="三 Shell脚本语言与编译型语言的差异"></a>三 Shell脚本语言与编译型语言的差异</h1><p><strong>大体上，可以将程序设计语言可以分为两类：编译型语言和解释型语言。</strong></p>
-<ul>
-<li><p>编译型语言:很多传统的程序设计语言，例如Fortran、Ada、Pascal、C、C++和Java，都是编译型语言。这类语言需要预先将我们写好的源代码(source code)转换成目标代码(object code)，这个过程被称作“编译”。–&gt;(运行程序时，直接读取目标代码(object code)。由于编译后的目标代码(object code)非常接近计算机底层，因此<strong>执行效率很高</strong>，这是编译型语言的优点。<br>但是，由于编译型语言多半运作于底层，所处理的是字节、整数、浮点数或是其他机器层级的对象，往往实现一个简单的功能需要大量复杂的代码。例如，在C++里，就很难进行“将一个目录里所有的文件复制到另一个目录中”之类的简单操作。)</p>
-</li>
-<li><p>解释型语言:解释型语言也被称作“脚本语言”。执行这类程序时，解释器(interpreter)需要读取我们编写的源代码(source code)，并将其转换成目标代码(object code)，再由计算机运行。因为每次执行程序都多了编译的过程，因此效率有所下降。</p>
-</li>
-<li><p>使用脚本编程语言的好处是，它们多半运行在比编译型语言还高的层级，能够轻易处理文件与目录之类的对象；缺点是它们的效率通常不如编译型语言。不过权衡之下，通常使用脚本编程还是值得的：花一个小时写成的简单脚本，同样的功能用C或C++来编写实现，可能需要两天，而且一般来说，脚本执行的速度已经够快了，快到足以让人忽略它性能上的问题。脚本编程语言的例子有awk、Perl、Python、Ruby与Shell。</p>
-</li>
-</ul>
-<h1 id="四-什么时候使用Shell"><a href="#四-什么时候使用Shell" class="headerlink" title="四 什么时候使用Shell"></a>四 什么时候使用Shell</h1><p>因为Shell似乎是各UNIX系统之间通用的功能，并且经过了POSIX的标准化。因此，Shell脚本只要“用心写”一次，即可应用到很多系统上。因此，之所以要使用Shell脚本是基于：</p>
-<ul>
-<li>简单性：Shell是一个高级语言；通过它，你可以简洁地表达复杂的操作。</li>
-<li>可移植性：使用POSIX所定义的功能，可以做到脚本无须修改就可在不同的系统上执行。</li>
-<li>开发容易：可以在短时间内完成一个功能强大又妤用的脚本。</li>
-</ul>
-<h2 id="1-但是，考虑到Shell脚本的命令限制和效率问题，下列情况一般不使用Shell："><a href="#1-但是，考虑到Shell脚本的命令限制和效率问题，下列情况一般不使用Shell：" class="headerlink" title="1.但是，考虑到Shell脚本的命令限制和效率问题，下列情况一般不使用Shell："></a>1.<strong>但是，考虑到Shell脚本的命令限制和效率问题，下列情况一般不使用Shell：</strong></h2><ul>
-<li>资源密集型的任务，尤其在需要考虑效率时（比如，排序，hash等等）。</li>
-<li>需要处理大任务的数学操作，尤其是浮点运算，精确运算，或者复杂的算术运算（这种情况一般使用C++或FORTRAN 来处理）。</li>
-<li>有跨平台（操作系统）移植需求（一般使用C 或Java）。</li>
-<li>复杂的应用，在必须使用结构化编程的时候（需要变量的类型检查，函数原型，等等）。</li>
-<li>对于影响系统全局性的关键任务应用。</li>
-<li>对于安全有很高要求的任务，比如你需要一个健壮的系统来防止入侵、破解、恶意破坏等等。</li>
-<li>项目由连串的依赖的各个部分组成。</li>
-<li>需要大规模的文件操作。</li>
-<li>需要多维数组的支持。</li>
-<li>需要数据结构的支持，比如链表或数等数据结构。</li>
-<li>需要产生或操作图形化界面 GUI。</li>
-<li>需要直接操作系统硬件。</li>
-<li>需要 I/O 或socket 接口。</li>
-<li>需要使用库或者遗留下来的老代码的接口。</li>
-<li>私人的、闭源的应用（shell 脚本把代码就放在文本文件中，全世界都能看到）。</li>
-</ul>
-<h2 id="2-使用Shell无法解决问题时-怎么办"><a href="#2-使用Shell无法解决问题时-怎么办" class="headerlink" title="2.使用Shell无法解决问题时,怎么办"></a>2.使用Shell无法解决问题时,怎么办</h2><p><strong>如果你的应用符合上边的任意一条，那么就考虑一下更强大的语言吧——或许是Perl、Tcl、Python、Ruby——或者是更高层次的编译语言比如C/C++，或者是Java。</strong>即使如此，你会发现，使用shell来原型开发你的应用，在开发步骤中也是非常有用的。</p>
+受限线性表   线性表推广         集合        树形结构            图状结构
+</code></pre><p>一级线性表   栈和队列 串   数组 广义表                     一般树 二叉树   有向图 无向图</p>
+<p>最终要用程序说话。</p>
+<p>数据结构的运算</p>
+<p>1.建立 Create 建立数据结构</p>
+<p>2.销毁 Destroy 不需要时一定要销毁</p>
+<p>3.插入 Insert 插入一个新元素</p>
+<p>4.删除 Delete 删除一个元素</p>
+<p>5.修改 Modify 修改一个元素的值</p>
+<p>6.查找 Search 找一个数据</p>
+<p>7.访问 Access 取出数据</p>
+<p>8.排序 Sort 按升序、降序进行排序</p>
+<p>一、线性表</p>
+<p>1.线性结构 一维 x轴</p>
+<p>1.1是最常用、最简单的一种数据结构。</p>
+<p>1.2基本特点是，线性表中的数据元素是有序且有限的。</p>
+<p>2.在这种结构中：</p>
+<p>2.1存在一个唯一的被称为“第一个”的数据元素</p>
+<p>2.2存在一个唯一的被称为“最后一个”的数据元素</p>
+<p>2.3除第一个元素外，每个元素均有唯一一个直接前驱</p>
+<p>2.4除最后一个元素外，每个元素均有唯一一个直接后继</p>
+<p>二、线性表的顺序存储</p>
+<p>1.使用数组来描述顺序表</p>
+<p>   大小为表容量 ListSize</p>
+<p>   放数据的部分，称为表区，a[0],a[1]……a[n-1]</p>
+<p>   没有放元素的区域，称为空闲区，一直到a[ListSize-1]</p>
+<p>   当没有空闲区时，称顺序表满了，不能再存放数据。</p>
+<p>/*</p>
+<p> 程序的格式非常重要！要规范！不能随意！</p>
+<p> */</p>
+<p>#include <stdio.h></stdio.h></p>
+<p>typedefint DataType;//要起别名的类型，起的别名，int和DataType是等效的</p>
+<p>#define LISTSIZE 100//表容量</p>
+<p>struct SeqList</p>
+<p>{</p>
+<pre><code>DataType data[LISTSIZE];//存顺序表的元素
+
+int nLength;//表的长度表区中元素的个数
+</code></pre><p>};</p>
+<p>int listLength(SeqList *list);//求表长</p>
+<p>DataType <em>getNode(SeqList </em>list,int index);//查找</p>
+<p>int locateNode(SeqList *list,DataType x);//定位一个节点</p>
+<p>bool insert(SeqList *list,int index,DataType x);//指定位置，插入元素</p>
+<p>bool insert(SeqList *list,DataType x);//尾部插入</p>
+<p>bool erase(SeqList *list,int index);//删除指定位置的元素</p>
+<p>bool set(SeqList *list,int index,DataType x);//修改指定位置的元素值</p>
+<p>void trave(SeqList *list);//遍历表中的所有元素</p>
+<p>int listLength(SeqList *list)</p>
+<p>{</p>
+<pre><code>return list-&gt;nLength;
+
+//如果用值传递，运行速度非常慢，占用内存非常多，所以用地址传递。
+</code></pre><p>}</p>
+<p>DataType <em>getNode(SeqList </em>list,int index)</p>
+<p>{</p>
+<pre><code>if (index &lt; 0 || index &gt; (list-&gt;nLength) - 1)
+
+{
+
+    returnNULL;//表示出错
+
+}
+
+return &amp;(list-&gt;data[index]);
+
+//返回这个数组元素的地址,区分是错误还是正确的数据
+</code></pre><p>}</p>
+<p>int locateNode(SeqList *list,DataType x)//第二个参数是需要定位的元素</p>
+<p>{</p>
+<pre><code>//从顺序表的第一个元素开始对比，直到顺序表的最后一个元素，遍历数组
+
+for (int i = 0; i &lt; list-&gt;nLength; i++)
+
+{
+
+    //逐个元素进行对比
+
+    if (x == list-&gt;data[i])
+
+    {
+
+        return i;
+
+        //找到了，返回在顺序表中的位置，终止循环退出函数，得到index
+
+    }
+
+}
+
+//如果始终没有找到x，返回-1
+
+return -1;
+</code></pre><p>}</p>
+<p>bool insert(SeqList *list,int index,DataType x)</p>
+<p>{</p>
+<pre><code>//从最后一个元素开始下移，占用空闲区的位置，最后空出元素需要插入的位置
+
+if (list-&gt;nLength == LISTSIZE)
+
+{
+
+    //如果线性表已满，则不可插入，直接退出，返回false表示插入失败
+
+    returnfalse;
+
+}
+
+
+
+//规范插入位置，从0到最后一个元素
+
+int insertPosition = index;//中间变量，保存插入位置
+
+if (index &lt; 0)//插入位置越界
+
+{
+
+    insertPosition = 0;//认为是要插入在第一个位置
+
+}
+
+if (index &gt; list-&gt;nLength - 1)//插在最后一个元素下面，越界
+
+{
+
+    insertPosition = list-&gt;nLength;
+
+}
+
+
+
+//向下移动元素
+
+for (int i = list-&gt;nLength - 1; i &gt;= insertPosition; i--)
+
+{
+
+    list-&gt;data[i+1] = list-&gt;data[i];//向后移
+
+}
+
+
+
+//插入元素,之前的准备工作1.表不能满2.位置需要规范3.要空出这个位置
+
+list-&gt;data[insertPosition] = x;
+
+
+
+//一定记住，表长需要+1
+
+list-&gt;nLength++;
+
+//返回值是插入成功与否
+
+returntrue;
+</code></pre><p>}</p>
+<p>bool insert(SeqList *list,DataType x)</p>
+<p>{</p>
+<pre><code>//调用前一个参数，把具体位置指定为尾部
+
+//函数重载，允许函数名相同，但要求参数类型或个数不能相同
+
+returninsert(list, list-&gt;nLength, x);
+</code></pre><p>}</p>
+<p>bool erase(SeqList *list,int index)</p>
+<p>{</p>
+<pre><code>//从要删除的位置开始，依次由后一个元素向前替换，直到最后一个元素
+
+//与插入的循环方向相反
+
+//判断index是否在表区
+
+if (index &lt; 0 || index &gt;= list-&gt;nLength)
+
+{
+
+    returnfalse;
+
+}
+
+//开始删除边界问题，注意！
+
+for (int i = index; i &lt; list-&gt;nLength - 1; i++)
+
+{
+
+    list-&gt;data[i] = list-&gt;data[i + 1];
+
+}
+
+//同插入，涉及了表长的修改，一定要减1
+
+list-&gt;nLength--;
+
+//返回删除成功与否
+
+returntrue;
+</code></pre><p>}</p>
+<p>bool set(SeqList *list,int index,DataType x)</p>
+<p>{</p>
+<pre><code>//容错保护
+
+if (index &lt; 0 || index &gt; list-&gt;nLength - 1)
+
+    //或if (index &lt; 0 || index &gt;= list-&gt;nLength)
+
+{
+
+    returnfalse;
+
+}
+
+list-&gt;data[index] = x;
+
+//返回修改成功与否
+
+returntrue;
+</code></pre><p>}</p>
+<p>void trave(SeqList *list)</p>
+<p>{</p>
+<pre><code>for (int i = 0; i &lt; list-&gt;nLength; i++)
+
+{
+
+    printf(&quot;第%d个数组元素是%d\n&quot;,i,list-&gt;data[i]);
+
+    /*if (0 == (i + 1) % 10)
+
+        printf(&quot;\n&quot;);*/
+
+}
+</code></pre><p>}</p>
+<p>int main(int argc, constchar * argv[])</p>
+<p>{</p>
+<pre><code>SeqList a;//与C不同，可以省略struct
+
+//用类型声明变量 SeqList a;和int a;是一样的，存储空间不一样
+
+//数据结构在定义一个变量后都不进行初始化，以后不要考虑初始化的问题
+
+//元素的增删由专门的函数进行
+
+printf(&quot;表长:%d\n&quot;,listLength(&amp;a));
+
+
+
+//插入一些数据
+
+insert(&amp;a, 10);
+
+insert(&amp;a, 20);
+
+insert(&amp;a, 30);
+
+insert(&amp;a, 2, 40);
+
+insert(&amp;a, 2, 50);
+
+insert(&amp;a, 2, 60);
+
+insert(&amp;a, 0, 80);
+
+insert(&amp;a, 100);
+
+printf(&quot;表长:%d\n&quot;,listLength(&amp;a));
+
+trave(&amp;a);
+
+
+
+//定位数据
+
+printf(&quot;50在表中第%d个位置\n&quot;,locateNode(&amp;a, 50));
+
+//获取指定位置的数据
+
+DataType *p = getNode(&amp;a, 4);
+
+printf(&quot;%d\n&quot;,*p);
+
+
+
+//删除元素
+
+erase(&amp;a, 0);
+
+printf(&quot;80在表中第%d个位置\n&quot;,locateNode(&amp;a, 80));//-1
+
+erase(&amp;a, 6);//删除最后一个元素仅仅修改了nlength的值
+
+trave(&amp;a);
+
+
+
+//修改元素
+
+p = getNode(&amp;a, 0);
+
+printf(&quot;修改前，%d\n&quot;,*p);//修改前，是10
+
+set(&amp;a, 0,111);
+
+p = getNode(&amp;a, 0);
+
+printf(&quot;修改后，%d\n&quot;,*p);//修改后，111
+
+trave(&amp;a);
+
+
+
+//遍历
+
+trave(&amp;a);
+
+/*
+
+int i = 0;
+
+for (i = 0; i &lt; LISTSIZE; i++)
+
+{
+
+    printf(&quot;%d\t&quot;,a.data[i]);
+
+    if (0 == (i+1) % 10)
+
+    {
+
+        printf(&quot;\n&quot;);
+
+    }
+
+}*/
+
+
+
+return0;
+</code></pre><p>}</p>
+<p>三、线性表的链式存储</p>
+<p>顺序表的问题：</p>
+<p>1.顺序表中存在着空闲区。有内存浪费。如果取消空闲区，则表满，不可插入。所以空闲区必须预留，所以必须浪费内存。</p>
+<p>2.使用数组时，数组有一个要求：必须先定义数组的大小。而一个程序中，如果数组大小已被定义，则说明这个程序没有扩展性，使用时必须修改源程序并重新编译。扩展性不好。</p>
+<p>3.顺序表插入、删除元素太费时间。需要移动大量的元素。</p>
+<p>顺序表的查找非常快。二分法查找也很快。</p>
+<p>线性链表：</p>
+<p>1.用一组任意的存储单元存储线性表中的数据元素。用这种方法存储的线性表简称线性链表。（解决了空闲区的问题。有一个数据就申请一块空间存储。）</p>
+<p>2.存储链表中结点的一组任意的存储单元是连续的或不连续的，甚至是零散分布在内存中的任意位置。（也解决了扩展性的问题。不管增加多少都可以存储。）</p>
+<p>3.为了正确表示结点间的逻辑关系，在存储每个结点值的同时，还必须存储指示其直接后继结点的地址(或位置)，称为指针(pointer)或链(link)，这两部分组成了两边中的结点结构。（不需要循环。）</p>
+<p>链表的问题：逻辑顺序和物理顺序(存储顺序)不一样，导致要找到其中一个元素时无法找，增加一个指针，指向下一个数据，解决这个问题。</p>
+<p>注意！要学会画链表，结点：data|next</p>
+<p>4.链表时通过每个结点的指针域将线性表的n个结点按其逻辑次序链接在一起的。最后一个结点的指针域为NULL。</p>
+<p>5.每一个结点只包含一个指针域的链表，称为单链表。双向链表：每个结点还有一个指针指向前一个结点。</p>
+<p>6.为操作方便，总是在链表的第一个结点之前附设一个头指针head指向第一个结点。</p>
+<p>*指针的指针</p>
+<p>int a = 10;            //变量a中存储的是10</p>
+<p>int <em>p = &a;         //变量p中存储的是a的地址，</em>p就是a，10</p>
+<p>int <strong>p1 = &p;     //变量p1中存储的是p的地址，*p1就是p，a的地址；</strong>p1就是a，10</p>
+<p><em>(</em>p1)    —&gt;    a</p>
 
       
     </div>
@@ -411,16 +731,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/20/ssh-brief-introduction/" rel="next" title="ssh brief introduction">
-                <i class="fa fa-chevron-left"></i> ssh brief introduction
+              <a href="/2016/11/24/数据结构-查找/" rel="next" title="数据结构-查找">
+                <i class="fa fa-chevron-left"></i> 数据结构-查找
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/07/21/小白尝试GitHub-Hexo搭建博客的征程/" rel="prev" title="小白尝试GitHub+Hexo搭建博客的征程">
-                小白尝试GitHub+Hexo搭建博客的征程 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/11/24/数据结构-排序/" rel="prev" title="数据结构- 排序">
+                数据结构- 排序 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -555,7 +875,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一-Shell简介"><span class="nav-number">1.</span> <span class="nav-text">一 Shell简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二-几种常见的Shell"><span class="nav-number">2.</span> <span class="nav-text">二 几种常见的Shell</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bash"><span class="nav-number">2.1.</span> <span class="nav-text">bash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sh"><span class="nav-number">2.2.</span> <span class="nav-text">sh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ash"><span class="nav-number">2.3.</span> <span class="nav-text">ash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#csh"><span class="nav-number">2.4.</span> <span class="nav-text">csh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ksh"><span class="nav-number">2.5.</span> <span class="nav-text">ksh</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三-Shell脚本语言与编译型语言的差异"><span class="nav-number">3.</span> <span class="nav-text">三 Shell脚本语言与编译型语言的差异</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四-什么时候使用Shell"><span class="nav-number">4.</span> <span class="nav-text">四 什么时候使用Shell</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-但是，考虑到Shell脚本的命令限制和效率问题，下列情况一般不使用Shell："><span class="nav-number">4.1.</span> <span class="nav-text">1.但是，考虑到Shell脚本的命令限制和效率问题，下列情况一般不使用Shell：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-使用Shell无法解决问题时-怎么办"><span class="nav-number">4.2.</span> <span class="nav-text">2.使用Shell无法解决问题时,怎么办</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线性表"><span class="nav-number">1.</span> <span class="nav-text">线性表</span></a></li></ol></div>
             
           </div>
         </section>
