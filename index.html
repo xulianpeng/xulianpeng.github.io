@@ -258,6 +258,124 @@
             
               
                 
+                <a class="post-title-link" href="/2017/04/19/Swift-使用UserDefaults保存本地数据/" itemprop="url">
+                  Swift-使用UserDefaults保存本地数据
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-19T15:12:19+08:00" content="2017-04-19">
+              2017-04-19
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/04/19/Swift-使用UserDefaults保存本地数据/" class="leancloud_visitors" data-flag-title="Swift-使用UserDefaults保存本地数据">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Swift-使用UserDefaults来进行本地数据存储"><a href="#Swift-使用UserDefaults来进行本地数据存储" class="headerlink" title="Swift - 使用UserDefaults来进行本地数据存储"></a>Swift - 使用UserDefaults来进行本地数据存储</h1><blockquote>
+<p>UserDefaults 适合存储轻量级的本地客户端数据，比如记住密码功能，要保存一个系统的用户名、密码。使用 UserDefaults 是首选。下次再登陆的时候就可以直接从 UserDefaults 里面读取上次登陆的信息。</p>
+</blockquote>
+<p>一般来说本地存储数据我们还可以是用 SQlite 数据库，或者使用自己建立的 plist 文件什么的，但这还得自己显示创建文件，读取文件，很麻烦，而是用 UserDefaults 则不用管这些东西，就像读字符串一样，直接读取就可以了。</p>
+<p><strong>UserDefaults 支持的数据格式也很多，有：Int，Float，Double，BOOL，Array，Dictionary，甚至 Any 类型。</strong></p>
+<h2 id="1，下面通过一个样例演示UserDefaults的用法："><a href="#1，下面通过一个样例演示UserDefaults的用法：" class="headerlink" title="1，下面通过一个样例演示UserDefaults的用法："></a>1，下面通过一个样例演示UserDefaults的用法：</h2><p>（1）如果是第一次运行程序通过 CFUUIDCreate 方法生成一个唯一字符串作为用户id储存起来（形如：B8DDB58D-73BF-4E39-A051-365858FC4626）<br>（2）往后运行时直接从 UserDefaults 中把用户id取出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">import UIKit </div><div class="line">class ViewController: UIViewController &#123;</div><div class="line"> </div><div class="line">    override func viewDidLoad() &#123;</div><div class="line">        super.viewDidLoad()</div><div class="line"> </div><div class="line">        print(&quot;用户uuid：\(get_uuid())&quot;)</div><div class="line">    &#125;</div><div class="line">     </div><div class="line">    override func didReceiveMemoryWarning() &#123;</div><div class="line">        super.didReceiveMemoryWarning()</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line">func get_uuid() -&gt; String&#123;</div><div class="line">    let userid = UserDefaults.standard.string(forKey: &quot;hangge&quot;)</div><div class="line">    //判断UserDefaults中是否已经存在</div><div class="line">    if(userid != nil)&#123;</div><div class="line">        return userid!</div><div class="line">    &#125;else&#123;</div><div class="line">        //不存在则生成一个新的并保存</div><div class="line">        let uuid_ref = CFUUIDCreate(nil)</div><div class="line">        let uuid_string_ref = CFUUIDCreateString(nil , uuid_ref)</div><div class="line">        let uuid = uuid_string_ref as! String</div><div class="line">        UserDefaults.standard.set(uuid, forKey: &quot;hangge&quot;)</div><div class="line">        return uuid</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>执行结果如下：</p>
+<h2 id="2，对原生数据类型的储存和读取"><a href="#2，对原生数据类型的储存和读取" class="headerlink" title="2，对原生数据类型的储存和读取"></a>2，对原生数据类型的储存和读取</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">let userDefault = UserDefaults.standard</div><div class="line"> </div><div class="line">//Any</div><div class="line">userDefault.set(&quot;hangge.com&quot;, forKey: &quot;Object&quot;)</div><div class="line">let objectValue:Any? = userDefault.object(forKey: &quot;Object&quot;)</div><div class="line"> </div><div class="line">//Int类型</div><div class="line">userDefault.set(12345, forKey: &quot;Int&quot;)</div><div class="line">let intValue = userDefault.integer(forKey: &quot;Int&quot;)</div><div class="line"> </div><div class="line">//Float类型</div><div class="line">userDefault.set(3.2, forKey: &quot;Float&quot;)</div><div class="line">let floatValue = userDefault.float(forKey: &quot;Float&quot;)</div><div class="line"> </div><div class="line">//Double类型</div><div class="line">userDefault.set(5.2240, forKey: &quot;Double&quot;)</div><div class="line">let doubleValue = userDefault.double(forKey: &quot;Double&quot;)</div><div class="line"> </div><div class="line">//Bool类型</div><div class="line">userDefault.set(true, forKey: &quot;Bool&quot;)</div><div class="line">let boolValue = userDefault.bool(forKey: &quot;Bool&quot;)</div><div class="line"> </div><div class="line">//URL类型</div><div class="line">userDefault.set(URL(string:&quot;http://hangge.com&quot;)!, forKey: &quot;URL&quot;)</div><div class="line">let urlValue = userDefault.url(forKey: &quot;URL&quot;)</div><div class="line"> </div><div class="line">//String类型</div><div class="line">userDefault.set(&quot;hangge.com&quot;, forKey: &quot;String&quot;)</div><div class="line">let stringValue = userDefault.string(forKey: &quot;String&quot;)</div><div class="line"> </div><div class="line">//NSNumber类型</div><div class="line">var number = NSNumber(value:22)</div><div class="line">userDefault.set(number, forKey: &quot;NSNumber&quot;)</div><div class="line">number = userDefault.object(forKey: &quot;NSNumber&quot;) as! NSNumber</div><div class="line"> </div><div class="line">//Array类型</div><div class="line">var array:Array = [&quot;123&quot;,&quot;456&quot;]</div><div class="line">userDefault.set(array, forKey: &quot;Array&quot;)</div><div class="line">array = userDefault.array(forKey: &quot;Array&quot;) as! [String]</div><div class="line"> </div><div class="line">//Dictionary类型</div><div class="line">var dictionary = [&quot;1&quot;:&quot;hangge.com&quot;]</div><div class="line">userDefault.set(dictionary, forKey: &quot;Dictionary&quot;)</div><div class="line">dictionary = userDefault.dictionary(forKey: &quot;Dictionary&quot;) as! [String : String]</div></pre></td></tr></table></figure>
+<h2 id="3，系统对象的存储与读取"><a href="#3，系统对象的存储与读取" class="headerlink" title="3，系统对象的存储与读取"></a>3，系统对象的存储与读取</h2><p><strong>系统对象实现存储，需要通过 archivedData 方法转换成 Data 为载体，才可以存储。</strong>下面以 UILabel 对象为例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">let userDefault = UserDefaults.standard</div><div class="line"> </div><div class="line">//UILabel对象存储</div><div class="line">//将对象转换成Data流</div><div class="line">let label = UILabel()</div><div class="line">label.text = &quot;欢迎访问hangge.com&quot;</div><div class="line">let labelData = NSKeyedArchiver.archivedData(withRootObject: label)</div><div class="line">//存储Data对象</div><div class="line">userDefault.set(labelData, forKey: &quot;labelData&quot;)</div><div class="line"> </div><div class="line">//UILabel对象读取</div><div class="line">//获取Data</div><div class="line">let objData = userDefault.data(forKey: &quot;labelData&quot;)</div><div class="line">//还原对象</div><div class="line">let myLabel = NSKeyedUnarchiver.unarchiveObject(with: objData!) as? UILabel</div><div class="line">print(myLabel)</div></pre></td></tr></table></figure>
+<p>对于 UIImage 对象的存储比较特殊。注意下方高亮部分，如果我们过直接把 image1 存储起来，再取出转换回 UIImage 就变成了 nil。必须先转成 image2 再存储。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">let userDefault = UserDefaults.standard</div><div class="line"> </div><div class="line">//UIImage对象存储</div><div class="line">//将对象转换成Data流</div><div class="line">let image1 = UIImage(named: &quot;apple.png&quot;)!</div><div class="line">let image2 = UIImage(cgImage: image1.cgImage!, scale: image1.scale,</div><div class="line">                     orientation: image1.imageOrientation)</div><div class="line">let imageData = NSKeyedArchiver.archivedData(withRootObject: image2)</div><div class="line">//存储Data对象</div><div class="line">userDefault.set(imageData, forKey: &quot;imageData&quot;)</div><div class="line"> </div><div class="line">//UIImage对象读取</div><div class="line">//获取Data</div><div class="line">let objData = userDefault.data(forKey: &quot;imageData&quot;)</div><div class="line">//还原对象</div><div class="line">let myImage = NSKeyedUnarchiver.unarchiveObject(with: objData!) as? UIImage</div><div class="line">print(myImage)</div></pre></td></tr></table></figure>
+<h2 id="4，自定义对象的存储和读取"><a href="#4，自定义对象的存储和读取" class="headerlink" title="4，自定义对象的存储和读取"></a>4，自定义对象的存储和读取</h2><p>如果想要存储自己定义的类，首先需要对该类实现 NSCoding 协议来进行归档和反归档（序列化和反序列化）。即该类内添加 func encode(with coder: NSCoder) 方法和 init(coder decoder: NSCoder) 方法，将属性进行转换。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">let userDefault = UserDefaults.standard</div><div class="line"> </div><div class="line">//自定义对象存储</div><div class="line">let model = UserInfo(name: &quot;航歌&quot;, phone: &quot;3525&quot;)</div><div class="line">//实例对象转换成Data</div><div class="line">let modelData = NSKeyedArchiver.archivedData(withRootObject: model)</div><div class="line">//存储Data对象</div><div class="line">userDefault.set(modelData, forKey: &quot;myModel&quot;)</div><div class="line"> </div><div class="line">//自定义对象读取</div><div class="line">let myModelData = userDefault.data(forKey: &quot;myModel&quot;)</div><div class="line">let myModel = NSKeyedUnarchiver.unarchiveObject(with: myModelData!) as! UserInfo</div><div class="line">print(myModel)</div><div class="line"> </div><div class="line">//----- 自定义对象类 -----</div><div class="line">class UserInfo: NSObject, NSCoding &#123;</div><div class="line">    var name:String</div><div class="line">    var phone:String</div><div class="line">     </div><div class="line">    //构造方法</div><div class="line">    required init(name:String=&quot;&quot;, phone:String=&quot;&quot;) &#123;</div><div class="line">        self.name = name</div><div class="line">        self.phone = phone</div><div class="line">    &#125;</div><div class="line">     </div><div class="line">    //从object解析回来</div><div class="line">    required init(coder decoder: NSCoder) &#123;</div><div class="line">        self.name = decoder.decodeObject(forKey: &quot;Name&quot;) as? String ?? &quot;&quot;</div><div class="line">        self.phone = decoder.decodeObject(forKey: &quot;Phone&quot;) as? String ?? &quot;&quot;</div><div class="line">    &#125;</div><div class="line">     </div><div class="line">    //编码成object</div><div class="line">    func encode(with coder: NSCoder) &#123;</div><div class="line">        coder.encode(name, forKey:&quot;Name&quot;)</div><div class="line">        coder.encode(phone, forKey:&quot;Phone&quot;)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="5，删除存储对象"><a href="#5，删除存储对象" class="headerlink" title="5，删除存储对象"></a>5，删除存储对象</h2><p>通过 removeObject() 方法可以删除已保存的数据。当然如果这个存储对象不存在也不会报错。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/13/Swift-入门之数据类型/" itemprop="url">
                   Swift 入门之数据类型
                 </a>
@@ -1193,111 +1311,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/16/AF先导篇/" itemprop="url">
-                  AF先导篇
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-16T16:20:41+08:00" content="2016-11-16">
-              2016-11-16
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/11/16/AF先导篇/" class="leancloud_visitors" data-flag-title="AF先导篇">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="一-AF先导篇"><a href="#一-AF先导篇" class="headerlink" title="一 AF先导篇"></a>一 AF先导篇</h1><p><strong>iOS 7 和 Mac OS X 10.9 Mavericks 中一个显著的变化就是对 Foundation URL 加载系统的彻底重构。</strong></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/16/AF先导篇/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1343,7 +1356,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-count">27</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1417,7 +1430,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
