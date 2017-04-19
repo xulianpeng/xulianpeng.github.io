@@ -85,24 +85,18 @@
 
 
 <meta name="description" content="Swift - 使用UserDefaults来进行本地数据存储
-UserDefaults 适合存储轻量级的本地客户端数据，比如记住密码功能，要保存一个系统的用户名、密码。使用 UserDefaults 是首选。下次再登陆的时候就可以直接从 UserDefaults 里面读取上次登陆的信息。
-
-一般来说本地存储数据我们还可以是用 SQlite 数据库，或者使用自己建立的 plist 文件什么的，但这">
+UserDefaults 适合存储轻量级的本地客户端数据，比如记住密码功能，要保存一个系统的用户名、密码。使用 UserDefaults 是首选。下次再登陆的时候就可以直接从 UserDefaults 里面读取上次登陆的信息。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift-使用UserDefaults保存本地数据">
 <meta property="og:url" content="http://yoursite.com/2017/04/19/Swift-使用UserDefaults保存本地数据/index.html">
 <meta property="og:site_name" content="Lianpeng’s Sky">
 <meta property="og:description" content="Swift - 使用UserDefaults来进行本地数据存储
-UserDefaults 适合存储轻量级的本地客户端数据，比如记住密码功能，要保存一个系统的用户名、密码。使用 UserDefaults 是首选。下次再登陆的时候就可以直接从 UserDefaults 里面读取上次登陆的信息。
-
-一般来说本地存储数据我们还可以是用 SQlite 数据库，或者使用自己建立的 plist 文件什么的，但这">
-<meta property="og:updated_time" content="2017-04-19T07:15:06.000Z">
+UserDefaults 适合存储轻量级的本地客户端数据，比如记住密码功能，要保存一个系统的用户名、密码。使用 UserDefaults 是首选。下次再登陆的时候就可以直接从 UserDefaults 里面读取上次登陆的信息。">
+<meta property="og:updated_time" content="2017-04-19T07:28:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift-使用UserDefaults保存本地数据">
 <meta name="twitter:description" content="Swift - 使用UserDefaults来进行本地数据存储
-UserDefaults 适合存储轻量级的本地客户端数据，比如记住密码功能，要保存一个系统的用户名、密码。使用 UserDefaults 是首选。下次再登陆的时候就可以直接从 UserDefaults 里面读取上次登陆的信息。
-
-一般来说本地存储数据我们还可以是用 SQlite 数据库，或者使用自己建立的 plist 文件什么的，但这">
+UserDefaults 适合存储轻量级的本地客户端数据，比如记住密码功能，要保存一个系统的用户名、密码。使用 UserDefaults 是首选。下次再登陆的时候就可以直接从 UserDefaults 里面读取上次登陆的信息。">
 
 
 
@@ -317,6 +311,7 @@ UserDefaults 适合存储轻量级的本地客户端数据，比如记住密码�
         <h1 id="Swift-使用UserDefaults来进行本地数据存储"><a href="#Swift-使用UserDefaults来进行本地数据存储" class="headerlink" title="Swift - 使用UserDefaults来进行本地数据存储"></a>Swift - 使用UserDefaults来进行本地数据存储</h1><blockquote>
 <p>UserDefaults 适合存储轻量级的本地客户端数据，比如记住密码功能，要保存一个系统的用户名、密码。使用 UserDefaults 是首选。下次再登陆的时候就可以直接从 UserDefaults 里面读取上次登陆的信息。</p>
 </blockquote>
+<a id="more"></a>
 <p>一般来说本地存储数据我们还可以是用 SQlite 数据库，或者使用自己建立的 plist 文件什么的，但这还得自己显示创建文件，读取文件，很麻烦，而是用 UserDefaults 则不用管这些东西，就像读字符串一样，直接读取就可以了。</p>
 <p><strong>UserDefaults 支持的数据格式也很多，有：Int，Float，Double，BOOL，Array，Dictionary，甚至 Any 类型。</strong></p>
 <h2 id="1，下面通过一个样例演示UserDefaults的用法："><a href="#1，下面通过一个样例演示UserDefaults的用法：" class="headerlink" title="1，下面通过一个样例演示UserDefaults的用法："></a>1，下面通过一个样例演示UserDefaults的用法：</h2><p>（1）如果是第一次运行程序通过 CFUUIDCreate 方法生成一个唯一字符串作为用户id储存起来（形如：B8DDB58D-73BF-4E39-A051-365858FC4626）<br>（2）往后运行时直接从 UserDefaults 中把用户id取出</p>
