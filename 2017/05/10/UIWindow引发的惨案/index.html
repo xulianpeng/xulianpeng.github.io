@@ -84,17 +84,17 @@
 
 
 
-<meta name="description" content="本篇博文纯粹是UIWindow引发的一场血案. 起因是在swift项目里添加一个广告页时,思路是创建一个UIView,然后展示广告图片,然后将该view放在主window上,这样无论启动或者从后台回到前台时都可以显示广告,并且这样与项目没有任何耦合.">
+<meta name="description" content="一 导火索本篇博文纯粹是UIWindow引发的一场血案. 起因是在swift项目里添加一个广告页时,思路是创建一个UIView,然后展示广告图片,然后将该view放在主window上,这样无论启动或者从后台回到前台时都可以显示广告,并且这样与项目没有任何耦合.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UIWindow引发的惨案">
 <meta property="og:url" content="http://yoursite.com/2017/05/10/UIWindow引发的惨案/index.html">
 <meta property="og:site_name" content="Lianpeng’s Sky">
-<meta property="og:description" content="本篇博文纯粹是UIWindow引发的一场血案. 起因是在swift项目里添加一个广告页时,思路是创建一个UIView,然后展示广告图片,然后将该view放在主window上,这样无论启动或者从后台回到前台时都可以显示广告,并且这样与项目没有任何耦合.">
+<meta property="og:description" content="一 导火索本篇博文纯粹是UIWindow引发的一场血案. 起因是在swift项目里添加一个广告页时,思路是创建一个UIView,然后展示广告图片,然后将该view放在主window上,这样无论启动或者从后台回到前台时都可以显示广告,并且这样与项目没有任何耦合.">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/639412-d27fb618209a33bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-05-10T08:55:53.000Z">
+<meta property="og:updated_time" content="2017-05-10T08:58:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UIWindow引发的惨案">
-<meta name="twitter:description" content="本篇博文纯粹是UIWindow引发的一场血案. 起因是在swift项目里添加一个广告页时,思路是创建一个UIView,然后展示广告图片,然后将该view放在主window上,这样无论启动或者从后台回到前台时都可以显示广告,并且这样与项目没有任何耦合.">
+<meta name="twitter:description" content="一 导火索本篇博文纯粹是UIWindow引发的一场血案. 起因是在swift项目里添加一个广告页时,思路是创建一个UIView,然后展示广告图片,然后将该view放在主window上,这样无论启动或者从后台回到前台时都可以显示广告,并且这样与项目没有任何耦合.">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/639412-d27fb618209a33bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -307,7 +307,7 @@
       
 
       
-        <p>本篇博文纯粹是UIWindow引发的一场血案. 起因是在swift项目里添加一个广告页时,思路是创建一个UIView,然后展示广告图片,然后将该view放在主window上,这样无论启动或者从后台回到前台时都可以显示广告,并且这样与项目没有任何耦合.</p>
+        <h2 id="一-导火索"><a href="#一-导火索" class="headerlink" title="一 导火索"></a>一 导火索</h2><p>本篇博文纯粹是UIWindow引发的一场血案. 起因是在swift项目里添加一个广告页时,思路是创建一个UIView,然后展示广告图片,然后将该view放在主window上,这样无论启动或者从后台回到前台时都可以显示广告,并且这样与项目没有任何耦合.</p>
 <a id="more"></a>
 <p>那么问题来了,在oc项目中,这样做没有任何问题,但是在swift项目里,启动时没有显示,后台回到前台正常显示,然后查看了启动时的视图层级,发现广告页在最下面.然后惨案来了.</p>
 <ul>
@@ -540,7 +540,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#二-分析解决第一个问题"><span class="nav-number">1.</span> <span class="nav-text">二 分析解决第一个问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三回顾一下响应者链"><span class="nav-number">2.</span> <span class="nav-text">三回顾一下响应者链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四-UISCreen-UIView-UIWindow-CALayer"><span class="nav-number">3.</span> <span class="nav-text">四 UISCreen UIView UIWindow CALayer</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-导火索"><span class="nav-number">1.</span> <span class="nav-text">一 导火索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-分析解决第一个问题"><span class="nav-number">2.</span> <span class="nav-text">二 分析解决第一个问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三回顾一下响应者链"><span class="nav-number">3.</span> <span class="nav-text">三回顾一下响应者链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四-UISCreen-UIView-UIWindow-CALayer"><span class="nav-number">4.</span> <span class="nav-text">四 UISCreen UIView UIWindow CALayer</span></a></li></ol></div>
             
           </div>
         </section>
