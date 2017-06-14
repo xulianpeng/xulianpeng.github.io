@@ -1,0 +1,762 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/ven/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/ven/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="作为iOS开发中最常用的控件,最基本的控件,同时也是很复杂的控件,其构成了APP的基本实现,最为一名老司机,我觉得很有必要对其做个传记.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UITablView大总结">
+<meta property="og:url" content="http://yoursite.com/2017/05/26/UITablView大总结/index.html">
+<meta property="og:site_name" content="Lianpeng’s Sky">
+<meta property="og:description" content="作为iOS开发中最常用的控件,最基本的控件,同时也是很复杂的控件,其构成了APP的基本实现,最为一名老司机,我觉得很有必要对其做个传记.">
+<meta property="og:updated_time" content="2017-05-26T09:55:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UITablView大总结">
+<meta name="twitter:description" content="作为iOS开发中最常用的控件,最基本的控件,同时也是很复杂的控件,其构成了APP的基本实现,最为一名老司机,我觉得很有必要对其做个传记.">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/05/26/UITablView大总结/"/>
+
+  <title> UITablView大总结 | Lianpeng’s Sky </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Lianpeng’s Sky</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">乐观 美好 奋斗</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                UITablView大总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-26T16:09:05+08:00" content="2017-05-26">
+              2017-05-26
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/05/26/UITablView大总结/" class="leancloud_visitors" data-flag-title="UITablView大总结">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>作为iOS开发中最常用的控件,最基本的控件,同时也是很复杂的控件,其构成了APP的基本实现,最为一名老司机,我觉得很有必要对其做个传记.</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="首先-介绍一下写这篇文章的原因"><a href="#首先-介绍一下写这篇文章的原因" class="headerlink" title="首先,介绍一下写这篇文章的原因."></a>首先,介绍一下写这篇文章的原因.</h1><ul>
+<li>是否你还在用frame来初始化cell,那你的行高当然还得每一个都得计算.</li>
+<li>是否不知道怎么样来设置其分割线顶到头,而不是系统的样式</li>
+<li>是否设置为group时 发现每一个section的header的高度 和 footer的高度 会有一个默认的高度</li>
+<li>点击cell时 其子视图的背景色会受影响 怎么办</li>
+<li>在iOS 10 iOS 9 iOS 8  iOS7中都新添加了什么方法 和 属性.</li>
+<li>tableview的性能优化,你都知道哪些方法</li>
+</ul>
+<p>我想这些问题,如果你都能说出几个答案,那么恭喜你,你是合格的老司机!!!<br>那如果你不知道,请系好安全带,老司机要发车了.</p>
+<h1 id="研究一下其API"><a href="#研究一下其API" class="headerlink" title="研究一下其API"></a>研究一下其API</h1><p>常用的方法为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">var rootTableView = UITableView.init(frame: CGRect(x:0,y:64,width:kSCREENWIDTH,height:kSCREENHEIGHT - 64), style: .plain)</div><div class="line"></div><div class="line">rootTableView.xlpInitTableViewEnd(delegate: self, superView: self.view, cellClass: [commentCell.self])</div><div class="line">func xlpInitTableViewEnd(delegate:Any,superView:UIView,cellClass:[AnyClass?]?)  &#123;</div><div class="line">    </div><div class="line">        self.backgroundColor = .clear</div><div class="line">        self.delegate = delegate as? UITableViewDelegate</div><div class="line">        self.dataSource = delegate as? UITableViewDataSource</div><div class="line">        self.separatorStyle = UITableViewCellSeparatorStyle.singleLine</div><div class="line">        if cellClass != nil &#123;</div><div class="line">            </div><div class="line">            for cell in cellClass! &#123;</div><div class="line">                </div><div class="line">                let identifier:String =  NSStringFromClass(cell!) as String</div><div class="line">                var lastStr :String = &quot;&quot;</div><div class="line">                if identifier.components(separatedBy: &quot;.&quot;).count &gt; 0 &#123;</div><div class="line">                    lastStr = identifier.components(separatedBy: &quot;.&quot;).last!</div><div class="line">                &#125;</div><div class="line">                self.register(cell, forCellReuseIdentifier: lastStr)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        superView.addSubview(self)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">//其相关的代理方法</div><div class="line">numberofRows</div><div class="line">numberOfSection</div><div class="line">cellForRow</div><div class="line">heightForRow</div><div class="line">viewForHeader</div><div class="line">viewForFooter</div></pre></td></tr></table></figure>
+<p>以上这些方法在ios7及以后的版本基本满足一般的需求.</p>
+<h2 id="那么现在是否有哪些好的方法或者改进呢-那当然我们要看看是否有新添加的属性或方法"><a href="#那么现在是否有哪些好的方法或者改进呢-那当然我们要看看是否有新添加的属性或方法" class="headerlink" title="那么现在是否有哪些好的方法或者改进呢,那当然我们要看看是否有新添加的属性或方法."></a>那么现在是否有哪些好的方法或者改进呢,那当然我们要看看是否有新添加的属性或方法.</h2><h3 id="新增属性"><a href="#新增属性" class="headerlink" title="新增属性"></a>新增属性</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">//ios7 </div><div class="line">estimatedRowHeight</div><div class="line">estimatedSectionHeaderHeight</div><div class="line">estimatedSectionFooterHeight</div><div class="line">separatorInset</div><div class="line">sectionIndexBackgroundColor</div><div class="line">//ios8</div><div class="line">var separatorEffect: UIVisualEffect?</div><div class="line">UITableViewRowActionStyle //</div><div class="line"></div><div class="line">//ios9</div><div class="line">var cellLayoutMarginsFollowReadableWidth: Bool</div><div class="line">var remembersLastFocusedIndexPath: Bool</div><div class="line">UITableViewFocusUpdateContext//</div><div class="line">//ios10</div><div class="line">var prefetchDataSource: UITableViewDataSourcePrefetching?</div></pre></td></tr></table></figure>
+<h3 id="新增代理方法"><a href="#新增代理方法" class="headerlink" title="新增代理方法"></a>新增代理方法</h3><p>首先我们了解一下 其UITableviewDelegate方法和UITableViewDatasource方法</p>
+<p>1 UITableviewDelegate方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">heightForRowAt</div><div class="line">heightForHeaderInSection</div><div class="line">heightForFooterInSection</div><div class="line">viewForHeaderInSection</div><div class="line">viewForFooterInSection</div><div class="line">accessoryButtonTappedForRowWith</div><div class="line"></div><div class="line">didSelectRowAt</div><div class="line">didDeselectRowAt</div><div class="line">willSelectRowAt</div><div class="line">willDeselectRowAt</div><div class="line"></div><div class="line">shouldHighlightRowAt</div><div class="line">didHighlightRowAt</div><div class="line">didUnhighlightRowAt</div><div class="line"></div><div class="line">willDisplay Cell</div><div class="line">didEndDisplaying </div><div class="line">willDisplayHeaderView</div><div class="line">willDisplayFooterView</div><div class="line">didEndDisplayingHeaderView</div><div class="line">didEndDisplayingFooterView</div><div class="line"></div><div class="line">//ios7</div><div class="line">estimatedHeightForRowAt</div><div class="line">estimatedHeightForHeaderInSection</div><div class="line">estimatedHeightForFooterInSection</div><div class="line"></div><div class="line">//编辑相关</div><div class="line">editingStyleForRowAt</div><div class="line">titleForDeleteConfirmationButtonForRowAt</div><div class="line">editActionsForRowAt  //8.0</div><div class="line">shouldIndentWhileEditingRowAt //默认返回值为YES 只对grouped类型的tableview有用</div><div class="line">willBeginEditingRowAt</div><div class="line">didEndEditingRowAt</div><div class="line"></div><div class="line">targetIndexPathForMoveFromRowAt</div><div class="line">indentationLevelForRowAt</div><div class="line"></div><div class="line">//粘贴复制 以下3个方法必须同时调用</div><div class="line">shouldShowMenuForRowAt</div><div class="line">canPerformAction</div><div class="line">performAction</div><div class="line"></div><div class="line">//Focus 焦点 这个是新的代理方法 ios9之后</div><div class="line">canFocusRowAt</div><div class="line">shouldUpdateFocusIn</div><div class="line">didUpdateFocusIn</div><div class="line">indexPathForPreferredFocusedView</div></pre></td></tr></table></figure>
+<p>2 UITableViewDatasource方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">numberOfRowsInSection</div><div class="line">numberOfSections</div><div class="line">cellForRowAt</div><div class="line">titleForHeaderInSection</div><div class="line">titleForFooterInSection</div><div class="line">canEditRowAt indexPath</div><div class="line">canMoveRowAt</div><div class="line">sectionIndexTitles(for tableView: UITableView) -&gt; [String]?</div><div class="line">sectionForSectionIndexTitle title: String, at index: Int) -&gt; Int</div><div class="line">commit editingStyle</div><div class="line">moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath</div></pre></td></tr></table></figure>
+<h1 id="现在我们对于开篇的问题逐一解答"><a href="#现在我们对于开篇的问题逐一解答" class="headerlink" title="现在我们对于开篇的问题逐一解答."></a>现在我们对于开篇的问题逐一解答.</h1><h2 id="问题1-是否你还在用frame来初始化cell-那你的行高当然还得每一个都得计算"><a href="#问题1-是否你还在用frame来初始化cell-那你的行高当然还得每一个都得计算" class="headerlink" title="问题1 是否你还在用frame来初始化cell,那你的行高当然还得每一个都得计算."></a>问题1 是否你还在用frame来初始化cell,那你的行高当然还得每一个都得计算.</h2><p>答案:对于初级开发者,这是最常用的方法,但带来的问题也很显然,frame是写死的,则横竖屏切换会出现问题,当然一般只支持竖屏的话,也可以忽略,但是尺寸总要适配,5s 6 6P,这样还要做设备机型判断.<br>使用这个方法来布局cell的话,则heightForRow,则必须要执行.在展示tableview之前,必须要把所有的cell的高度计算出来.往往涉及到字符串高度的计算.</p>
+<p>ios7苹果推出AutoLayout,Masonary的出现</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.jpg" alt="xulianpeng WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/10/UIWindow引发的惨案/" rel="next" title="UIWindow引发的惨案">
+                <i class="fa fa-chevron-left"></i> UIWindow引发的惨案
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/14/UINavigationController补充/" rel="prev" title="UINavigationController补充">
+                UINavigationController补充 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="xulianpeng" />
+          <p class="site-author-name" itemprop="name">xulianpeng</p>
+          <p class="site-description motion-element" itemprop="description">I am on the way to faraway</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xulianpeng" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/5f7143127114" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#首先-介绍一下写这篇文章的原因"><span class="nav-number">1.</span> <span class="nav-text">首先,介绍一下写这篇文章的原因.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#研究一下其API"><span class="nav-number">2.</span> <span class="nav-text">研究一下其API</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#那么现在是否有哪些好的方法或者改进呢-那当然我们要看看是否有新添加的属性或方法"><span class="nav-number">2.1.</span> <span class="nav-text">那么现在是否有哪些好的方法或者改进呢,那当然我们要看看是否有新添加的属性或方法.</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#新增属性"><span class="nav-number">2.1.1.</span> <span class="nav-text">新增属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新增代理方法"><span class="nav-number">2.1.2.</span> <span class="nav-text">新增代理方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#现在我们对于开篇的问题逐一解答"><span class="nav-number">3.</span> <span class="nav-text">现在我们对于开篇的问题逐一解答.</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题1-是否你还在用frame来初始化cell-那你的行高当然还得每一个都得计算"><span class="nav-number">3.1.</span> <span class="nav-text">问题1 是否你还在用frame来初始化cell,那你的行高当然还得每一个都得计算.</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xulianpeng</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/ven/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/ven/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/ven/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/ven/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/ven/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/ven/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("kxIjFcyoMk4rdO3nb3fJvCeq-gzGzoHsz", "eXlDfzJ1LVFxLb2qpYCfUA1l");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
